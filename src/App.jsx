@@ -9,10 +9,12 @@ import Register from "./pages/Register"
 import Manifesto from "./pages/Manifesto"
 import Impostazioni from "./pages/Impostazioni"
 import Admin from "./pages/Admin"
+import MyNavbar from "./components/MyNavbar";
 
 function App() {
   return (
     <BrowserRouter>
+      <MyNavbar />
       <Routes>
         <Route path="/" element={<Homepage />} />
         <Route path="/categoria/:nome" element={<Categoria />} />
