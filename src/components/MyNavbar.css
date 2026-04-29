@@ -63,6 +63,31 @@
     color: #B8A0FF !important;
 }
 
+.navbar-search {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #B8A0FF;
+    background: #1F1A2E;
+    padding: 6px 18px;
+    border-radius: 20px;
+    font-weight: 500;
+    border: 1px solid #B8A0FF;
+    outline: none;
+    width: 160px;
+    transition: width 0.3s ease, border-color 0.25s ease;
+    margin-left: 12px;
+}
+
+.navbar-search::placeholder {
+    color: #A8A0C0;
+}
+
+.navbar-search:focus {
+    width: 220px;
+    border-color: #00C4A0;
+    color: #F5F3FF;
+}
+
 /* ── PULSANTI ────────────────────────────────── */
 .btn-primary {
     font-family: Georgia, serif;
@@ -236,6 +261,17 @@
 
     .navbar-mobile {
         display: flex !important;
+    }
+
+    .navbar-search {
+        width: 100px;
+        font-size: 11px;
+        padding: 5px 12px;
+        margin-left: 8px;
+    }
+
+    .navbar-search:focus {
+        width: 130px;
     }
 
     /* ── HAMBURGER ── */

@@ -10,23 +10,27 @@ import Manifesto from "./pages/Manifesto"
 import Impostazioni from "./pages/Impostazioni"
 import Admin from "./pages/Admin"
 import MyNavbar from "./components/MyNavbar";
+import MyFooter from "./components/MyFooter"
 
 function App() {
   return (
     <BrowserRouter>
       <MyNavbar />
-      <Routes>
-        <Route path="/" element={<Homepage />} />
-        <Route path="/categoria/:nome" element={<Categoria />} />
-        <Route path="/articolo/:id" element={<ArticoloSingolo />} />
-        <Route path="/@:handle" element={<ProfiloUtente />} />
-        <Route path="/manifesto" element={<Manifesto />} />
-        <Route path="/login" element={<Login />} />
-        <Route path="/register" element={<Register />} />
-        <Route path="/crea" element={<Editor />} />
-        <Route path="/impostazioni" element={<Impostazioni />} />
-        <Route path="/admin" element={<Admin />} />
-      </Routes>
+      <main className="main-content">
+        <Routes>
+          <Route path="/" element={<Homepage />} />
+          <Route path="/categoria/:nome" element={<Categoria />} />
+          <Route path="/articolo/:id" element={<ArticoloSingolo />} />
+          <Route path="/@:handle" element={<ProfiloUtente />} />
+          <Route path="/manifesto" element={<Manifesto />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/crea" element={<Editor />} />
+          <Route path="/impostazioni" element={<Impostazioni />} />
+          <Route path="/admin" element={<Admin />} />
+        </Routes>
+      </main>
+      <MyFooter />
     </BrowserRouter>
   )
 }

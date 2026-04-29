@@ -1,0 +1,77 @@
+/* ── DIVIDER ─────────────────────────────────── */
+.footer-divider {
+    height: 3px;
+    background: #ffffff;
+    width: 100%;
+}
+
+/* ── FOOTER ──────────────────────────────────── */
+.footer {
+    background: #0C0A14;
+    padding: 24px 32px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* ── TESTO COPYRIGHT ─────────────────────────── */
+.footer-copy {
+    font-family: Georgia, serif;
+    font-size: 12px;
+    color: #ffffff;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+/* ── SOCIAL ──────────────────────────────────── */
+.footer-social {
+    display: flex;
+    gap: 24px;
+    align-items: center;
+}
+
+.footer-social-link {
+    font-family: Georgia, serif;
+    font-size: 12px;
+    color: #ffffff;
+    text-decoration: none;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.25s ease;
+}
+
+.footer-social-link:hover {
+    color: #B8A0FF;
+}
+
+/* ── MADE BY ─────────────────────────────────── */
+.footer-made {
+    font-family: Georgia, serif;
+    font-size: 12px;
+    color: #ffffff;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+}
+
+/* ── RESPONSIVE MOBILE ───────────────────────── */
+@media (max-width: 768px) {
+    .footer {
+        flex-direction: column;
+        gap: 16px;
+        padding: 24px 16px;
+        text-align: center;
+    }
+
+    .footer-social {
+        gap: 20px;
+    }
+
+    .footer-copy,
+    .footer-made {
+        font-size: 11px;
+    }
+
+    .footer-social-link {
+        font-size: 11px;
+    }
+}

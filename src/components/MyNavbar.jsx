@@ -39,9 +39,14 @@ function MyNavbar() {
             {/* ── RIGA 1 ── */}
             <div className="navbar-top">
                 <div className="navbar-left">
-                    <Link to="/manifesto" className="navbar-link" onClick={closeAll}>
+                    <Link to="/manifesto" className="btn-secondary" onClick={closeAll}>
                         Manifesto
                     </Link>
+                    <input
+                        type="text"
+                        placeholder="Cerca..."
+                        className="navbar-search"
+                    />
                 </div>
 
                 <Link to="/" className="navbar-logo" onClick={closeAll}>
