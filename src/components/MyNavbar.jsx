@@ -4,12 +4,12 @@ import { Link, useLocation } from "react-router-dom"
 import "./MyNavbar.css"
 
 const categorie = [
-    "Stories",
-    "Decode",
-    "Crossover",
-    "Trends",
-    "Dark Side",
-    "Voices",
+    { label: "Stories", slug: "stories" },
+    { label: "Decode", slug: "decode" },
+    { label: "Crossover", slug: "crossover" },
+    { label: "Trends", slug: "trends" },
+    { label: "Dark Side", slug: "darkside" },
+    { label: "Voices", slug: "voices" },
 ]
 
 function MyNavbar() {
@@ -115,20 +115,20 @@ function MyNavbar() {
             {/* ── RIGA 2 — CATEGORIE desktop ── */}
             <div className="navbar-cats navbar-desktop">
                 {categorie.map((cat) => {
-                    const slug = cat.toLowerCase().replace(" ", "-")
-                    const isActive = location.pathname === `/categoria/${slug}`
+                    const isActive = location.pathname === `/categoria/${cat.slug}`
+
                     return (
                         <Link
-                            key={cat}
-                            to={`/categoria/${slug}`}
+                            key={cat.slug}
+                            to={`/categoria/${cat.slug}`}
                             className={`navbar-cat ${isActive ? "active" : ""}`}
+                            onClick={closeAll}
                         >
-                            {cat}
+                            {cat.label}
                         </Link>
                     )
                 })}
             </div>
-
             {/* ── RIGA 2 — mobile con hamburger ── */}
             <div className="navbar-cats-mobile navbar-mobile">
                 <button
@@ -146,16 +146,16 @@ function MyNavbar() {
             {menuCatOpen && (
                 <div className="mobile-dropdown mobile-dropdown-cats">
                     {categorie.map((cat) => {
-                        const slug = cat.toLowerCase().replace(" ", "-")
-                        const isActive = location.pathname === `/categoria/${slug}`
+                        const isActive = location.pathname === `/categoria/${cat.slug}`
+
                         return (
                             <Link
-                                key={cat}
-                                to={`/categoria/${slug}`}
+                                key={cat.slug}
+                                to={`/categoria/${cat.slug}`}
                                 className={`mobile-cat ${isActive ? "active" : ""}`}
                                 onClick={closeAll}
                             >
-                                {cat}
+                                {cat.label}
                             </Link>
                         )
                     })}
