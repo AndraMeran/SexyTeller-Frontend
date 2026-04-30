@@ -1,4 +1,7 @@
-import { BrowserRouter, Routes, Route } from "react-router-dom"
+import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom"
+import { useAuth } from "./context/useAuth"
+import MyNavbar from "./components/MyNavbar"
+import MyFooter from "./components/MyFooter"
 import Homepage from "./pages/Homepage"
 import Categoria from "./pages/Categoria"
 import ArticoloSingolo from "./pages/ArticoloSingolo"
@@ -9,8 +12,20 @@ import Register from "./pages/Register"
 import Manifesto from "./pages/Manifesto"
 import Impostazioni from "./pages/Impostazioni"
 import Admin from "./pages/Admin"
-import MyNavbar from "./components/MyNavbar";
-import MyFooter from "./components/MyFooter"
+
+// Route protetta — solo utenti loggati
+function PrivateRoute({ children }) {
+  const { user, loading } = useAuth()
+  if (loading) return null
+  return user ? children : <Navigate to="/login" />
+}
+
+// Route admin — solo redazione
+function AdminRoute({ children }) {
+  const { user, loading } = useAuth()
+  if (loading) return null
+  return user?.isRedazione ? children : <Navigate to="/" />
+}
 
 function App() {
   return (
@@ -25,9 +40,30 @@ function App() {
           <Route path="/manifesto" element={<Manifesto />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
-          <Route path="/crea" element={<Editor />} />
-          <Route path="/impostazioni" element={<Impostazioni />} />
-          <Route path="/admin" element={<Admin />} />
+          <Route
+            path="/crea"
+            element={
+              <PrivateRoute>
+                <Editor />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/impostazioni"
+            element={
+              <PrivateRoute>
+                <Impostazioni />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/admin"
+            element={
+              <AdminRoute>
+                <Admin />
+              </AdminRoute>
+            }
+          />
         </Routes>
       </main>
       <MyFooter />

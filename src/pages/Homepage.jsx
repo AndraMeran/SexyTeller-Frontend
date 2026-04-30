@@ -1,5 +1,7 @@
 import { Link } from "react-router-dom"
 import "./Homepage.css"
+import { useState, useEffect } from "react"
+import { getFeaturedArticles } from "../services/api"
 
 const categories = [
     {
@@ -62,6 +64,25 @@ const smallArticles = [
 ]
 
 function Homepage() {
+    const [featuredArticles, setFeaturedArticles] = useState([])//contiene gli articoli che arrivanodal backend, parte vuota
+    const [loading, setLoading] = useState(true)//dice se stiamo ancora la rispota, parte true 
+    const [error, setError] = useState(null)//se qlc va male, salva il messaggio di errore 
+
+    useEffect(() => {//si esegue quando la pagina si carica per la prima volta (array vuoto alla fine)
+        const fetchFeatured = async () => {
+            try {
+                const data = await getFeaturedArticles()//chiama  get dal ns api.js
+                setFeaturedArticles(data)//se va abene òla chiamata salva gli articoli
+            } catch (err) {
+                setError("Errore nel caricamento degli articoli")//se va male salva il mess
+            } finally {
+                setLoading(false)//in ogni caso imposta loading a false 
+            }
+        }
+
+        fetchFeatured()
+    }, [])
+
     return (
         <div className="homepage">
 
@@ -141,7 +162,7 @@ function Homepage() {
             </section>
 
             {/* SCELTI DA SEXYTELLER */}
-            <section className="featured-section">
+            {/* <section className="featured-section">
                 <div className="section-title">
                     <h2>Scelti da SexyTeller</h2>
                     <Link to="/categoria/stories">Vedi tutti gli articoli →</Link>
@@ -176,6 +197,62 @@ function Homepage() {
                         ))}
                     </div>
                 </div>
+            </section> */}
+            <section className="featured-section">
+                <div className="section-title">
+                    <h2>Scelti da SexyTeller</h2>
+                    <Link to="/categoria/stories">Vedi tutti gli articoli →</Link>
+                </div>
+
+                {loading && (
+                    <p style={{ color: "#A8A0C0" }}>Caricamento articoli...</p>
+                )}
+
+                {error && (
+                    <p style={{ color: "#FF4DA6" }}>{error}</p>
+                )}
+
+                {!loading && !error && (
+                    <div className="featured-layout">
+                        {featuredArticles.length > 0 ? (
+                            <>
+                                <div className="featured-image"></div>
+
+                                <article className="featured-main">
+                                    <span className="tag">{featuredArticles[0]?.category}</span>
+                                    <h3>{featuredArticles[0]?.title}</h3>
+                                    <p className="article-meta">
+                                        di {featuredArticles[0]?.author?.name}
+                                        <span></span>
+                                        {featuredArticles[0]?.readTime} min di lettura
+                                    </p>
+                                    <Link to={`/articolo/${featuredArticles[0]?._id}`}>
+                                        Leggi l'articolo →
+                                    </Link>
+                                </article>
+
+                                <div className="featured-list">
+                                    {featuredArticles.slice(1).map((article) => (
+                                        <article key={article._id} className="small-article">
+                                            <div className="small-thumb"></div>
+                                            <div>
+                                                <span>{article.category}</span>
+                                                <h4>{article.title}</h4>
+                                                <p>
+                                                    di {article.author?.name} · {article.readTime} min
+                                                </p>
+                                            </div>
+                                        </article>
+                                    ))}
+                                </div>
+                            </>
+                        ) : (
+                            <p style={{ color: "#A8A0C0" }}>
+                                Nessun articolo in evidenza al momento.
+                            </p>
+                        )}
+                    </div>
+                )}
             </section>
 
             {/* CTA FINALE */}

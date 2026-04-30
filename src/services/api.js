@@ -1,6 +1,5 @@
 const BASE_URL = import.meta.env.VITE_API_URL //questo è l'URL del backend
 
-const BASE_URL = import.meta.env.VITE_API_URL
 
 
 const getHeaders = () => {// serve per le chiamate che richiedono autenticazione

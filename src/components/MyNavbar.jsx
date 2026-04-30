@@ -17,6 +17,7 @@ function MyNavbar() {
     const location = useLocation()
     const [menuAuthOpen, setMenuAuthOpen] = useState(false)
     const [menuCatOpen, setMenuCatOpen] = useState(false)
+    const [avatarMenuOpen, setAvatarMenuOpen] = useState(false)
 
     const getInitials = (name) => {
         if (!name) return "ST"
@@ -58,9 +59,43 @@ function MyNavbar() {
                     {user ? (
                         <>
                             <Link to="/crea" className="btn-primary">+ Crea</Link>
-                            <Link to={`/@${user.handle}`} className="navbar-avatar">
+                            {/* <Link to={`/@${user.handle}`} className="navbar-avatar">
                                 {getInitials(user.name)}
-                            </Link>
+                            </Link> */}
+
+                            <div className="avatar-menu-wrapper">
+                                <div
+                                    className="navbar-avatar"
+                                    onClick={() => setAvatarMenuOpen(!avatarMenuOpen)}
+                                >
+                                    {getInitials(user.name)}
+                                </div>
+
+                                {avatarMenuOpen && (
+                                    <div className="avatar-dropdown">
+                                        <Link
+                                            to={`/@${user.handle}`}
+                                            className="avatar-dropdown-item"
+                                            onClick={() => setAvatarMenuOpen(false)}
+                                        >
+                                            Il mio profilo
+                                        </Link>
+                                        <Link
+                                            to="/impostazioni"
+                                            className="avatar-dropdown-item"
+                                            onClick={() => setAvatarMenuOpen(false)}
+                                        >
+                                            Impostazioni
+                                        </Link>
+                                        <button
+                                            className="avatar-dropdown-item avatar-logout"
+                                            onClick={() => { logout(); setAvatarMenuOpen(false) }}
+                                        >
+                                            Logout
+                                        </button>
+                                    </div>
+                                )}
+                            </div>
                         </>
                     ) : (
                         <>
