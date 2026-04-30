@@ -161,46 +161,10 @@ function Homepage() {
                 </div>
             </section>
 
-            {/* SCELTI DA SEXYTELLER */}
-            {/* <section className="featured-section">
-                <div className="section-title">
-                    <h2>Scelti da SexyTeller</h2>
-                    <Link to="/categoria/stories">Vedi tutti gli articoli →</Link>
-                </div>
 
-                <div className="featured-layout">
-                    <div className="featured-image"></div>
-
-                    <article className="featured-main">
-                        <span className="tag">Stories</span>
-                        <h3>Il primo bacio non si scorda mai?</h3>
-                        <p className="article-meta">di Laura P. <span></span> 7 min di lettura</p>
-                        <p>
-                            Quella scarica elettrica, il respiro che cambia,
-                            il mondo che si ferma per un secondo. Raccontaci il tuo.
-                        </p>
-                        <Link to="/articolo/demo">Leggi l’articolo →</Link>
-                    </article>
-
-                    <div className="featured-list">
-                        {smallArticles.map((article) => (
-                            <article key={article.title} className="small-article">
-                                <div className="small-thumb"></div>
-                                <div>
-                                    <span>{article.category}</span>
-                                    <h4>{article.title}</h4>
-                                    <p>
-                                        di {article.author} · {article.time}
-                                    </p>
-                                </div>
-                            </article>
-                        ))}
-                    </div>
-                </div>
-            </section> */}
             <section className="featured-section">
                 <div className="section-title">
-                    <h2>Scelti da SexyTeller</h2>
+                    <h2>Le voci in evidenza</h2>
                     <Link to="/categoria/stories">Vedi tutti gli articoli →</Link>
                 </div>
 
