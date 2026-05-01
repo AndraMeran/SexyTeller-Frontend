@@ -36,7 +36,7 @@ function App() {
           <Route path="/" element={<Homepage />} />
           <Route path="/categoria/:nome" element={<Categoria />} />
           <Route path="/articolo/:id" element={<ArticoloSingolo />} />
-          <Route path="/@:handle" element={<ProfiloUtente />} />
+          <Route path="/profilo/:handle" element={<ProfiloUtente />} />
           <Route path="/manifesto" element={<Manifesto />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />

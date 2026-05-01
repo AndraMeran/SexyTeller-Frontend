@@ -3,6 +3,7 @@ import { useAuth } from "../context/useAuth"
 import { Link, useLocation } from "react-router-dom"
 import "./MyNavbar.css"
 
+// lista categorie con label da mostrare e slug per l'URL
 const categorie = [
     { label: "Stories", slug: "stories" },
     { label: "Decode", slug: "decode" },
@@ -13,12 +14,13 @@ const categorie = [
 ]
 
 function MyNavbar() {
-    const { user, logout } = useAuth()
-    const location = useLocation()
-    const [menuAuthOpen, setMenuAuthOpen] = useState(false)
-    const [menuCatOpen, setMenuCatOpen] = useState(false)
-    const [avatarMenuOpen, setAvatarMenuOpen] = useState(false)
+    const { user, logout } = useAuth() // legge utente loggato e funzione logout dal context
+    const location = useLocation() // legge l'URL corrente — serve per evidenziare la categoria attiva
+    const [menuAuthOpen, setMenuAuthOpen] = useState(false) // controlla apertura hamburger auth su mobile
+    const [menuCatOpen, setMenuCatOpen] = useState(false) // controlla apertura hamburger categorie su mobile
+    const [avatarMenuOpen, setAvatarMenuOpen] = useState(false) // controlla apertura dropdown avatar
 
+    // restituisce le iniziali del nome — es. "Maria Rossi" → "MR"
     const getInitials = (name) => {
         if (!name) return "ST"
         return name
@@ -29,9 +31,11 @@ function MyNavbar() {
             .slice(0, 2)
     }
 
+    // chiude tutti i menu aperti — usato quando si naviga
     const closeAll = () => {
         setMenuAuthOpen(false)
         setMenuCatOpen(false)
+        setAvatarMenuOpen(false)
     }
 
     return (
@@ -39,6 +43,8 @@ function MyNavbar() {
 
             {/* ── RIGA 1 ── */}
             <div className="navbar-top">
+
+                {/* SINISTRA — Manifesto + campo ricerca */}
                 <div className="navbar-left">
                     <Link to="/manifesto" className="btn-secondary" onClick={closeAll}>
                         Manifesto
@@ -50,19 +56,19 @@ function MyNavbar() {
                     />
                 </div>
 
+                {/* CENTRO — Logo */}
                 <Link to="/" className="navbar-logo" onClick={closeAll}>
                     SexyTeller
                 </Link>
 
-                {/* Desktop — riga 1 destra */}
+                {/* DESTRA — Desktop */}
                 <div className="navbar-right navbar-desktop">
                     {user ? (
+                        // utente loggato → mostra + Crea e avatar con dropdown
                         <>
                             <Link to="/crea" className="btn-primary">+ Crea</Link>
-                            {/* <Link to={`/@${user.handle}`} className="navbar-avatar">
-                                {getInitials(user.name)}
-                            </Link> */}
 
+                            {/* avatar con menu a tendina */}
                             <div className="avatar-menu-wrapper">
                                 <div
                                     className="navbar-avatar"
@@ -71,25 +77,26 @@ function MyNavbar() {
                                     {getInitials(user.name)}
                                 </div>
 
+                                {/* dropdown — appare solo quando avatarMenuOpen è true */}
                                 {avatarMenuOpen && (
                                     <div className="avatar-dropdown">
                                         <Link
-                                            to={`/@${user.handle}`}
+                                            to={`/profilo/${user.handle}`}
                                             className="avatar-dropdown-item"
-                                            onClick={() => setAvatarMenuOpen(false)}
+                                            onClick={closeAll}
                                         >
                                             Il mio profilo
                                         </Link>
                                         <Link
                                             to="/impostazioni"
                                             className="avatar-dropdown-item"
-                                            onClick={() => setAvatarMenuOpen(false)}
+                                            onClick={closeAll}
                                         >
                                             Impostazioni
                                         </Link>
                                         <button
                                             className="avatar-dropdown-item avatar-logout"
-                                            onClick={() => { logout(); setAvatarMenuOpen(false) }}
+                                            onClick={() => { logout(); closeAll() }}
                                         >
                                             Logout
                                         </button>
@@ -98,6 +105,7 @@ function MyNavbar() {
                             </div>
                         </>
                     ) : (
+                        // utente non loggato → mostra Accedi e Diventa SexyTeller
                         <>
                             <Link to="/login" className="btn-secondary">Accedi</Link>
                             <Link to="/register" className="btn-primary">Diventa SexyTeller</Link>
@@ -105,7 +113,7 @@ function MyNavbar() {
                     )}
                 </div>
 
-                {/* Mobile — hamburger riga 1 */}
+                {/* DESTRA — Mobile hamburger auth */}
                 <div className="navbar-right navbar-mobile">
                     <button
                         className="hamburger"
@@ -119,7 +127,8 @@ function MyNavbar() {
                 </div>
             </div>
 
-            {/* Mobile — dropdown auth */}
+            {/* ── DROPDOWN AUTH MOBILE ── */}
+            {/* appare solo su mobile quando hamburger auth è aperto */}
             {menuAuthOpen && (
                 <div className="mobile-dropdown mobile-dropdown-auth">
                     {user ? (
@@ -127,7 +136,7 @@ function MyNavbar() {
                             <Link to="/crea" className="btn-primary mobile-btn" onClick={closeAll}>
                                 + Crea
                             </Link>
-                            <Link to={`/@${user.handle}`} className="navbar-link" onClick={closeAll}>
+                            <Link to={`/profilo/${user.handle}`} className="navbar-link" onClick={closeAll}>
                                 Il mio profilo
                             </Link>
                             <button className="navbar-link mobile-logout" onClick={() => { logout(); closeAll() }}>
@@ -147,9 +156,11 @@ function MyNavbar() {
                 </div>
             )}
 
-            {/* ── RIGA 2 — CATEGORIE desktop ── */}
+            {/* ── RIGA 2 — CATEGORIE DESKTOP ── */}
+            {/* visibile solo su desktop — ogni link evidenzia la categoria attiva */}
             <div className="navbar-cats navbar-desktop">
                 {categorie.map((cat) => {
+                    // controlla se l'URL corrente corrisponde alla categoria
                     const isActive = location.pathname === `/categoria/${cat.slug}`
 
                     return (
@@ -164,7 +175,9 @@ function MyNavbar() {
                     )
                 })}
             </div>
-            {/* ── RIGA 2 — mobile con hamburger ── */}
+
+            {/* ── RIGA 2 — HAMBURGER CATEGORIE MOBILE ── */}
+            {/* visibile solo su mobile */}
             <div className="navbar-cats-mobile navbar-mobile">
                 <button
                     className="hamburger hamburger-cat"
@@ -177,7 +190,8 @@ function MyNavbar() {
                 </button>
             </div>
 
-            {/* Mobile — dropdown categorie */}
+            {/* ── DROPDOWN CATEGORIE MOBILE ── */}
+            {/* appare solo su mobile quando hamburger categorie è aperto */}
             {menuCatOpen && (
                 <div className="mobile-dropdown mobile-dropdown-cats">
                     {categorie.map((cat) => {

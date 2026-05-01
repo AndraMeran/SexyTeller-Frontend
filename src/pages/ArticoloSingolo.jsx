@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react"
 import { useParams, Link, useNavigate } from "react-router-dom"
-import ReactMarkdown from "react-markdown"
+import ReactMarkdown from "react-markdown" // converte il markdown in HTML per la visualizzazione
 import { useAuth } from "../context/useAuth"
 import {
     getArticleById,
@@ -14,20 +14,22 @@ import {
 import "./ArticoloSingolo.css"
 
 function ArticoloSingolo() {
-    const { id } = useParams()
-    const { user } = useAuth()
-    const navigate = useNavigate()
+    const { id } = useParams() // legge l'_id dell'articolo dall'URL — es. /articolo/abc123 → id = "abc123"
+    const { user } = useAuth() // legge l'utente loggato dal context
+    const navigate = useNavigate() // serve per reindirizzare l'utente — es. al login se non loggato
 
-    const [article, setArticle] = useState(null)
-    const [comments, setComments] = useState([])
-    const [featured, setFeatured] = useState([])
-    const [loading, setLoading] = useState(true)
-    const [error, setError] = useState(null)
-    const [newComment, setNewComment] = useState("")
-    const [commentLoading, setCommentLoading] = useState(false)
-    const [showSensitive, setShowSensitive] = useState(false)
-    const [copied, setCopied] = useState(false)
+    const [article, setArticle] = useState(null) // dati dell'articolo
+    const [comments, setComments] = useState([]) // lista commenti
+    const [featured, setFeatured] = useState([]) // articoli in evidenza per la sidebar
+    const [loading, setLoading] = useState(true) // stato di caricamento
+    const [error, setError] = useState(null) // messaggio di errore
+    const [newComment, setNewComment] = useState("") // testo del nuovo commento
+    const [commentLoading, setCommentLoading] = useState(false) // stato di caricamento invio commento
+    const [showSensitive, setShowSensitive] = useState(false) // controlla se mostrare contenuto sensibile
+    const [copied, setCopied] = useState(false) // controlla il testo del pulsante condividi
 
+    // carica articolo, commenti e articoli in evidenza quando la pagina si monta
+    // Promise.all esegue le tre chiamate in parallelo — più veloce di farle in sequenza
     useEffect(() => {
         const fetchAll = async () => {
             try {
@@ -38,6 +40,7 @@ function ArticoloSingolo() {
                 ])
                 setArticle(articleData)
                 setComments(commentsData)
+                // filtra l'articolo corrente dagli articoli in evidenza e prende i primi 3
                 setFeatured(featuredData.filter(a => a._id !== id).slice(0, 3))
             } catch (err) {
                 setError("Errore nel caricamento dell'articolo")
@@ -46,32 +49,39 @@ function ArticoloSingolo() {
             }
         }
         fetchAll()
-    }, [id])
+    }, [id]) // si riesegue se cambia l'id nell'URL
 
+    // gestisce il like all'articolo
+    // se non loggato reindirizza al login
+    // toggleLikeArticle aggiunge o rimuove il like — lo gestisce il backend
     const handleLike = async () => {
         if (!user) return navigate("/login")
         try {
             const data = await toggleLikeArticle(id)
-            setArticle(data)
+            setArticle(data) // aggiorna l'articolo con il nuovo stato dei like
         } catch (err) {
             console.error(err)
         }
     }
 
+    // copia l'URL dell'articolo negli appunti del browser
+    // cambia il testo del pulsante in "✓ Copiato!" per 2 secondi
     const handleShare = () => {
         navigator.clipboard.writeText(window.location.href)
         setCopied(true)
         setTimeout(() => setCopied(false), 2000)
     }
 
+    // gestisce l'invio di un nuovo commento
+    // trim() rimuove spazi vuoti — evita commenti vuoti
     const handleComment = async (e) => {
-        e.preventDefault()
+        e.preventDefault() // previene il reload della pagina al submit del form
         if (!newComment.trim()) return
         setCommentLoading(true)
         try {
             const data = await createComment(id, { body: newComment })
-            setComments([...comments, data])
-            setNewComment("")
+            setComments([...comments, data]) // aggiunge il nuovo commento alla lista esistente
+            setNewComment("") // svuota il campo dopo l'invio
         } catch (err) {
             console.error(err)
         } finally {
@@ -79,6 +89,8 @@ function ArticoloSingolo() {
         }
     }
 
+    // gestisce l'eliminazione di un commento
+    // filter crea una nuova lista senza il commento eliminato
     const handleDeleteComment = async (commentId) => {
         try {
             await deleteComment(id, commentId)
@@ -88,6 +100,8 @@ function ArticoloSingolo() {
         }
     }
 
+    // gestisce il like a un commento
+    // map aggiorna solo il commento che ha ricevuto il like, lascia gli altri invariati
     const handleLikeComment = async (commentId) => {
         if (!user) return navigate("/login")
         try {
@@ -98,8 +112,11 @@ function ArticoloSingolo() {
         }
     }
 
+    // controlla se l'utente loggato ha già messo like all'articolo
+    // includes cerca l'id dell'utente nell'array dei like
     const isLiked = article?.likes?.includes(user?.id)
 
+    // formatta la data in italiano — es. "12 aprile 2025"
     const formatDate = (dateString) => {
         return new Date(dateString).toLocaleDateString("it-IT", {
             day: "numeric",
@@ -108,14 +125,17 @@ function ArticoloSingolo() {
         })
     }
 
+    // stati di caricamento ed errore
     if (loading) return <div className="articolo-loading">Caricamento...</div>
     if (error) return <div className="articolo-error">{error}</div>
     if (!article) return null
 
-    // Schermata 18+
+    // ── SCHERMATA 18+ ──
+    // appare se l'articolo è sensibile E l'utente non è loggato E non ha confermato l'età
     if (article.isSensitive && !user && !showSensitive) {
         return (
             <div className="sensitive-screen">
+                {/* titolo sfocato in background — crea curiosità senza rivelare il contenuto */}
                 <div className="sensitive-blur">
                     <h1>{article.title}</h1>
                 </div>
@@ -125,6 +145,7 @@ function ArticoloSingolo() {
                     <p>SexyTeller è una piattaforma narrativa.</p>
                     <p>Anche i contenuti sensibili sono inseriti in un contesto culturale e informativo.</p>
                     <p className="sensitive-quote">"Il contenuto è il mezzo. Il racconto è il fine."</p>
+                    {/* checkbox obbligatoria — quando spuntata mostra il contenuto */}
                     <label className="sensitive-check">
                         <input
                             type="checkbox"
@@ -146,6 +167,8 @@ function ArticoloSingolo() {
 
             {/* ── HEADER FULLWIDTH ── */}
             <div className="articolo-header">
+
+                {/* breadcrumb — mostra il percorso Home > Categoria > Titolo */}
                 <p className="articolo-breadcrumb">
                     <Link to="/">Home</Link>
                     <span> › </span>
@@ -154,21 +177,26 @@ function ArticoloSingolo() {
                     <span>{article.title}</span>
                 </p>
 
+                {/* badge categoria — sempre visibile */}
                 <span className="articolo-badge">{article.category}</span>
+
+                {/* badge Redazione — visibile solo se isRedazione: true */}
                 {article.isRedazione && (
                     <span className="articolo-badge-redazione">Redazione</span>
                 )}
 
                 <h1 className="articolo-title">{article.title}</h1>
 
+                {/* meta bar — autore, data, tempo di lettura, like, condividi */}
                 <div className="articolo-meta">
                     <div className="meta-author">
                         <div className="meta-avatar">
                             {article.author?.name?.charAt(0).toUpperCase()}
                         </div>
                         <div>
+                            {/* link al profilo dell'autore — aggiornato da /@ a /profilo/ */}
                             <Link
-                                to={`/@${article.author?.handle}`}
+                                to={`/profilo/${article.author?.handle}`}
                                 className="meta-author-name"
                             >
                                 {article.author?.name}
@@ -183,12 +211,15 @@ function ArticoloSingolo() {
                     <span>{article.readTime} min di lettura</span>
 
                     <div className="meta-actions">
+                        {/* pulsante like — classe "liked" aggiunge il colore rosa se già messo like */}
                         <button
                             className={`btn-like ${isLiked ? "liked" : ""}`}
                             onClick={handleLike}
                         >
                             ♥ {article.likes?.length || 0}
                         </button>
+
+                        {/* pulsante condividi — copia URL negli appunti */}
                         <button className="btn-share" onClick={handleShare}>
                             {copied ? "✓ Copiato!" : "↗ Condividi"}
                         </button>
@@ -197,6 +228,7 @@ function ArticoloSingolo() {
             </div>
 
             {/* ── IMMAGINE COPERTINA FULLWIDTH ── */}
+            {/* mostrata solo se esiste */}
             {article.coverImage && (
                 <div className="articolo-cover">
                     <img src={article.coverImage} alt={article.title} />
@@ -206,18 +238,21 @@ function ArticoloSingolo() {
             {/* ── CORPO A DUE COLONNE ── */}
             <div className="articolo-layout">
 
-                {/* COLONNA SINISTRA */}
+                {/* ── COLONNA SINISTRA — corpo + commenti ── */}
                 <div className="articolo-main">
+
+                    {/* corpo dell'articolo in markdown — ReactMarkdown converte in HTML */}
                     <div className="articolo-body">
                         <ReactMarkdown>{article.body}</ReactMarkdown>
                     </div>
 
-                    {/* COMMENTI */}
+                    {/* ── SEZIONE COMMENTI ── */}
                     <div className="commenti-section">
                         <h3 className="commenti-title">
                             Commenti ({comments.length})
                         </h3>
 
+                        {/* form commento — visibile solo se loggato */}
                         {user ? (
                             <form onSubmit={handleComment} className="commento-form">
                                 <textarea
@@ -236,11 +271,13 @@ function ArticoloSingolo() {
                                 </button>
                             </form>
                         ) : (
+                            // messaggio per utenti non loggati
                             <p className="commenti-login">
                                 <Link to="/login">Accedi</Link> per lasciare un commento.
                             </p>
                         )}
 
+                        {/* lista commenti */}
                         <div className="commenti-list">
                             {comments.map((comment) => (
                                 <div key={comment._id} className="commento">
@@ -257,12 +294,15 @@ function ArticoloSingolo() {
                                     </div>
                                     <p className="commento-body">{comment.body}</p>
                                     <div className="commento-actions">
+                                        {/* like commento — funziona come toggle */}
                                         <button
                                             className={`btn-like-comment ${comment.likes?.includes(user?.id) ? "liked" : ""}`}
                                             onClick={() => handleLikeComment(comment._id)}
                                         >
                                             ♥ {comment.likes?.length || 0}
                                         </button>
+
+                                        {/* elimina commento — visibile solo all'autore o alla redazione */}
                                         {(user?.id === comment.author?._id || user?.isRedazione) && (
                                             <button
                                                 className="btn-delete-comment"
@@ -278,14 +318,14 @@ function ArticoloSingolo() {
                     </div>
                 </div>
 
-                {/* SIDEBAR */}
+                {/* ── SIDEBAR ── */}
                 <aside className="articolo-sidebar">
 
-                    {/* BOX AUTORE */}
+                    {/* BOX AUTORE — link al profilo aggiornato da /@ a /profilo/ */}
                     <div className="sidebar-card">
                         <p className="sidebar-label">Autore</p>
                         <Link
-                            to={`/@${article.author?.handle}`}
+                            to={`/profilo/${article.author?.handle}`}
                             className="author-box"
                         >
                             <div className="author-avatar">
@@ -296,12 +336,13 @@ function ArticoloSingolo() {
                                 <p className="author-handle">@{article.author?.handle}</p>
                             </div>
                         </Link>
+                        {/* bio autore — mostrata solo se esiste */}
                         {article.author?.bio && (
                             <p className="author-bio">{article.author.bio}</p>
                         )}
                     </div>
 
-                    {/* ARTICOLI IN EVIDENZA */}
+                    {/* ARTICOLI IN EVIDENZA — mostrati solo se esistono */}
                     {featured.length > 0 && (
                         <div className="sidebar-card">
                             <p className="sidebar-label">In evidenza</p>
@@ -311,6 +352,7 @@ function ArticoloSingolo() {
                                     to={`/articolo/${a._id}`}
                                     className="sidebar-article"
                                 >
+                                    {/* immagine articolo — mostrata solo se esiste */}
                                     {a.coverImage && (
                                         <img
                                             src={a.coverImage}
