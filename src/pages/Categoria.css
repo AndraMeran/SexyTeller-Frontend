@@ -1,0 +1,403 @@
+/* ── PAGINA ──────────────────────────────────── */
+.categoria-page {
+    background: #0C0A14;
+    color: #F5F3FF;
+    min-height: 100vh;
+}
+
+/* ── LOADING / ERROR ─────────────────────────── */
+.categoria-loading,
+.categoria-error,
+.categoria-empty {
+    text-align: center;
+    padding: 60px 32px;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    color: #A8A0C0;
+}
+
+/* ── HEADER CATEGORIA ────────────────────────── */
+.categoria-header {
+    text-align: center;
+    padding: 56px 32px 40px;
+    border-bottom: 0.5px solid #2a2240;
+}
+
+.categoria-numero {
+    font-size: 12px;
+    color: #A8A0C0;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.categoria-nome {
+    font-family: Georgia, serif;
+    font-size: clamp(36px, 5vw, 64px);
+    font-weight: 700;
+    color: #F5F3FF;
+    margin-bottom: 8px;
+}
+
+.categoria-verbo {
+    font-size: 12px;
+    color: #00C4A0;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 20px;
+}
+
+/* linea decorativa sotto il verbo */
+.categoria-line {
+    width: 40px;
+    height: 2px;
+    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    margin: 0 auto 20px;
+}
+
+.categoria-descrizione {
+    font-family: Georgia, serif;
+    font-size: 16px;
+    color: #A8A0C0;
+    max-width: 560px;
+    margin: 0 auto;
+    line-height: 1.6;
+}
+
+/* ── TOOLBAR — filtri + contatore ────────────── */
+.categoria-toolbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 16px 32px;
+    border-bottom: 0.5px solid #2a2240;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.categoria-filtri {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+/* pulsante filtro */
+.filtro-btn {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #A8A0C0;
+    background: none;
+    border: 1px solid #2a2240;
+    border-radius: 999px;
+    padding: 6px 16px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.filtro-btn:hover {
+    border-color: #B8A0FF;
+    color: #B8A0FF;
+}
+
+/* filtro attivo — gradiente */
+.filtro-btn.active {
+    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    color: #0C0A14;
+    border-color: transparent;
+    font-weight: 700;
+}
+
+.categoria-count {
+    font-size: 12px;
+    color: #A8A0C0;
+    letter-spacing: 0.04em;
+}
+
+/* ── LAYOUT — feed + sidebar ─────────────────── */
+.categoria-layout {
+    display: grid;
+    grid-template-columns: 1fr 240px;
+    gap: 0;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ── FEED ARTICOLI ───────────────────────────── */
+.categoria-feed {
+    padding: 32px;
+    border-right: 0.5px solid #2a2240;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* card articolo — link cliccabile */
+.categoria-card {
+    display: grid;
+    grid-template-columns: 200px 1fr;
+    gap: 20px;
+    background: #16121F;
+    border: 0.5px solid #2a2240;
+    border-radius: 12px;
+    overflow: hidden;
+    text-decoration: none;
+    transition: border-color 0.25s ease;
+}
+
+.categoria-card:hover {
+    border-color: #B8A0FF;
+}
+
+/* immagine copertina della card */
+.categoria-card-img {
+    width: 200px;
+    height: 140px;
+    object-fit: cover;
+    flex-shrink: 0;
+}
+
+.categoria-card-body {
+    padding: 16px 16px 16px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+/* ── BADGES ──────────────────────────────────── */
+.categoria-card-badges {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+/* badge categoria */
+.badge-cat {
+    font-size: 10px;
+    color: #00C4A0;
+    border: 1px solid #00C4A0;
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* badge Redazione */
+.badge-redazione {
+    font-size: 10px;
+    color: #B8A0FF;
+    border: 1px solid #B8A0FF;
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* badge In Evidenza */
+.badge-featured {
+    font-size: 10px;
+    color: #00C4A0;
+    background: rgba(0, 196, 160, 0.1);
+    border: 1px solid #00C4A0;
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+/* badge Sensibile — rosso per attirare attenzione */
+.badge-sensitive {
+    font-size: 10px;
+    color: #FF4DA6;
+    background: rgba(255, 77, 166, 0.1);
+    border: 1px solid #FF4DA6;
+    border-radius: 999px;
+    padding: 2px 8px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+}
+
+.categoria-card-title {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #F5F3FF;
+    line-height: 1.3;
+}
+
+/* meta bar — autore, data, tempo lettura, like */
+.categoria-card-meta {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-size: 12px;
+    color: #A8A0C0;
+    flex-wrap: wrap;
+    margin-top: auto;
+    /* spinge la meta bar in fondo alla card */
+}
+
+/* link autore nella meta bar */
+.categoria-card-author {
+    color: #B8A0FF;
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.2s ease;
+}
+
+.categoria-card-author:hover {
+    color: #00C4A0;
+}
+
+/* ── PAGINAZIONE ─────────────────────────────── */
+.paginazione {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 24px 0;
+}
+
+.pag-btn {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #A8A0C0;
+    background: none;
+    border: 1px solid #2a2240;
+    border-radius: 8px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.25s ease;
+}
+
+.pag-btn:hover {
+    border-color: #B8A0FF;
+    color: #B8A0FF;
+}
+
+/* pagina attiva */
+.pag-btn.active {
+    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    color: #0C0A14;
+    border-color: transparent;
+    font-weight: 700;
+}
+
+/* pulsante disabilitato — prima/ultima pagina */
+.pag-btn:disabled {
+    opacity: 0.3;
+    cursor: not-allowed;
+}
+
+/* ── SIDEBAR ─────────────────────────────────── */
+.categoria-sidebar {
+    padding: 32px 24px;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    position: sticky;
+    top: 80px;
+    /* rimane visibile durante lo scroll */
+    height: fit-content;
+}
+
+.sidebar-label {
+    font-size: 10px;
+    color: #A8A0C0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 8px;
+}
+
+/* link categoria nella sidebar */
+.sidebar-cat-link {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 12px;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.25s ease;
+    border: 0.5px solid transparent;
+}
+
+.sidebar-cat-link:hover {
+    background: rgba(184, 160, 255, 0.08);
+    border-color: #2a2240;
+}
+
+/* categoria attiva nella sidebar */
+.sidebar-cat-link.active {
+    background: rgba(0, 196, 160, 0.08);
+    border-color: #00C4A0;
+}
+
+.sidebar-cat-nome {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    color: #F5F3FF;
+    font-weight: 600;
+}
+
+.sidebar-cat-verbo {
+    font-size: 11px;
+    color: #A8A0C0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 992px) {
+    .categoria-layout {
+        grid-template-columns: 1fr;
+    }
+
+    /* sidebar va sotto il feed su tablet/mobile */
+    .categoria-sidebar {
+        position: static;
+        border-top: 0.5px solid #2a2240;
+        padding: 24px;
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .sidebar-label {
+        width: 100%;
+    }
+
+    .categoria-feed {
+        border-right: none;
+        padding: 24px 16px;
+    }
+}
+
+@media (max-width: 576px) {
+    .categoria-toolbar {
+        padding: 12px 16px;
+    }
+
+    .categoria-header {
+        padding: 40px 16px 32px;
+    }
+
+    /* su mobile la card diventa verticale */
+    .categoria-card {
+        grid-template-columns: 1fr;
+    }
+
+    .categoria-card-img {
+        width: 100%;
+        height: 180px;
+    }
+
+    .categoria-card-body {
+        padding: 16px;
+    }
+}
