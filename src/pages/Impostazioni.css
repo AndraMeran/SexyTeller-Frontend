@@ -1,0 +1,427 @@
+  /* ── PAGINA ──────────────────────────────────── */
+  /* layout a due colonne — menu laterale + contenuto */
+  .impostazioni-page {
+      background: #0C0A14;
+      color: #F5F3FF;
+      min-height: 100vh;
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      max-width: 1000px;
+      margin: 0 auto;
+      padding: 48px 32px;
+      gap: 48px;
+  }
+
+  /* ── MENU LATERALE ───────────────────────────── */
+  .impostazioni-menu {
+      position: sticky;
+      top: 100px;
+      /* rimane visibile durante lo scroll */
+      height: fit-content;
+  }
+
+  .impostazioni-menu-title {
+      font-family: Georgia, serif;
+      font-size: 11px;
+      color: #A8A0C0;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      margin-bottom: 16px;
+  }
+
+  .impostazioni-nav {
+      display: flex;
+      flex-direction: column;
+      gap: 4px;
+  }
+
+  /* ogni voce del menu è un pulsante */
+  .impostazioni-nav-item {
+      font-family: Georgia, serif;
+      font-size: 14px;
+      color: #A8A0C0;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 10px 14px;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: background 0.25s ease, color 0.25s ease;
+  }
+
+  .impostazioni-nav-item:hover {
+      background: rgba(184, 160, 255, 0.08);
+      color: #B8A0FF;
+  }
+
+  /* voce attiva — evidenziata con gradiente leggero */
+  .impostazioni-nav-item.active {
+      background: rgba(0, 196, 160, 0.08);
+      color: #00C4A0;
+      font-weight: 600;
+  }
+
+  /* voce elimina account — rossa per indicare pericolo */
+  .impostazioni-nav-item.danger {
+      color: #FF4DA6;
+  }
+
+  .impostazioni-nav-item.danger:hover {
+      background: rgba(255, 77, 166, 0.08);
+      color: #FF4DA6;
+  }
+
+  /* ── CONTENUTO ───────────────────────────────── */
+  .impostazioni-content {
+      padding-top: 8px;
+  }
+
+  /* titolo di ogni sezione */
+  .impostazioni-section-title {
+      font-family: Georgia, serif;
+      font-size: 20px;
+      font-weight: 700;
+      color: #F5F3FF;
+      margin-bottom: 24px;
+      padding-bottom: 12px;
+      border-bottom: 0.5px solid #2a2240;
+  }
+
+  /* titolo sezione elimina — rosso per indicare pericolo */
+  .danger-title {
+      color: #FF4DA6;
+  }
+
+  /* testo descrittivo nelle sezioni */
+  .impostazioni-description {
+      font-family: Georgia, serif;
+      font-size: 14px;
+      color: #A8A0C0;
+      line-height: 1.6;
+      margin-bottom: 24px;
+  }
+
+  /* ── MESSAGGI ────────────────────────────────── */
+  .impostazioni-success {
+      color: #00C4A0;
+      font-size: 13px;
+      padding: 10px 16px;
+      border: 1px solid #00C4A0;
+      border-radius: 8px;
+      background: rgba(0, 196, 160, 0.08);
+      margin-bottom: 20px;
+  }
+
+  .impostazioni-error {
+      color: #FF4DA6;
+      font-size: 13px;
+      padding: 10px 16px;
+      border: 1px solid #FF4DA6;
+      border-radius: 8px;
+      background: rgba(255, 77, 166, 0.08);
+      margin-bottom: 20px;
+  }
+
+  /* ── IMMAGINI PROFILO ────────────────────────── */
+  /* wrapper con avatar e cover affiancati */
+  .impostazioni-images {
+      display: flex;
+      gap: 32px;
+      align-items: flex-start;
+      margin-bottom: 40px;
+      flex-wrap: wrap;
+  }
+
+  .impostazioni-avatar-wrapper,
+  .impostazioni-cover-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 12px;
+  }
+
+  /* avatar circolare */
+  .impostazioni-avatar {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      object-fit: cover;
+      border: 2px solid #2a2240;
+  }
+
+  /* placeholder avatar con iniziale del nome */
+  .impostazioni-avatar-placeholder {
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #00C4A0, #B8A0FF);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: Georgia, serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: #0C0A14;
+  }
+
+  /* immagine di copertina rettangolare */
+  .impostazioni-cover {
+      width: 200px;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 8px;
+      border: 2px solid #2a2240;
+  }
+
+  /* placeholder cover */
+  .impostazioni-cover-placeholder {
+      width: 200px;
+      height: 80px;
+      border-radius: 8px;
+      background: linear-gradient(135deg, #16121F, #2a2240);
+      border: 2px solid #2a2240;
+  }
+
+  /* pulsante upload immagine — label che wrappa l'input file nascosto */
+  .btn-upload-img {
+      font-family: Georgia, serif;
+      font-size: 12px;
+      color: #B8A0FF;
+      background: #1F1A2E;
+      border: 1px solid #B8A0FF;
+      padding: 5px 14px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.25s ease;
+  }
+
+  .btn-upload-img:hover {
+      background: rgba(184, 160, 255, 0.1);
+  }
+
+  /* ── FORM ────────────────────────────────────── */
+  .impostazioni-form {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+  }
+
+  .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+  }
+
+  .form-group label {
+      font-family: Georgia, serif;
+      font-size: 12px;
+      color: #A8A0C0;
+      letter-spacing: 0.04em;
+      text-transform: uppercase;
+  }
+
+  /* input stile Kinfolk — bordo solo in basso */
+  .form-group input,
+  .impostazioni-textarea {
+      background: transparent;
+      border: none;
+      border-bottom: 1px solid #2a2240;
+      padding: 10px 0;
+      color: #F5F3FF;
+      font-family: Georgia, serif;
+      font-size: 15px;
+      outline: none;
+      transition: border-color 0.25s ease;
+      width: 100%;
+  }
+
+  .form-group input:focus,
+  .impostazioni-textarea:focus {
+      border-bottom-color: #B8A0FF;
+  }
+
+  /* input disabilitato — handle ed email non modificabili */
+  .input-disabled {
+      color: #A8A0C0 !important;
+      cursor: not-allowed;
+  }
+
+  .impostazioni-textarea {
+      resize: vertical;
+      /* l'utente può ridimensionare solo verticalmente */
+  }
+
+  /* suggerimento sotto i campi */
+  .form-hint {
+      font-size: 12px;
+      color: #A8A0C0;
+      font-style: italic;
+      line-height: 1.5;
+  }
+
+  /* ── PULSANTI ────────────────────────────────── */
+  /* pulsante salva — gradiente */
+  .btn-salva {
+      align-self: flex-start;
+      font-family: Georgia, serif;
+      font-size: 14px;
+      color: #0C0A14;
+      background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+      border: none;
+      padding: 10px 24px;
+      border-radius: 999px;
+      font-weight: 700;
+      cursor: pointer;
+      transition: opacity 0.25s ease;
+      margin-top: 8px;
+  }
+
+  .btn-salva:hover {
+      opacity: 0.85;
+  }
+
+  .btn-salva:disabled {
+      opacity: 0.5;
+      cursor: not-allowed;
+  }
+
+  /* pulsante elimina — rosso */
+  .btn-delete {
+      font-family: Georgia, serif;
+      font-size: 14px;
+      color: #FF4DA6;
+      background: rgba(255, 77, 166, 0.08);
+      border: 1px solid #FF4DA6;
+      padding: 10px 24px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: background 0.25s ease;
+  }
+
+  .btn-delete:hover {
+      background: rgba(255, 77, 166, 0.15);
+  }
+
+  /* pulsante annulla */
+  .btn-annulla {
+      font-family: Georgia, serif;
+      font-size: 14px;
+      color: #A8A0C0;
+      background: none;
+      border: 1px solid #2a2240;
+      padding: 10px 24px;
+      border-radius: 999px;
+      cursor: pointer;
+      transition: border-color 0.25s ease;
+  }
+
+  .btn-annulla:hover {
+      border-color: #B8A0FF;
+      color: #B8A0FF;
+  }
+
+  /* ── BADGE ───────────────────────────────────── */
+  .badge-card {
+      background: #16121F;
+      border: 0.5px solid #2a2240;
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+  }
+
+  /* badge — stessi stili della pagina profilo */
+  .profilo-badge {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 5px 14px;
+      border-radius: 999px;
+      border: 1px solid;
+      width: fit-content;
+  }
+
+  .badge-nuovo {
+      color: #A8A0C0;
+      border-color: #A8A0C0;
+  }
+
+  .badge-attivo {
+      color: #00C4A0;
+      border-color: #00C4A0;
+  }
+
+  .badge-in_evidenza {
+      color: #B8A0FF;
+      border-color: #B8A0FF;
+  }
+
+  .badge-description {
+      font-family: Georgia, serif;
+      font-size: 14px;
+      color: #D8D2EA;
+      line-height: 1.6;
+  }
+
+  /* ── CONFERMA ELIMINAZIONE ───────────────────── */
+  .delete-confirm {
+      background: rgba(255, 77, 166, 0.05);
+      border: 1px solid rgba(255, 77, 166, 0.3);
+      border-radius: 12px;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+  }
+
+  .delete-confirm p {
+      font-family: Georgia, serif;
+      font-size: 15px;
+      color: #D8D2EA;
+      line-height: 1.6;
+  }
+
+  .delete-confirm strong {
+      color: #FF4DA6;
+  }
+
+  .delete-confirm-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+  }
+
+  /* ── RESPONSIVE ──────────────────────────────── */
+  @media (max-width: 768px) {
+
+      /* su mobile layout verticale — menu sopra, contenuto sotto */
+      .impostazioni-page {
+          grid-template-columns: 1fr;
+          padding: 24px 16px;
+          gap: 24px;
+      }
+
+      /* menu orizzontale su mobile */
+      .impostazioni-menu {
+          position: static;
+      }
+
+      .impostazioni-nav {
+          flex-direction: row;
+          flex-wrap: wrap;
+          gap: 8px;
+      }
+
+      .impostazioni-nav-item {
+          font-size: 12px;
+          padding: 7px 12px;
+      }
+
+      .impostazioni-images {
+          flex-direction: column;
+          gap: 24px;
+      }
+  }
