@@ -1,0 +1,519 @@
+/* ── EDITOR PAGE ─────────────────────────────── */
+.editor-page {
+    background: #0C0A14;
+    color: #F5F3FF;
+    min-height: 100vh;
+    padding: 0 0 60px;
+}
+
+/* ── HEADER ──────────────────────────────────── */
+.editor-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 16px 32px;
+    border-bottom: 0.5px solid #2a2240;
+    background: #0C0A14;
+    position: sticky;
+    top: 0;
+    z-index: 50;
+}
+
+.editor-draft {
+    font-size: 12px;
+    color: #A8A0C0;
+    font-family: Georgia, serif;
+}
+
+.editor-header-actions {
+    display: flex;
+    gap: 12px;
+    align-items: center;
+}
+
+.btn-anteprima {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #B8A0FF;
+    background: #1F1A2E;
+    border: 1px solid #B8A0FF;
+    padding: 7px 18px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.25s ease;
+}
+
+.btn-anteprima:hover {
+    background: rgba(184, 160, 255, 0.1);
+}
+
+.btn-anteprima:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+}
+
+.btn-pubblica {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #0C0A14;
+    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    border: none;
+    padding: 8px 20px;
+    border-radius: 999px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: opacity 0.25s ease, transform 0.15s ease;
+}
+
+.btn-pubblica:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+.btn-pubblica:disabled {
+    opacity: 0.4;
+    cursor: not-allowed;
+    transform: none;
+}
+
+/* ── ERRORE ──────────────────────────────────── */
+.editor-error {
+    color: #FF4DA6;
+    font-size: 13px;
+    padding: 12px 32px;
+    border-bottom: 0.5px solid #FF4DA6;
+}
+
+/* ── LAYOUT ──────────────────────────────────── */
+.editor-layout {
+    display: grid;
+    grid-template-columns: 1fr 280px;
+    gap: 32px;
+    padding: 32px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+/* ── STEP ────────────────────────────────────── */
+.editor-step {
+    margin-bottom: 40px;
+}
+
+.step-label {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #A8A0C0;
+    letter-spacing: 0.06em;
+    margin-bottom: 16px;
+    text-transform: uppercase;
+}
+
+/* ── CATEGORIE ───────────────────────────────── */
+.cat-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 12px;
+}
+
+.cat-btn {
+    background: #16121F;
+    border: 1px solid #2a2240;
+    border-radius: 10px;
+    padding: 16px;
+    cursor: pointer;
+    text-align: left;
+    transition: border-color 0.25s ease, background 0.25s ease;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.cat-btn:hover {
+    border-color: #B8A0FF;
+}
+
+.cat-btn.active {
+    border-color: #00C4A0;
+    background: rgba(0, 196, 160, 0.08);
+}
+
+.cat-btn-nome {
+    font-family: Georgia, serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #F5F3FF;
+}
+
+.cat-btn-verbo {
+    font-size: 11px;
+    color: #A8A0C0;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+}
+
+/* ── TITOLO ──────────────────────────────────── */
+.editor-titolo {
+    width: 100%;
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid #2a2240;
+    padding: 12px 0;
+    font-family: Georgia, serif;
+    font-size: 28px;
+    color: #F5F3FF;
+    outline: none;
+    transition: border-color 0.25s ease;
+}
+
+.editor-titolo:focus {
+    border-bottom-color: #B8A0FF;
+}
+
+.editor-titolo::placeholder {
+    color: #A8A0C0;
+}
+
+/* ── UPLOAD IMMAGINE ─────────────────────────── */
+.upload-area {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 1px dashed #2a2240;
+    border-radius: 10px;
+    padding: 40px;
+    cursor: pointer;
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #A8A0C0;
+    transition: border-color 0.25s ease, color 0.25s ease;
+}
+
+.upload-area:hover {
+    border-color: #B8A0FF;
+    color: #B8A0FF;
+}
+
+.cover-preview {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+.cover-preview img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+.btn-remove-cover {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    background: rgba(12, 10, 20, 0.8);
+    color: #FF4DA6;
+    border: 1px solid #FF4DA6;
+    padding: 5px 12px;
+    border-radius: 999px;
+    font-size: 12px;
+    cursor: pointer;
+    font-family: Georgia, serif;
+}
+
+/* ── BODY IMAGE UPLOAD ───────────────────────── */
+.body-image-upload {
+    margin-bottom: 12px;
+}
+
+.btn-body-image {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    font-family: Georgia, serif;
+    font-size: 12px;
+    color: #B8A0FF;
+    background: #1F1A2E;
+    border: 1px solid #B8A0FF;
+    padding: 6px 16px;
+    border-radius: 999px;
+    cursor: pointer;
+    transition: background 0.25s ease;
+}
+
+.btn-body-image:hover {
+    background: rgba(184, 160, 255, 0.1);
+}
+
+.body-image-hint {
+    font-size: 11px;
+    color: #A8A0C0;
+    margin-left: 12px;
+    font-style: italic;
+}
+
+/* ── MD EDITOR ────────────────────────────── */
+.w-md-editor {
+    background: #16121F !important;
+    border: 1px solid #2a2240 !important;
+    border-radius: 8px !important;
+    color: #F5F3FF !important;
+}
+
+.w-md-editor-text-pre>code,
+.w-md-editor-text-input {
+    color: #F5F3FF !important;
+    font-family: Georgia, serif !important;
+    font-size: 16px !important;
+}
+
+/* ── SIDEBAR ─────────────────────────────────── */
+.editor-sidebar {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.sidebar-card {
+    background: #16121F;
+    border: 0.5px solid #2a2240;
+    border-radius: 10px;
+    padding: 16px;
+}
+
+.sidebar-label {
+    font-size: 10px;
+    color: #A8A0C0;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 10px;
+}
+
+.sidebar-cat-nome {
+    font-family: Georgia, serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: #00C4A0;
+}
+
+/* ── CHECKLIST ───────────────────────────────── */
+.checklist {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.checklist li {
+    font-size: 13px;
+    color: #A8A0C0;
+    transition: color 0.25s ease;
+}
+
+.checklist li.done {
+    color: #00C4A0;
+}
+
+/* ── SENSIBILE ───────────────────────────────── */
+.sensitive-label {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #F5F3FF;
+    cursor: pointer;
+}
+
+.sensitive-note {
+    font-size: 12px;
+    color: #A8A0C0;
+    margin-top: 10px;
+    line-height: 1.5;
+}
+
+/* ── GUIDA ───────────────────────────────────── */
+.sidebar-guida p {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #F5F3FF;
+    font-style: italic;
+    margin-bottom: 12px;
+}
+
+.sidebar-guida ul {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.sidebar-guida ul li {
+    font-size: 12px;
+    color: #A8A0C0;
+    padding-left: 12px;
+    border-left: 2px solid #2a2240;
+}
+
+/* ── ANTEPRIMA ───────────────────────────────── */
+.editor-anteprima {
+    background: #0C0A14;
+    min-height: 100vh;
+    color: #F5F3FF;
+}
+
+.anteprima-bar {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding: 16px 32px;
+    border-bottom: 0.5px solid #2a2240;
+    font-size: 13px;
+    color: #A8A0C0;
+}
+
+.btn-back {
+    background: none;
+    border: none;
+    color: #B8A0FF;
+    font-family: Georgia, serif;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.anteprima-content {
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 48px 32px;
+}
+
+.anteprima-cover {
+    width: 100%;
+    max-height: 400px;
+    object-fit: cover;
+    border-radius: 10px;
+    margin-bottom: 32px;
+}
+
+.anteprima-cat {
+    font-size: 11px;
+    color: #00C4A0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+}
+
+.anteprima-content h1 {
+    font-family: Georgia, serif;
+    font-size: 40px;
+    font-weight: 700;
+    line-height: 1.2;
+    margin: 16px 0 12px;
+    text-align: center;
+}
+
+.anteprima-meta {
+    font-size: 13px;
+    color: #A8A0C0;
+    margin-bottom: 32px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    text-align: center;
+}
+
+.badge-sensitive {
+    font-size: 10px;
+    background: rgba(255, 77, 166, 0.15);
+    color: #FF4DA6;
+    border: 1px solid #FF4DA6;
+    padding: 2px 8px;
+    border-radius: 999px;
+}
+
+.anteprima-body {
+    font-family: Georgia, serif;
+    font-size: 17px;
+    line-height: 1.8;
+    color: #D8D2EA;
+    max-width: 760px;
+    margin: 0 auto;
+    padding: 0 32px;
+}
+
+.anteprima-body p {
+    margin-bottom: 20px;
+    text-align: justify;
+}
+
+.anteprima-body h2 {
+    font-size: 24px;
+    color: #F5F3FF;
+    margin: 32px 0 16px;
+}
+
+.anteprima-body blockquote {
+    border-left: 3px solid #B8A0FF;
+    padding-left: 20px;
+    color: #A8A0C0;
+    font-style: italic;
+    margin: 24px 0;
+}
+
+.anteprima-body img {
+    display: block;
+    max-width: 100%;
+    margin: 24px auto;
+    border-radius: 8px;
+}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 768px) {
+    .anteprima-content {
+        padding: 32px 16px;
+    }
+
+    .anteprima-content h1 {
+        font-size: 28px;
+    }
+}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 768px) {
+    .editor-layout {
+        grid-template-columns: 1fr;
+        padding: 20px 16px;
+    }
+
+    .editor-header {
+        padding: 12px 16px;
+        flex-wrap: wrap;
+        gap: 8px;
+    }
+
+    .editor-draft {
+        font-size: 11px;
+        width: 100%;
+    }
+
+    .cat-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .editor-titolo {
+        font-size: 22px;
+    }
+
+    .btn-pubblica {
+        font-size: 12px;
+        padding: 7px 14px;
+    }
+
+    .anteprima-content {
+        padding: 32px 16px;
+    }
+
+    .anteprima-content h1 {
+        font-size: 28px;
+    }
+}
