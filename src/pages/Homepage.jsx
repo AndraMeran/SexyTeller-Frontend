@@ -180,7 +180,17 @@ function Homepage() {
                     <div className="featured-layout">
                         {featuredArticles.length > 0 ? (
                             <>
-                                <div className="featured-image"></div>
+                                <Link to={`/articolo/${featuredArticles[0]?._id}`}>
+                                    {featuredArticles[0]?.coverImage ? (
+                                        <img
+                                            src={featuredArticles[0].coverImage}
+                                            alt={featuredArticles[0].title}
+                                            className="featured-image"
+                                        />
+                                    ) : (
+                                        <div className="featured-image"></div>
+                                    )}
+                                </Link>
 
                                 <article className="featured-main">
                                     <span className="tag">{featuredArticles[0]?.category}</span>
@@ -197,8 +207,21 @@ function Homepage() {
 
                                 <div className="featured-list">
                                     {featuredArticles.slice(1).map((article) => (
-                                        <article key={article._id} className="small-article">
-                                            <div className="small-thumb"></div>
+                                        <Link
+                                            key={article._id}
+                                            to={`/articolo/${article._id}`}
+                                            className="small-article"
+                                            style={{ textDecoration: "none" }}
+                                        >
+                                            {article.coverImage ? (
+                                                <img
+                                                    src={article.coverImage}
+                                                    alt={article.title}
+                                                    className="small-thumb"
+                                                />
+                                            ) : (
+                                                <div className="small-thumb"></div>
+                                            )}
                                             <div>
                                                 <span>{article.category}</span>
                                                 <h4>{article.title}</h4>
@@ -206,7 +229,7 @@ function Homepage() {
                                                     di {article.author?.name} · {article.readTime} min
                                                 </p>
                                             </div>
-                                        </article>
+                                        </Link>
                                     ))}
                                 </div>
                             </>
@@ -220,7 +243,7 @@ function Homepage() {
             </section>
 
             {/* CTA FINALE */}
-            <section className="join-section">
+            < section className="join-section" >
                 <div className="join-copy">
                     <span>Diventa SexyTeller</span>
                     <h2>
@@ -236,9 +259,9 @@ function Homepage() {
                         Diventa SexyTeller <span>→</span>
                     </Link>
                 </div>
-            </section>
+            </section >
 
-        </div>
+        </div >
     )
 }
 
