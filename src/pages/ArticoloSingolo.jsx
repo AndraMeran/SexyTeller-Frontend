@@ -122,6 +122,8 @@ function ArticoloSingolo() {
                 <div className="sensitive-card">
                     <h2>Contenuto Riservato</h2>
                     <p>Questo contenuto è accessibile solo agli utenti maggiorenni.</p>
+                    <p>SexyTeller è una piattaforma narrativa.</p>
+                    <p>Anche i contenuti sensibili sono inseriti in un contesto culturale e informativo.</p>
                     <p className="sensitive-quote">"Il contenuto è il mezzo. Il racconto è il fine."</p>
                     <label className="sensitive-check">
                         <input
