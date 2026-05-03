@@ -406,6 +406,11 @@
     color: #B8A0FF;
 }
 
+.admin-link {
+    color: #B8A0FF !important;
+    font-weight: 600;
+}
+
 .avatar-logout {
     color: #FF4DA6;
 }

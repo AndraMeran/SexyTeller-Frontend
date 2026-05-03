@@ -87,6 +87,17 @@ function MyNavbar() {
                                         >
                                             Il mio profilo
                                         </Link>
+
+                                        {/* link admin — visibile solo se isRedazione: true */}
+                                        {user?.isRedazione && (
+                                            <Link
+                                                to="/admin"
+                                                className="avatar-dropdown-item admin-link"
+                                                onClick={closeAll}
+                                            >
+                                                Pannello Admin
+                                            </Link>
+                                        )}
                                         <Link
                                             to="/impostazioni"
                                             className="avatar-dropdown-item"

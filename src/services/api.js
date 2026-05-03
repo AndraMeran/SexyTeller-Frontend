@@ -116,6 +116,25 @@ export async function toggleLikeComment(articleId, commentId) {
     headers: getHeaders(),
   })
   return response.json()
+
+}
+
+// ─── ADMIN COMMENTI ───────────────────────────
+// prende tutti i commenti di tutti gli articoli — solo per admin
+export async function adminGetAllComments() {
+  const response = await fetch(`${BASE_URL}/api/admin/comments`, {
+    headers: getHeaders(),
+  })
+  return response.json()
+}
+
+// elimina un commento — solo per admin
+export async function adminDeleteComment(commentId) {
+  const response = await fetch(`${BASE_URL}/api/admin/comments/${commentId}`, {
+    method: "DELETE",
+    headers: getHeaders(),
+  })
+  return response.json()
 }
 
 // UTENTI 

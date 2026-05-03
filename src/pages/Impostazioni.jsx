@@ -203,7 +203,7 @@ function Impostazioni() {
                         <form onSubmit={handleSubmit} className="impostazioni-form">
 
                             <div className="form-group">
-                                <label>Nome completo</label>
+                                <label>Nome</label>
                                 <input
                                     type="text"
                                     name="name"
