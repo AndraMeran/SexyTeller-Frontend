@@ -366,6 +366,18 @@
     color: #A8A0C0;
 }
 
+/* ── ARTICLE IMAGE WRAPPER ───────────────────── */
+.profilo-article-card .article-img-wrapper {
+    width: 100%;
+    height: 160px;
+}
+
+.profilo-article-card .article-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
 /* ── RESPONSIVE ──────────────────────────────── */
 @media (max-width: 768px) {
     .profilo-info {

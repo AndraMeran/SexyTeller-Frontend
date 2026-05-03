@@ -3,6 +3,8 @@ import { useParams, Link } from "react-router-dom"
 import { useAuth } from "../context/useAuth"
 import { getUserProfile, getUserArticles } from "../services/api"
 import "./ProfiloUtente.css"
+import ArticleImage from "../components/ArticleImage"
+import "../components/ArticleImage.css"
 
 // categorie per i tab di filtro
 const categorie = ["Tutti", "Stories", "Decode", "Crossover", "Trends", "Dark Side", "Voices"]
@@ -200,13 +202,12 @@ function ProfiloUtente() {
                                 className="profilo-article-card"
                             >
                                 {/* immagine copertina — mostrata solo se esiste */}
-                                {article.coverImage && (
-                                    <img
-                                        src={article.coverImage}
-                                        alt={article.title}
-                                        className="profilo-article-img"
-                                    />
-                                )}
+                                <ArticleImage
+                                    src={article.coverImage}
+                                    alt={article.title}
+                                    isSensitive={article.isSensitive}
+                                    className="profilo-article-img"
+                                />
                                 <div className="profilo-article-body">
                                     <span className="profilo-article-cat">
                                         {article.category}

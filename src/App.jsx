@@ -7,6 +7,7 @@ import Categoria from "./pages/Categoria"
 import ArticoloSingolo from "./pages/ArticoloSingolo"
 import ProfiloUtente from "./pages/ProfiloUtente"
 import Editor from "./pages/Editor"
+import EditorModifica from "./pages/EditorModifica"
 import Login from "./pages/Login"
 import Register from "./pages/Register"
 import Manifesto from "./pages/Manifesto"
@@ -45,6 +46,14 @@ function App() {
             element={
               <PrivateRoute>
                 <Editor />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/modifica/:id"
+            element={
+              <PrivateRoute>
+                <EditorModifica />
               </PrivateRoute>
             }
           />

@@ -5,6 +5,8 @@ import { useAuth } from "../context/useAuth"
 import "./Login.css"
 
 function Register() {
+
+    const [showPassword, setShowPassword] = useState(false)
     const { login } = useAuth()
     const navigate = useNavigate()
 
@@ -61,7 +63,7 @@ function Register() {
 
                 <form onSubmit={handleSubmit} className="auth-form">
                     <div className="form-group">
-                        <label>Nome completo</label>
+                        <label>Nome</label>
                         <input
                             type="text"
                             name="name"
@@ -98,15 +100,23 @@ function Register() {
 
                     <div className="form-group">
                         <label>Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            placeholder="Minimo 8 caratteri"
-                            minLength={8}
-                            required
-                        />
+                        <div className="input-password-wrapper">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                placeholder="••••••••"
+                                required
+                            />
+                            <button
+                                type="button"
+                                className="btn-toggle-password"
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                <i className={showPassword ? "bi bi-eye-slash" : "bi bi-eye"}></i>
+                            </button>
+                        </div>
                     </div>
 
                     <div className="form-group">
@@ -117,17 +127,6 @@ function Register() {
                             value={formData.birthDate}
                             onChange={handleChange}
                             required
-                        />
-                    </div>
-
-                    <div className="form-group">
-                        <label>Linea editoriale</label>
-                        <input
-                            type="text"
-                            name="bio"
-                            value={formData.bio}
-                            onChange={handleChange}
-                            placeholder='"Racconto il lato nascosto del desiderio..."'
                         />
                     </div>
 

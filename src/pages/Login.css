@@ -167,6 +167,36 @@
     max-width: 320px;
 }
 
+/* ── CAMPO PASSWORD CON OCCHIOLINO ───────────── */
+.input-password-wrapper {
+    position: relative;
+    display: flex;
+    align-items: center;
+}
+
+.input-password-wrapper input {
+    width: 100%;
+    padding-right: 40px;
+    /* spazio per il pulsante occhiolino */
+}
+
+.btn-toggle-password {
+    position: absolute;
+    right: 0;
+    background: none;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    padding: 4px;
+    color: #A8A0C0;
+    transition: color 0.25s ease;
+    line-height: 1;
+}
+
+.btn-toggle-password:hover {
+    color: #B8A0FF;
+}
+
 /* ── RESPONSIVE ──────────────────────────────── */
 @media (max-width: 768px) {
     .auth-page {

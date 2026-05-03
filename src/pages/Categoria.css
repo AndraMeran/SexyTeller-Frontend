@@ -401,3 +401,24 @@
         padding: 16px;
     }
 }
+
+/* ── ARTICLE IMAGE WRAPPER nella card ───────── */
+/* il wrapper del componente ArticleImage deve mantenere le dimensioni della card */
+.categoria-card .article-img-wrapper {
+    width: 200px;
+    height: 140px;
+    flex-shrink: 0;
+}
+
+.categoria-card .article-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+@media (max-width: 576px) {
+    .categoria-card .article-img-wrapper {
+        width: 100%;
+        height: 180px;
+    }
+}

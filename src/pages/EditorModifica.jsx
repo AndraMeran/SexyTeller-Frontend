@@ -1,10 +1,10 @@
-import { useState } from "react"
-import { useNavigate } from "react-router-dom"
+import { useState, useEffect } from "react"
+import { useParams, useNavigate } from "react-router-dom"
 import MDEditor from "@uiw/react-md-editor"
 import ReactMarkdown from "react-markdown"
-import { createArticle, uploadImage } from "../services/api"
 import { useAuth } from "../context/useAuth"
-import "./Editor.css"
+import { getArticleById, updateArticle, uploadImage } from "../services/api"
+import "./Editor.css" // riusa lo stesso CSS dell'editor
 
 const categorie = [
     { nome: "Stories", slug: "stories", verbo: "Racconta" },
@@ -25,22 +25,54 @@ const modules = {
     ],
 }
 
-function Editor() {
-    const [subtitle, setSubtitle] = useState("")
+function EditorModifica() {
+    const { id } = useParams() // legge l'id dell'articolo dall'URL
     const { user } = useAuth()
     const navigate = useNavigate()
 
-    const [step, setStep] = useState(1)
+    // stati del form — inizializzati vuoti, poi popolati con i dati dell'articolo
     const [categoria, setCategoria] = useState("")
     const [titolo, setTitolo] = useState("")
+    const [subtitle, setSubtitle] = useState("")
     const [coverImage, setCoverImage] = useState("")
     const [body, setBody] = useState("")
     const [isSensitive, setIsSensitive] = useState(false)
     const [anteprima, setAnteprima] = useState(false)
     const [loading, setLoading] = useState(false)
+    const [loadingArticle, setLoadingArticle] = useState(true) // caricamento articolo iniziale
     const [error, setError] = useState(null)
     const [uploadingImage, setUploadingImage] = useState(false)
+    const [success, setSuccess] = useState(null) // messaggio di successo
 
+    // carica i dati dell'articolo esistente al montaggio
+    useEffect(() => {
+        const fetchArticle = async () => {
+            try {
+                const data = await getArticleById(id)
+
+                // controlla che l'utente sia l'autore dell'articolo
+                if (data.author?._id !== user?.id) {
+                    navigate("/") // reindirizza se non è l'autore
+                    return
+                }
+
+                // precompila il form con i dati esistenti
+                setCategoria(data.category)
+                setTitolo(data.title)
+                setSubtitle(data.subtitle || "")
+                setCoverImage(data.coverImage || "")
+                setBody(data.body)
+                setIsSensitive(data.isSensitive)
+            } catch (err) {
+                setError("Errore nel caricamento dell'articolo")
+            } finally {
+                setLoadingArticle(false)
+            }
+        }
+        fetchArticle()
+    }, [id, user, navigate])
+
+    // gestisce l'upload dell'immagine di copertina
     const handleImageUpload = async (e) => {
         const file = e.target.files[0]
         if (!file) return
@@ -50,9 +82,7 @@ function Editor() {
             const formData = new FormData()
             formData.append("image", file)
             const data = await uploadImage(formData)
-            if (data.url) {
-                setCoverImage(data.url)
-            }
+            if (data.url) setCoverImage(data.url)
         } catch (err) {
             setError("Errore nel caricamento dell'immagine")
         } finally {
@@ -60,12 +90,12 @@ function Editor() {
         }
     }
 
+    // gestisce l'upload di immagini nel corpo del testo
     const handleBodyImageUpload = async (e) => {
         const file = e.target.files[0]
         if (!file) return
 
-        const input = e.target // ← salva il riferimento prima dell'async
-
+        const input = e.target
         try {
             const formData = new FormData()
             formData.append("image", file)
@@ -77,16 +107,17 @@ function Editor() {
         } catch (err) {
             setError("Errore nel caricamento dell'immagine")
         } finally {
-            input.value = "" // ← ora funziona perché abbiamo salvato il riferimento
+            input.value = ""
         }
     }
 
+    // gestisce il salvataggio delle modifiche
     const handleSubmit = async () => {
         setLoading(true)
         setError(null)
 
         try {
-            const data = await createArticle({
+            const data = await updateArticle(id, {
                 title: titolo,
                 subtitle,
                 category: categoria,
@@ -96,9 +127,11 @@ function Editor() {
             })
 
             if (data._id) {
-                navigate(`/articolo/${data._id}`)
+                setSuccess("Articolo aggiornato con successo!")
+                // aspetta 2 secondi poi reindirizza all'articolo
+                setTimeout(() => navigate(`/articolo/${data._id}`), 2000)
             } else {
-                setError(data.message || "Errore nella pubblicazione")
+                setError(data.message || "Errore nel salvataggio")
             }
         } catch (err) {
             setError("Problema di connessione, riprova")
@@ -107,7 +140,7 @@ function Editor() {
         }
     }
 
-    // Checklist
+    // checklist — stessa logica dell'editor
     const checklist = [
         { label: "Categoria scelta", done: !!categoria },
         { label: "Titolo scritto", done: !!titolo },
@@ -117,6 +150,9 @@ function Editor() {
 
     const tuttoCompleto = checklist.every((item) => item.done)
 
+    if (loadingArticle) return <div className="articolo-loading">Caricamento articolo...</div>
+
+    // anteprima — stesso layout dell'editor
     if (anteprima) {
         return (
             <div className="editor-anteprima">
@@ -132,16 +168,14 @@ function Editor() {
                     )}
                     <span className="anteprima-cat">{categoria}</span>
                     <h1>{titolo}</h1>
+                    {subtitle && <p className="anteprima-subtitle">{subtitle}</p>}
                     <p className="anteprima-meta">
                         di {user?.name}
                         {isSensitive && <span className="badge-sensitive">SENSIBILE</span>}
                     </p>
-                    <div
-
-                    />
-                </div>
-                <div className="anteprima-body">
-                    <ReactMarkdown>{body}</ReactMarkdown>
+                    <div className="anteprima-body">
+                        <ReactMarkdown>{body}</ReactMarkdown>
+                    </div>
                 </div>
             </div>
         )
@@ -153,7 +187,7 @@ function Editor() {
             {/* ── HEADER ── */}
             <div className="editor-header">
                 <span className="editor-draft">
-                    Stai creando un contenuto — bozza non salvata
+                    Stai modificando un contenuto
                 </span>
                 <div className="editor-header-actions">
                     <button
@@ -168,12 +202,13 @@ function Editor() {
                         onClick={handleSubmit}
                         disabled={!tuttoCompleto || loading}
                     >
-                        {loading ? "Pubblicazione..." : "Pubblica come SexyTeller"}
+                        {loading ? "Salvataggio..." : "Salva modifiche"}
                     </button>
                 </div>
             </div>
 
             {error && <p className="editor-error">{error}</p>}
+            {success && <p className="editor-success">{success}</p>}
 
             <div className="editor-layout">
 
@@ -208,6 +243,7 @@ function Editor() {
                             onChange={(e) => setTitolo(e.target.value)}
                         />
                     </div>
+
                     {/* STEP 2B — SOTTOTITOLO */}
                     <div className="editor-step">
                         <p className="step-label">02b — Sottotitolo</p>
@@ -246,12 +282,9 @@ function Editor() {
                         )}
                     </div>
 
-
-
                     {/* STEP 4 — CONTENUTO */}
                     <div className="editor-step">
                         <p className="step-label">04 — Contenuto</p>
-
                         <div className="body-image-upload">
                             <label className="btn-body-image">
                                 + Aggiungi immagine nel testo
@@ -263,10 +296,9 @@ function Editor() {
                                 />
                             </label>
                             <span className="body-image-hint">
-                                L'immagine verrà inserita nel punto in cui ti trovi nel testo
+                                L'immagine verrà inserita alla fine del testo
                             </span>
                         </div>
-
                         <MDEditor
                             value={body}
                             onChange={setBody}
@@ -282,7 +314,6 @@ function Editor() {
                 {/* ── SIDEBAR ── */}
                 <aside className="editor-sidebar">
 
-                    {/* CATEGORIA SELEZIONATA */}
                     {categoria && (
                         <div className="sidebar-card">
                             <p className="sidebar-label">Categoria selezionata</p>
@@ -292,22 +323,17 @@ function Editor() {
                         </div>
                     )}
 
-                    {/* CHECKLIST */}
                     <div className="sidebar-card">
                         <p className="sidebar-label">Checklist</p>
                         <ul className="checklist">
                             {checklist.map((item) => (
-                                <li
-                                    key={item.label}
-                                    className={item.done ? "done" : ""}
-                                >
+                                <li key={item.label} className={item.done ? "done" : ""}>
                                     {item.done ? "✓" : "○"} {item.label}
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* CONTENUTO SENSIBILE */}
                     <div className="sidebar-card">
                         <label className="sensitive-label">
                             <input
@@ -324,7 +350,6 @@ function Editor() {
                         )}
                     </div>
 
-                    {/* GUIDA */}
                     <div className="sidebar-card sidebar-guida">
                         <p className="sidebar-label">Guida SexyTeller</p>
                         <p>"Non pubblicare. Racconta."</p>
@@ -334,10 +359,6 @@ function Editor() {
                             <li>Dai significato</li>
                             <li>Evita il vuoto</li>
                         </ul>
-                        <div className="guida-tip">
-                            <p className="sidebar-label" style={{ marginTop: "12px" }}>Come inserire immagini</p>
-                            <p>Scrivi fino al punto dove vuoi l'immagine, clicca il pulsante, poi continua a scrivere sotto.</p>
-                        </div>
                     </div>
 
                 </aside>
@@ -346,4 +367,4 @@ function Editor() {
     )
 }
 
-export default Editor
+export default EditorModifica

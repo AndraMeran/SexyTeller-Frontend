@@ -2,6 +2,8 @@ import { useState, useEffect } from "react"
 import { useParams, Link } from "react-router-dom"
 import { getArticles } from "../services/api"
 import "./Categoria.css"
+import ArticleImage from "../components/ArticleImage"
+import "../components/ArticleImage.css"
 
 // dati statici delle categorie — numero, nome, verbo, descrizione
 const categorieInfo = {
@@ -175,13 +177,13 @@ function Categoria() {
                                 className="categoria-card"
                             >
                                 {/* immagine copertina — mostrata solo se esiste */}
-                                {article.coverImage && (
-                                    <img
-                                        src={article.coverImage}
-                                        alt={article.title}
-                                        className="categoria-card-img"
-                                    />
-                                )}
+                                {/* immagine copertina — usa ArticleImage per gestire il blur sui contenuti sensibili */}
+                                <ArticleImage
+                                    src={article.coverImage}
+                                    alt={article.title}
+                                    isSensitive={article.isSensitive}
+                                    className="categoria-card-img"
+                                />
 
                                 <div className="categoria-card-body">
                                     {/* badge categoria + badge SENSIBILE + badge IN EVIDENZA */}

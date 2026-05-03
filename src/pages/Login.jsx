@@ -5,6 +5,7 @@ import { useAuth } from "../context/useAuth"
 import "./Login.css"
 
 function Login() {
+    const [showPassword, setShowPassword] = useState(false)
     const { login } = useAuth()
     const navigate = useNavigate()
 
@@ -70,14 +71,23 @@ function Login() {
 
                     <div className="form-group">
                         <label>Password</label>
-                        <input
-                            type="password"
-                            name="password"
-                            value={formData.password}
-                            onChange={handleChange}
-                            placeholder="••••••••"
-                            required
-                        />
+                        <div className="input-password-wrapper">
+                            <input
+                                type={showPassword ? "text" : "password"}
+                                name="password"
+                                value={formData.password}
+                                onChange={handleChange}
+                                placeholder="••••••••"
+                                required
+                            />
+                            <button
+                                type="button"
+                                className="btn-toggle-password"
+                                onClick={() => setShowPassword(!showPassword)}
+                            >
+                                <i className={showPassword ? "bi bi-eye-slash" : "bi bi-eye"}></i>
+                            </button>
+                        </div>
                     </div>
 
                     <button type="submit" className="btn-auth" disabled={loading}>
