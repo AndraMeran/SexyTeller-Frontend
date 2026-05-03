@@ -12,6 +12,8 @@ import {
     getFeaturedArticles
 } from "../services/api"
 import "./ArticoloSingolo.css"
+import ArticleImage from "../components/ArticleImage"
+import "../components/ArticleImage.css"
 
 function ArticoloSingolo() {
     const { id } = useParams() // legge l'_id dell'articolo dall'URL — es. /articolo/abc123 → id = "abc123"
@@ -137,26 +139,42 @@ function ArticoloSingolo() {
             <div className="sensitive-screen">
                 {/* titolo sfocato in background — crea curiosità senza rivelare il contenuto */}
                 <div className="sensitive-blur">
-                    <h1>{article.title}</h1>
+                    {/* immagine offuscata — crea curiosità senza rivelare il contenuto */}
+                    {article.coverImage ? (
+                        <img src={article.coverImage} alt={article.title} className="sensitive-blur-img" />
+                    ) : (
+                        <h1>{article.title}</h1>
+                    )}
                 </div>
                 <div className="sensitive-card">
                     <h2>Contenuto Riservato</h2>
                     <p>Questo contenuto è accessibile solo agli utenti maggiorenni.</p>
-                    <p>SexyTeller è una piattaforma narrativa.</p>
                     <p>Anche i contenuti sensibili sono inseriti in un contesto culturale e informativo.</p>
                     <p className="sensitive-quote">"Il contenuto è il mezzo. Il racconto è il fine."</p>
-                    {/* checkbox obbligatoria — quando spuntata mostra il contenuto */}
-                    <label className="sensitive-check">
-                        <input
-                            type="checkbox"
-                            onChange={(e) => setShowSensitive(e.target.checked)}
-                        />
-                        Confermo di avere più di 18 anni e di accettare le linee guida di SexyTeller.
-                    </label>
+
+                    {/* pulsante conferma età */}
+                    <button
+                        className="btn-sensitive-confirm"
+                        onClick={() => setShowSensitive(true)}
+                    >
+                        Sì, ho più di 18 anni
+                    </button>
+
+                    <div className="sensitive-divider">oppure</div>
+
                     <div className="sensitive-actions">
                         <Link to="/login" className="btn-sensitive-login">Accedi</Link>
-                        <Link to="/register" className="btn-sensitive-register">Registrati — è gratis</Link>
+                        <Link to="/register" className="btn-sensitive-register">Diventa SexyTeller</Link>
                     </div>
+
+                    <p className="sensitive-disclaimer">
+                        Continuando accetti le linee guida della piattaforma.
+                    </p>
+
+                    {/* link per tornare alla homepage — per chi non vuole procedere */}
+                    <Link to="/" className="sensitive-back">
+                        ← Torna alla Homepage
+                    </Link>
                 </div>
             </div>
         )
@@ -186,6 +204,11 @@ function ArticoloSingolo() {
                 )}
 
                 <h1 className="articolo-title">{article.title}</h1>
+
+                {/* sottotitolo — mostrato solo se esiste */}
+                {article.subtitle && (
+                    <p className="articolo-subtitle">{article.subtitle}</p>
+                )}
 
                 {/* meta bar — autore, data, tempo di lettura, like, condividi */}
                 <div className="articolo-meta">
@@ -223,6 +246,15 @@ function ArticoloSingolo() {
                         <button className="btn-share" onClick={handleShare}>
                             {copied ? "✓ Copiato!" : "↗ Condividi"}
                         </button>
+                        {/* pulsante modifica — visibile solo all'autore */}
+                        {user?.id === article.author?._id && (
+                            <Link
+                                to={`/modifica/${article._id}`}
+                                className="btn-modifica-articolo"
+                            >
+                                ✎ Modifica
+                            </Link>
+                        )}
                     </div>
                 </div>
             </div>
@@ -353,13 +385,12 @@ function ArticoloSingolo() {
                                     className="sidebar-article"
                                 >
                                     {/* immagine articolo — mostrata solo se esiste */}
-                                    {a.coverImage && (
-                                        <img
-                                            src={a.coverImage}
-                                            alt={a.title}
-                                            className="sidebar-thumb"
-                                        />
-                                    )}
+                                    <ArticleImage
+                                        src={a.coverImage}
+                                        alt={a.title}
+                                        isSensitive={a.isSensitive}
+                                        className="sidebar-thumb"
+                                    />
                                     <div>
                                         <p className="sidebar-cat">{a.category}</p>
                                         <p className="sidebar-article-title">{a.title}</p>

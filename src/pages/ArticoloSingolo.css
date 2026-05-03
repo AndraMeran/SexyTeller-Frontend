@@ -9,6 +9,7 @@
 }
 
 /* ── SCHERMATA 18+ ───────────────────────────── */
+/* schermata che appare quando il contenuto è sensibile e l'utente non è loggato */
 .sensitive-screen {
     min-height: 100vh;
     background: #0C0A14;
@@ -18,25 +19,33 @@
     justify-content: center;
     position: relative;
     padding: 32px;
+    overflow: hidden;
 }
 
+/* ── BLUR IMMAGINE COPERTINA ─────────────────── */
+/* immagine offuscata in background — crea curiosità senza rivelare il contenuto */
 .sensitive-blur {
     position: absolute;
     top: 0;
     left: 0;
     right: 0;
-    height: 300px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    filter: blur(8px);
-    opacity: 0.3;
-    font-family: Georgia, serif;
-    font-size: 32px;
-    color: #F5F3FF;
-    padding: 32px;
+    height: 100%;
+    overflow: hidden;
 }
 
+.sensitive-blur-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: blur(20px);
+    /* offusca l'immagine */
+    transform: scale(1.1);
+    /* ingrandisce leggermente per evitare bordi bianchi */
+    opacity: 0.4;
+    /* riduce l'opacità */
+}
+
+/* ── CARD CENTRALE ───────────────────────────── */
 .sensitive-card {
     background: #16121F;
     border: 1px solid #2a2240;
@@ -47,6 +56,7 @@
     text-align: center;
     position: relative;
     z-index: 1;
+    /* sopra l'immagine blur */
 }
 
 .sensitive-card h2 {
@@ -63,46 +73,137 @@
     margin-bottom: 12px;
 }
 
+/* citazione in corsivo e lavanda */
 .sensitive-quote {
     font-style: italic;
     color: #B8A0FF !important;
-    margin: 20px 0 !important;
+    margin: 20px 0 24px !important;
 }
 
-.sensitive-check {
-    display: flex;
-    align-items: flex-start;
-    gap: 10px;
-    font-size: 13px;
-    color: #A8A0C0;
-    text-align: left;
-    margin-bottom: 24px;
+/* ── PULSANTE CONFERMA ETÀ ───────────────────── */
+/* pulsante principale — conferma di avere 18 anni */
+.btn-sensitive-confirm {
+    width: 100%;
+    font-family: Georgia, serif;
+    font-size: 15px;
+    font-weight: 700;
+    color: #0C0A14;
+    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    border: none;
+    padding: 14px 24px;
+    border-radius: 999px;
     cursor: pointer;
-    line-height: 1.5;
+    transition: opacity 0.25s ease, transform 0.15s ease;
+    margin-bottom: 16px;
 }
 
+.btn-sensitive-confirm:hover {
+    opacity: 0.85;
+    transform: translateY(-1px);
+}
+
+/* ── DIVISORE ────────────────────────────────── */
+/* linea con scritta "oppure" tra il pulsante conferma e i link */
+.sensitive-divider {
+    font-size: 12px;
+    color: #A8A0C0;
+    text-align: center;
+    margin-bottom: 16px;
+    position: relative;
+}
+
+/* linee ai lati della scritta "oppure" */
+.sensitive-divider::before,
+.sensitive-divider::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 40%;
+    height: 0.5px;
+    background: #2a2240;
+}
+
+.sensitive-divider::before {
+    left: 0;
+}
+
+.sensitive-divider::after {
+    right: 0;
+}
+
+/* ── AZIONI — Accedi e Diventa SexyTeller ────── */
 .sensitive-actions {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 10px;
+    margin-bottom: 16px;
 }
 
+/* pulsante Accedi — stile secondario */
 .btn-sensitive-login {
-    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
-    color: #0C0A14;
-    text-decoration: none;
-    padding: 10px 24px;
-    border-radius: 999px;
+    width: 100%;
+    text-align: center;
     font-family: Georgia, serif;
     font-size: 14px;
-    font-weight: 700;
+    color: #B8A0FF;
+    background: #1F1A2E;
+    border: 1px solid #B8A0FF;
+    padding: 11px 24px;
+    border-radius: 999px;
+    text-decoration: none;
+    transition: background 0.25s ease;
+    display: block;
 }
 
+.btn-sensitive-login:hover {
+    background: rgba(184, 160, 255, 0.1);
+}
+
+/* pulsante Diventa SexyTeller — stile terziario */
 .btn-sensitive-register {
-    color: #B8A0FF;
+    width: 100%;
+    text-align: center;
+    font-family: Georgia, serif;
+    font-size: 14px;
+    color: #A8A0C0;
+    background: none;
+    border: 1px solid #2a2240;
+    padding: 11px 24px;
+    border-radius: 999px;
     text-decoration: none;
+    transition: border-color 0.25s ease, color 0.25s ease;
+    display: block;
+}
+
+.btn-sensitive-register:hover {
+    border-color: #B8A0FF;
+    color: #B8A0FF;
+}
+
+/* ── DISCLAIMER ──────────────────────────────── */
+.sensitive-disclaimer {
+    font-size: 11px;
+    color: #A8A0C0;
+    text-align: center;
+    line-height: 1.5;
+    margin-bottom: 4px;
+}
+
+/* ── TORNA ALLA HOMEPAGE ─────────────────────── */
+/* link per chi non vuole procedere */
+.sensitive-back {
+    display: block;
+    text-align: center;
     font-family: Georgia, serif;
     font-size: 13px;
+    color: #A8A0C0;
+    text-decoration: none;
+    margin-top: 16px;
+    transition: color 0.25s ease;
+}
+
+.sensitive-back:hover {
+    color: #B8A0FF;
 }
 
 /* ── ARTICOLO PAGE ───────────────────────────── */
@@ -171,7 +272,18 @@
     margin-bottom: 24px;
 }
 
+/* sottotitolo — in corsivo, più piccolo del titolo */
+.articolo-subtitle {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-style: italic;
+    color: #A8A0C0;
+    margin-bottom: 20px;
+    line-height: 1.4;
+}
+
 /* ── META BAR ────────────────────────────────── */
+/* barra con autore, data, tempo lettura, like e condividi */
 .articolo-meta {
     display: flex;
     align-items: center;
@@ -190,6 +302,7 @@
     gap: 10px;
 }
 
+/* avatar circolare con iniziale del nome */
 .meta-avatar {
     width: 32px;
     height: 32px;
@@ -225,6 +338,7 @@
     color: #2a2240;
 }
 
+/* azioni — like e condividi — spinte a destra con margin-left: auto */
 .meta-actions {
     display: flex;
     align-items: center;
@@ -232,6 +346,7 @@
     margin-left: auto;
 }
 
+/* pulsante like — diventa rosa quando attivo */
 .btn-like {
     display: flex;
     align-items: center;
@@ -253,6 +368,7 @@
     border-color: #FF4DA6;
 }
 
+/* pulsante condividi — copia URL negli appunti */
 .btn-share {
     display: flex;
     align-items: center;
@@ -272,6 +388,26 @@
     background: rgba(184, 160, 255, 0.1);
 }
 
+/* pulsante modifica — visibile solo all'autore */
+.btn-modifica-articolo {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #00C4A0;
+    background: none;
+    border: 1px solid #00C4A0;
+    border-radius: 999px;
+    padding: 6px 14px;
+    text-decoration: none;
+    transition: background 0.25s ease;
+}
+
+.btn-modifica-articolo:hover {
+    background: rgba(0, 196, 160, 0.1);
+}
+
 /* ── COPERTINA FULLWIDTH ─────────────────────── */
 .articolo-cover {
     width: 100%;
@@ -287,6 +423,7 @@
 }
 
 /* ── LAYOUT DUE COLONNE ──────────────────────── */
+/* colonna sinistra più larga per il corpo + sidebar fissa a destra */
 .articolo-layout {
     display: grid;
     grid-template-columns: 1fr 300px;
@@ -301,6 +438,7 @@
     border-right: 0.5px solid #2a2240;
 }
 
+/* corpo dell'articolo — testo in markdown convertito in HTML */
 .articolo-body {
     font-family: Georgia, serif;
     font-size: 17px;
@@ -320,6 +458,7 @@
     margin: 32px 0 16px;
 }
 
+/* immagini nel corpo — centrate con bordi arrotondati */
 .articolo-body img {
     display: block;
     max-width: 100%;
@@ -327,6 +466,7 @@
     border-radius: 8px;
 }
 
+/* citazione — bordo lavanda a sinistra */
 .articolo-body blockquote {
     border-left: 3px solid #B8A0FF;
     padding: 12px 20px;
@@ -349,6 +489,7 @@
     margin-bottom: 24px;
 }
 
+/* form commento — visibile solo se loggato */
 .commento-form {
     display: flex;
     flex-direction: column;
@@ -377,6 +518,7 @@
     color: #A8A0C0;
 }
 
+/* pulsante pubblica commento — spinto a destra */
 .btn-commento {
     align-self: flex-end;
     background: linear-gradient(90deg, #00C4A0, #B8A0FF);
@@ -396,6 +538,7 @@
     cursor: not-allowed;
 }
 
+/* messaggio per utenti non loggati */
 .commenti-login {
     font-size: 14px;
     color: #A8A0C0;
@@ -408,6 +551,7 @@
     font-weight: 700;
 }
 
+/* singolo commento */
 .commento {
     padding: 16px 0;
     border-bottom: 0.5px solid #2a2240;
@@ -426,6 +570,7 @@
     color: #F5F3FF;
 }
 
+/* data — spinta a destra */
 .commento-date {
     font-size: 11px;
     color: #A8A0C0;
@@ -445,6 +590,7 @@
     gap: 12px;
 }
 
+/* like commento — diventa rosa quando attivo */
 .btn-like-comment {
     font-family: Georgia, serif;
     font-size: 12px;
@@ -461,6 +607,7 @@
     color: #FF4DA6;
 }
 
+/* elimina commento — visibile solo all'autore o alla redazione */
 .btn-delete-comment {
     font-family: Georgia, serif;
     font-size: 12px;
@@ -499,6 +646,7 @@
     margin-bottom: 14px;
 }
 
+/* box autore — link al profilo */
 .author-box {
     display: flex;
     align-items: center;
@@ -532,6 +680,7 @@
     color: #A8A0C0;
 }
 
+/* bio autore — mostrata solo se esiste */
 .author-bio {
     font-size: 13px;
     color: #A8A0C0;
@@ -540,6 +689,7 @@
     margin-top: 8px;
 }
 
+/* articoli in evidenza nella sidebar */
 .sidebar-article {
     display: flex;
     gap: 12px;
@@ -590,6 +740,8 @@
 
 /* ── RESPONSIVE ──────────────────────────────── */
 @media (max-width: 992px) {
+
+    /* su tablet layout verticale — sidebar va sotto */
     .articolo-layout {
         grid-template-columns: 1fr;
     }
@@ -609,6 +761,20 @@
     }
 }
 
+/* ── ARTICLE IMAGE WRAPPER ───────────────────── */
+.sidebar-article .article-img-wrapper {
+    width: 64px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+.sidebar-article .article-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
 @media (max-width: 576px) {
     .articolo-title {
         font-size: 26px;
@@ -618,6 +784,7 @@
         gap: 8px;
     }
 
+    /* su mobile le azioni occupano tutta la larghezza */
     .meta-actions {
         margin-left: 0;
         width: 100%;

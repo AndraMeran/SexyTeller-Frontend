@@ -2,6 +2,8 @@ import { Link } from "react-router-dom"
 import "./Homepage.css"
 import { useState, useEffect } from "react"
 import { getFeaturedArticles } from "../services/api"
+import ArticleImage from "../components/ArticleImage"
+import "../components/ArticleImage.css"
 
 const categories = [
     {
@@ -181,15 +183,12 @@ function Homepage() {
                         {featuredArticles.length > 0 ? (
                             <>
                                 <Link to={`/articolo/${featuredArticles[0]?._id}`}>
-                                    {featuredArticles[0]?.coverImage ? (
-                                        <img
-                                            src={featuredArticles[0].coverImage}
-                                            alt={featuredArticles[0].title}
-                                            className="featured-image"
-                                        />
-                                    ) : (
-                                        <div className="featured-image"></div>
-                                    )}
+                                    <ArticleImage
+                                        src={featuredArticles[0]?.coverImage}
+                                        alt={featuredArticles[0]?.title}
+                                        isSensitive={featuredArticles[0]?.isSensitive}
+                                        className="featured-image"
+                                    />
                                 </Link>
 
                                 <article className="featured-main">
@@ -213,15 +212,12 @@ function Homepage() {
                                             className="small-article"
                                             style={{ textDecoration: "none" }}
                                         >
-                                            {article.coverImage ? (
-                                                <img
-                                                    src={article.coverImage}
-                                                    alt={article.title}
-                                                    className="small-thumb"
-                                                />
-                                            ) : (
-                                                <div className="small-thumb"></div>
-                                            )}
+                                            <ArticleImage
+                                                src={article.coverImage}
+                                                alt={article.title}
+                                                isSensitive={article.isSensitive}
+                                                className="small-thumb"
+                                            />
                                             <div>
                                                 <span>{article.category}</span>
                                                 <h4>{article.title}</h4>
