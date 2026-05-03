@@ -275,7 +275,10 @@ function ArticoloSingolo() {
 
                     {/* corpo dell'articolo in markdown — ReactMarkdown converte in HTML */}
                     <div className="articolo-body">
-                        <ReactMarkdown>{article.body}</ReactMarkdown>
+                        <div
+                            className="articolo-body"
+                            dangerouslySetInnerHTML={{ __html: article.body }}
+                        />
                     </div>
 
                     {/* ── SEZIONE COMMENTI ── */}

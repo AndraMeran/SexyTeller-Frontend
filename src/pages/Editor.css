@@ -523,6 +523,245 @@
     animation: slideIn 0.3s ease;
 }
 
+/* ── TIPTAP TOOLBAR ──────────────────────────── */
+/* barra degli strumenti dell'editor */
+.tiptap-toolbar {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    flex-wrap: wrap;
+    background: #16121F;
+    border: 1px solid #2a2240;
+    border-bottom: none;
+    border-radius: 8px 8px 0 0;
+    padding: 8px 12px;
+}
+
+/* pulsante della toolbar */
+.toolbar-btn {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #A8A0C0;
+    background: none;
+    border: 1px solid transparent;
+    border-radius: 6px;
+    padding: 5px 10px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+}
+
+.toolbar-btn:hover {
+    background: rgba(184, 160, 255, 0.08);
+    color: #B8A0FF;
+    border-color: #2a2240;
+}
+
+/* pulsante attivo — formato applicato */
+.toolbar-btn.active {
+    background: rgba(0, 196, 160, 0.1);
+    color: #00C4A0;
+    border-color: #00C4A0;
+}
+
+/* separatore verticale tra gruppi di pulsanti */
+.toolbar-sep {
+    width: 1px;
+    height: 20px;
+    background: #2a2240;
+    margin: 0 4px;
+}
+
+/* ── TIPTAP EDITOR ───────────────────────────── */
+/* area di scrittura */
+.tiptap-editor {
+    background: #16121F;
+    border: 1px solid #2a2240;
+    border-radius: 0 0 8px 8px;
+    min-height: 400px;
+    cursor: text;
+}
+
+/* contenuto dell'editor */
+.tiptap-editor .ProseMirror {
+    padding: 20px;
+    min-height: 400px;
+    outline: none;
+    font-family: Georgia, serif;
+    font-size: 16px;
+    line-height: 1.8;
+    color: #F5F3FF;
+}
+
+/* placeholder — testo grigio quando l'editor è vuoto */
+.tiptap-editor .ProseMirror p.is-editor-empty:first-child::before {
+    content: attr(data-placeholder);
+    color: #A8A0C0;
+    font-style: italic;
+    pointer-events: none;
+    float: left;
+    height: 0;
+}
+
+/* stili del testo formattato */
+.tiptap-editor .ProseMirror h2 {
+    font-size: 24px;
+    font-weight: 700;
+    color: #F5F3FF;
+    margin: 24px 0 12px;
+}
+
+.tiptap-editor .ProseMirror h3 {
+    font-size: 20px;
+    font-weight: 700;
+    color: #F5F3FF;
+    margin: 20px 0 10px;
+}
+
+.tiptap-editor .ProseMirror p {
+    margin-bottom: 16px;
+}
+
+.tiptap-editor .ProseMirror blockquote {
+    border-left: 3px solid #B8A0FF;
+    padding: 8px 16px;
+    margin: 16px 0;
+    color: #A8A0C0;
+    font-style: italic;
+}
+
+.tiptap-editor .ProseMirror ul {
+    padding-left: 20px;
+    margin-bottom: 16px;
+}
+
+.tiptap-editor .ProseMirror li {
+    margin-bottom: 6px;
+}
+
+/* ── IMMAGINI NEL TESTO ──────────────────────── */
+/* immagine centrata — default */
+.tiptap-editor .ProseMirror img,
+.tiptap-img {
+    max-width: 100%;
+    border-radius: 8px;
+    margin: 16px auto;
+    display: block;
+}
+
+/* immagine a sinistra — testo scorre a destra */
+.tiptap-editor .ProseMirror img.img-left {
+    float: left;
+    margin: 8px 20px 8px 0;
+    max-width: 45%;
+}
+
+/* immagine centrata */
+.tiptap-editor .ProseMirror img.img-center {
+    float: none;
+    display: block;
+    margin: 16px auto;
+    max-width: 100%;
+}
+
+/* immagine a destra — testo scorre a sinistra */
+.tiptap-editor .ProseMirror img.img-right {
+    float: right;
+    margin: 8px 0 8px 20px;
+    max-width: 45%;
+}
+
+/* clearfix — evita che il float rompa il layout */
+.tiptap-editor .ProseMirror::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* ── ANTEPRIMA CON HTML ──────────────────────── */
+/* stili per il corpo dell'articolo quando viene mostrato come HTML */
+.anteprima-body h2 {
+    font-size: 24px;
+    color: #F5F3FF;
+    margin: 32px 0 16px;
+}
+
+.anteprima-body h3 {
+    font-size: 20px;
+    color: #F5F3FF;
+    margin: 24px 0 12px;
+}
+
+.anteprima-body ul {
+    padding-left: 20px;
+    margin-bottom: 16px;
+    color: #D8D2EA;
+}
+
+.anteprima-body li {
+    margin-bottom: 6px;
+}
+
+/* immagini nell'anteprima — stessi allineamenti dell'editor */
+.anteprima-body img.img-left {
+    float: left;
+    margin: 8px 20px 8px 0;
+    max-width: 45%;
+    border-radius: 8px;
+}
+
+.anteprima-body img.img-center {
+    float: none;
+    display: block;
+    margin: 16px auto;
+    max-width: 100%;
+    border-radius: 8px;
+}
+
+.anteprima-body img.img-right {
+    float: right;
+    margin: 8px 0 8px 20px;
+    max-width: 45%;
+    border-radius: 8px;
+}
+
+.anteprima-body::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
+/* ── RESPONSIVE ──────────────────────────────── */
+@media (max-width: 768px) {
+
+    /* su mobile le immagini sono sempre centrate */
+    .tiptap-editor .ProseMirror img.img-left,
+    .tiptap-editor .ProseMirror img.img-right {
+        float: none;
+        display: block;
+        margin: 16px auto;
+        max-width: 100%;
+    }
+
+    .anteprima-body img.img-left,
+    .anteprima-body img.img-right {
+        float: none;
+        display: block;
+        margin: 16px auto;
+        max-width: 100%;
+    }
+
+    .tiptap-toolbar {
+        gap: 2px;
+        padding: 6px 8px;
+    }
+
+    .toolbar-btn {
+        font-size: 12px;
+        padding: 4px 8px;
+    }
+}
+
 @keyframes slideIn {
     from {
         opacity: 0;

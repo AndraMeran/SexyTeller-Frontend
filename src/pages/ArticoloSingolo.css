@@ -9,7 +9,6 @@
 }
 
 /* ── SCHERMATA 18+ ───────────────────────────── */
-/* schermata che appare quando il contenuto è sensibile e l'utente non è loggato */
 .sensitive-screen {
     min-height: 100vh;
     background: #0C0A14;
@@ -22,8 +21,6 @@
     overflow: hidden;
 }
 
-/* ── BLUR IMMAGINE COPERTINA ─────────────────── */
-/* immagine offuscata in background — crea curiosità senza rivelare il contenuto */
 .sensitive-blur {
     position: absolute;
     top: 0;
@@ -38,14 +35,10 @@
     height: 100%;
     object-fit: cover;
     filter: blur(20px);
-    /* offusca l'immagine */
     transform: scale(1.1);
-    /* ingrandisce leggermente per evitare bordi bianchi */
     opacity: 0.4;
-    /* riduce l'opacità */
 }
 
-/* ── CARD CENTRALE ───────────────────────────── */
 .sensitive-card {
     background: #16121F;
     border: 1px solid #2a2240;
@@ -56,7 +49,6 @@
     text-align: center;
     position: relative;
     z-index: 1;
-    /* sopra l'immagine blur */
 }
 
 .sensitive-card h2 {
@@ -73,15 +65,12 @@
     margin-bottom: 12px;
 }
 
-/* citazione in corsivo e lavanda */
 .sensitive-quote {
     font-style: italic;
     color: #B8A0FF !important;
     margin: 20px 0 24px !important;
 }
 
-/* ── PULSANTE CONFERMA ETÀ ───────────────────── */
-/* pulsante principale — conferma di avere 18 anni */
 .btn-sensitive-confirm {
     width: 100%;
     font-family: Georgia, serif;
@@ -102,8 +91,6 @@
     transform: translateY(-1px);
 }
 
-/* ── DIVISORE ────────────────────────────────── */
-/* linea con scritta "oppure" tra il pulsante conferma e i link */
 .sensitive-divider {
     font-size: 12px;
     color: #A8A0C0;
@@ -112,7 +99,6 @@
     position: relative;
 }
 
-/* linee ai lati della scritta "oppure" */
 .sensitive-divider::before,
 .sensitive-divider::after {
     content: '';
@@ -131,7 +117,6 @@
     right: 0;
 }
 
-/* ── AZIONI — Accedi e Diventa SexyTeller ────── */
 .sensitive-actions {
     display: flex;
     flex-direction: column;
@@ -139,7 +124,6 @@
     margin-bottom: 16px;
 }
 
-/* pulsante Accedi — stile secondario */
 .btn-sensitive-login {
     width: 100%;
     text-align: center;
@@ -159,7 +143,6 @@
     background: rgba(184, 160, 255, 0.1);
 }
 
-/* pulsante Diventa SexyTeller — stile terziario */
 .btn-sensitive-register {
     width: 100%;
     text-align: center;
@@ -180,7 +163,6 @@
     color: #B8A0FF;
 }
 
-/* ── DISCLAIMER ──────────────────────────────── */
 .sensitive-disclaimer {
     font-size: 11px;
     color: #A8A0C0;
@@ -189,8 +171,6 @@
     margin-bottom: 4px;
 }
 
-/* ── TORNA ALLA HOMEPAGE ─────────────────────── */
-/* link per chi non vuole procedere */
 .sensitive-back {
     display: block;
     text-align: center;
@@ -283,7 +263,6 @@
 }
 
 /* ── META BAR ────────────────────────────────── */
-/* barra con autore, data, tempo lettura, like e condividi */
 .articolo-meta {
     display: flex;
     align-items: center;
@@ -302,7 +281,6 @@
     gap: 10px;
 }
 
-/* avatar circolare con iniziale del nome */
 .meta-avatar {
     width: 32px;
     height: 32px;
@@ -338,7 +316,6 @@
     color: #2a2240;
 }
 
-/* azioni — like e condividi — spinte a destra con margin-left: auto */
 .meta-actions {
     display: flex;
     align-items: center;
@@ -346,7 +323,6 @@
     margin-left: auto;
 }
 
-/* pulsante like — diventa rosa quando attivo */
 .btn-like {
     display: flex;
     align-items: center;
@@ -368,7 +344,6 @@
     border-color: #FF4DA6;
 }
 
-/* pulsante condividi — copia URL negli appunti */
 .btn-share {
     display: flex;
     align-items: center;
@@ -423,7 +398,6 @@
 }
 
 /* ── LAYOUT DUE COLONNE ──────────────────────── */
-/* colonna sinistra più larga per il corpo + sidebar fissa a destra */
 .articolo-layout {
     display: grid;
     grid-template-columns: 1fr 300px;
@@ -438,7 +412,7 @@
     border-right: 0.5px solid #2a2240;
 }
 
-/* corpo dell'articolo — testo in markdown convertito in HTML */
+/* ── CORPO ARTICOLO ──────────────────────────── */
 .articolo-body {
     font-family: Georgia, serif;
     font-size: 17px;
@@ -447,38 +421,89 @@
     margin-bottom: 48px;
 }
 
+/* clearfix — necessario per il float delle immagini */
+.articolo-body::after {
+    content: '';
+    display: table;
+    clear: both;
+}
+
 .articolo-body p {
     margin-bottom: 20px;
-    text-align: justify;
+    text-align: left;
 }
 
 .articolo-body h2 {
     font-size: 24px;
     color: #F5F3FF;
     margin: 32px 0 16px;
+    clear: both;
+    /* evita sovrapposizioni con immagini floatate */
 }
 
-/* immagini nel corpo — centrate con bordi arrotondati */
-.articolo-body img {
-    display: block;
-    max-width: 100%;
-    margin: 24px auto;
-    border-radius: 8px;
+.articolo-body h3 {
+    font-size: 20px;
+    color: #F5F3FF;
+    margin: 24px 0 12px;
+    clear: both;
 }
 
-/* citazione — bordo lavanda a sinistra */
 .articolo-body blockquote {
     border-left: 3px solid #B8A0FF;
     padding: 12px 20px;
     margin: 24px 0;
     color: #A8A0C0;
     font-style: italic;
+    clear: both;
+}
+
+.articolo-body ul {
+    padding-left: 20px;
+    margin-bottom: 16px;
+    color: #D8D2EA;
+}
+
+.articolo-body li {
+    margin-bottom: 6px;
+}
+
+/* ── IMMAGINI NEL CORPO ──────────────────────── */
+/* immagine default — centrata */
+.articolo-body img {
+    max-width: 100%;
+    border-radius: 8px;
+    display: block;
+    margin: 16px auto;
+}
+
+/* immagine a sinistra — testo scorre a destra */
+.articolo-body img.img-left {
+    float: left;
+    width: 40%;
+    margin: 4px 24px 16px 0;
+}
+
+/* immagine a destra — testo scorre a sinistra */
+.articolo-body img.img-right {
+    float: right;
+    width: 40%;
+    margin: 4px 0 16px 24px;
+}
+
+/* immagine centrata — occupa tutta la larghezza */
+.articolo-body img.img-center {
+    float: none;
+    display: block;
+    margin: 24px auto;
+    max-width: 100%;
 }
 
 /* ── COMMENTI ────────────────────────────────── */
+/* clear: both evita sovrapposizioni con immagini floatate */
 .commenti-section {
     border-top: 0.5px solid #2a2240;
     padding-top: 32px;
+    clear: both;
 }
 
 .commenti-title {
@@ -489,7 +514,6 @@
     margin-bottom: 24px;
 }
 
-/* form commento — visibile solo se loggato */
 .commento-form {
     display: flex;
     flex-direction: column;
@@ -518,7 +542,6 @@
     color: #A8A0C0;
 }
 
-/* pulsante pubblica commento — spinto a destra */
 .btn-commento {
     align-self: flex-end;
     background: linear-gradient(90deg, #00C4A0, #B8A0FF);
@@ -538,7 +561,6 @@
     cursor: not-allowed;
 }
 
-/* messaggio per utenti non loggati */
 .commenti-login {
     font-size: 14px;
     color: #A8A0C0;
@@ -551,7 +573,6 @@
     font-weight: 700;
 }
 
-/* singolo commento */
 .commento {
     padding: 16px 0;
     border-bottom: 0.5px solid #2a2240;
@@ -570,7 +591,6 @@
     color: #F5F3FF;
 }
 
-/* data — spinta a destra */
 .commento-date {
     font-size: 11px;
     color: #A8A0C0;
@@ -590,7 +610,6 @@
     gap: 12px;
 }
 
-/* like commento — diventa rosa quando attivo */
 .btn-like-comment {
     font-family: Georgia, serif;
     font-size: 12px;
@@ -607,7 +626,6 @@
     color: #FF4DA6;
 }
 
-/* elimina commento — visibile solo all'autore o alla redazione */
 .btn-delete-comment {
     font-family: Georgia, serif;
     font-size: 12px;
@@ -646,7 +664,6 @@
     margin-bottom: 14px;
 }
 
-/* box autore — link al profilo */
 .author-box {
     display: flex;
     align-items: center;
@@ -680,7 +697,6 @@
     color: #A8A0C0;
 }
 
-/* bio autore — mostrata solo se esiste */
 .author-bio {
     font-size: 13px;
     color: #A8A0C0;
@@ -689,7 +705,6 @@
     margin-top: 8px;
 }
 
-/* articoli in evidenza nella sidebar */
 .sidebar-article {
     display: flex;
     gap: 12px;
@@ -738,10 +753,22 @@
     color: #A8A0C0;
 }
 
+/* ── ARTICLE IMAGE WRAPPER nella sidebar ─────── */
+.sidebar-article .article-img-wrapper {
+    width: 64px;
+    height: 48px;
+    flex-shrink: 0;
+}
+
+.sidebar-article .article-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 6px;
+}
+
 /* ── RESPONSIVE ──────────────────────────────── */
 @media (max-width: 992px) {
-
-    /* su tablet layout verticale — sidebar va sotto */
     .articolo-layout {
         grid-template-columns: 1fr;
     }
@@ -761,18 +788,16 @@
     }
 }
 
-/* ── ARTICLE IMAGE WRAPPER ───────────────────── */
-.sidebar-article .article-img-wrapper {
-    width: 64px;
-    height: 48px;
-    flex-shrink: 0;
-}
+@media (max-width: 768px) {
 
-.sidebar-article .article-img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 6px;
+    /* su mobile le immagini sono sempre centrate */
+    .articolo-body img.img-left,
+    .articolo-body img.img-right {
+        float: none;
+        display: block;
+        width: 100%;
+        margin: 16px auto;
+    }
 }
 
 @media (max-width: 576px) {
@@ -784,7 +809,6 @@
         gap: 8px;
     }
 
-    /* su mobile le azioni occupano tutta la larghezza */
     .meta-actions {
         margin-left: 0;
         width: 100%;

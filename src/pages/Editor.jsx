@@ -1,9 +1,14 @@
-import { useState } from "react"
+import { useState, useCallback } from "react"
 import { useNavigate } from "react-router-dom"
-import MDEditor from "@uiw/react-md-editor"
-import ReactMarkdown from "react-markdown"
-import { createArticle, uploadImage } from "../services/api"
+import StarterKit from "@tiptap/starter-kit"
+import { useEditor, EditorContent } from "@tiptap/react"
+import Image from "@tiptap/extension-image"
+import { Link as TiptapLink } from "@tiptap/extension-link"
+import Placeholder from "@tiptap/extension-placeholder"
+import TextAlign from "@tiptap/extension-text-align"
 import { useAuth } from "../context/useAuth"
+import { createArticle, uploadImage } from "../services/api"
+import EditorToolbar from "../components/EditorToolbar"
 import "./Editor.css"
 
 const categorie = [
@@ -15,32 +20,67 @@ const categorie = [
     { nome: "Voices", slug: "voices", verbo: "Dà voce" },
 ]
 
-const modules = {
-    toolbar: [
-        [{ header: 2 }],
-        ["bold", "italic"],
-        ["link", "image"],
-        ["blockquote"],
-        ["clean"],
-    ],
-}
 
 function Editor() {
-    const [subtitle, setSubtitle] = useState("")
     const { user } = useAuth()
     const navigate = useNavigate()
 
     const [step, setStep] = useState(1)
     const [categoria, setCategoria] = useState("")
     const [titolo, setTitolo] = useState("")
+    const [subtitle, setSubtitle] = useState("")
     const [coverImage, setCoverImage] = useState("")
-    const [body, setBody] = useState("")
     const [isSensitive, setIsSensitive] = useState(false)
     const [anteprima, setAnteprima] = useState(false)
     const [loading, setLoading] = useState(false)
     const [error, setError] = useState(null)
+    const [success, setSuccess] = useState(null)
     const [uploadingImage, setUploadingImage] = useState(false)
+    const [bodyLength, setBodyLength] = useState(0) // lunghezza testo per checklist
 
+    // inizializza Tiptap editor
+    const editor = useEditor({
+        extensions: [
+            StarterKit,
+            Image.configure({
+                HTMLAttributes: {
+                    class: "tiptap-img",
+                },
+                // permette attributi personalizzati sulle immagini
+                allowBase64: false,
+            }).extend({
+                addAttributes() {
+                    return {
+                        ...this.parent?.(),
+                        class: {
+                            default: "tiptap-img",
+                            parseHTML: element => element.getAttribute("class"),
+                            renderHTML: attributes => ({
+                                class: attributes.class,
+                            }),
+                        },
+                    }
+                },
+            }),
+            TiptapLink.configure({
+                openOnClick: false,
+            }),
+            Placeholder.configure({
+                placeholder: "Racconta qualcosa che vale la pena essere raccontato...",
+            }),
+            TextAlign.configure({
+                types: ["heading", "paragraph"], // funziona su titoli e paragrafi
+            }),
+        ],
+        content: "",
+        onUpdate: ({ editor }) => {
+            // aggiorna bodyLength ogni volta che il contenuto cambia
+            setBodyLength(editor.getText().length)
+        },
+
+    })
+
+    // gestisce l'upload dell'immagine di copertina
     const handleImageUpload = async (e) => {
         const file = e.target.files[0]
         if (!file) return
@@ -50,9 +90,7 @@ function Editor() {
             const formData = new FormData()
             formData.append("image", file)
             const data = await uploadImage(formData)
-            if (data.url) {
-                setCoverImage(data.url)
-            }
+            if (data.url) setCoverImage(data.url)
         } catch (err) {
             setError("Errore nel caricamento dell'immagine")
         } finally {
@@ -60,43 +98,52 @@ function Editor() {
         }
     }
 
-    const handleBodyImageUpload = async (e) => {
+    // gestisce l'upload di immagini nel corpo con allineamento
+    // alignment può essere "left", "center" o "right"
+    const handleBodyImageUpload = async (e, alignment) => {
         const file = e.target.files[0]
         if (!file) return
 
-        const input = e.target // ← salva il riferimento prima dell'async
-
+        const input = e.target
         try {
             const formData = new FormData()
             formData.append("image", file)
             const data = await uploadImage(formData)
-            if (data.url) {
-                const imageMarkdown = `\n![immagine](${data.url})\n`
-                setBody((prev) => prev + imageMarkdown)
+            if (data.url && editor) {
+                // inserisce l'immagine con la classe di allineamento
+                editor.chain().focus().setImage({
+                    src: data.url,
+                    class: `tiptap-img img-${alignment}` // img-left, img-center, img-right
+                }).run()
             }
         } catch (err) {
             setError("Errore nel caricamento dell'immagine")
         } finally {
-            input.value = "" // ← ora funziona perché abbiamo salvato il riferimento
+            input.value = ""
         }
     }
 
+    // gestisce la pubblicazione dell'articolo
     const handleSubmit = async () => {
         setLoading(true)
         setError(null)
 
         try {
+            // prende il contenuto HTML dall'editor Tiptap
+            const htmlContent = editor.getHTML()
+
             const data = await createArticle({
                 title: titolo,
                 subtitle,
                 category: categoria,
-                body,
+                body: htmlContent, // salviamo HTML invece di Markdown
                 coverImage,
                 isSensitive,
             })
 
             if (data._id) {
-                navigate(`/articolo/${data._id}`)
+                setSuccess("Articolo pubblicato con successo!")
+                setTimeout(() => navigate(`/articolo/${data._id}`), 2000)
             } else {
                 setError(data.message || "Errore nella pubblicazione")
             }
@@ -107,16 +154,17 @@ function Editor() {
         }
     }
 
-    // Checklist
+    // checklist
     const checklist = [
         { label: "Categoria scelta", done: !!categoria },
         { label: "Titolo scritto", done: !!titolo },
         { label: "Immagine caricata", done: !!coverImage },
-        { label: "Contenuto scritto", done: body.length > 50 },
+        { label: "Contenuto scritto", done: bodyLength > 50 },
     ]
 
     const tuttoCompleto = checklist.every((item) => item.done)
 
+    // anteprima
     if (anteprima) {
         return (
             <div className="editor-anteprima">
@@ -132,16 +180,16 @@ function Editor() {
                     )}
                     <span className="anteprima-cat">{categoria}</span>
                     <h1>{titolo}</h1>
+                    {subtitle && <p className="anteprima-subtitle">{subtitle}</p>}
                     <p className="anteprima-meta">
                         di {user?.name}
                         {isSensitive && <span className="badge-sensitive">SENSIBILE</span>}
                     </p>
+                    {/* nell'anteprima mostriamo direttamente l'HTML di Tiptap */}
                     <div
-
+                        className="anteprima-body"
+                        dangerouslySetInnerHTML={{ __html: editor?.getHTML() }}
                     />
-                </div>
-                <div className="anteprima-body">
-                    <ReactMarkdown>{body}</ReactMarkdown>
                 </div>
             </div>
         )
@@ -174,6 +222,7 @@ function Editor() {
             </div>
 
             {error && <p className="editor-error">{error}</p>}
+            {success && <p className="editor-success">{success}</p>}
 
             <div className="editor-layout">
 
@@ -208,6 +257,7 @@ function Editor() {
                             onChange={(e) => setTitolo(e.target.value)}
                         />
                     </div>
+
                     {/* STEP 2B — SOTTOTITOLO */}
                     <div className="editor-step">
                         <p className="step-label">02b — Sottotitolo</p>
@@ -220,7 +270,7 @@ function Editor() {
                         />
                     </div>
 
-                    {/* STEP 3 — IMMAGINE */}
+                    {/* STEP 3 — IMMAGINE COPERTINA */}
                     <div className="editor-step">
                         <p className="step-label">03 — Immagine di copertina</p>
                         {coverImage ? (
@@ -246,34 +296,16 @@ function Editor() {
                         )}
                     </div>
 
-
-
                     {/* STEP 4 — CONTENUTO */}
                     <div className="editor-step">
                         <p className="step-label">04 — Contenuto</p>
-
-                        <div className="body-image-upload">
-                            <label className="btn-body-image">
-                                + Aggiungi immagine nel testo
-                                <input
-                                    type="file"
-                                    accept="image/*"
-                                    onChange={handleBodyImageUpload}
-                                    style={{ display: "none" }}
-                                />
-                            </label>
-                            <span className="body-image-hint">
-                                L'immagine verrà inserita nel punto in cui ti trovi nel testo
-                            </span>
-                        </div>
-
-                        <MDEditor
-                            value={body}
-                            onChange={setBody}
-                            preview="edit"
-                            height={400}
-                            data-color-mode="dark"
-                            placeholder="Racconta qualcosa che vale la pena essere raccontato..."
+                        <EditorToolbar
+                            editor={editor}
+                            onImageUpload={handleBodyImageUpload}
+                        />
+                        <EditorContent
+                            editor={editor}
+                            className="tiptap-editor"
                         />
                     </div>
 
@@ -282,7 +314,6 @@ function Editor() {
                 {/* ── SIDEBAR ── */}
                 <aside className="editor-sidebar">
 
-                    {/* CATEGORIA SELEZIONATA */}
                     {categoria && (
                         <div className="sidebar-card">
                             <p className="sidebar-label">Categoria selezionata</p>
@@ -292,22 +323,17 @@ function Editor() {
                         </div>
                     )}
 
-                    {/* CHECKLIST */}
                     <div className="sidebar-card">
                         <p className="sidebar-label">Checklist</p>
                         <ul className="checklist">
                             {checklist.map((item) => (
-                                <li
-                                    key={item.label}
-                                    className={item.done ? "done" : ""}
-                                >
+                                <li key={item.label} className={item.done ? "done" : ""}>
                                     {item.done ? "✓" : "○"} {item.label}
                                 </li>
                             ))}
                         </ul>
                     </div>
 
-                    {/* CONTENUTO SENSIBILE */}
                     <div className="sidebar-card">
                         <label className="sensitive-label">
                             <input
@@ -324,7 +350,6 @@ function Editor() {
                         )}
                     </div>
 
-                    {/* GUIDA */}
                     <div className="sidebar-card sidebar-guida">
                         <p className="sidebar-label">Guida SexyTeller</p>
                         <p>"Non pubblicare. Racconta."</p>
@@ -335,8 +360,15 @@ function Editor() {
                             <li>Evita il vuoto</li>
                         </ul>
                         <div className="guida-tip">
-                            <p className="sidebar-label" style={{ marginTop: "12px" }}>Come inserire immagini</p>
-                            <p>Scrivi fino al punto dove vuoi l'immagine, clicca il pulsante, poi continua a scrivere sotto.</p>
+                            <p className="sidebar-label" style={{ marginTop: "12px" }}>
+                                Come inserire immagini
+                            </p>
+                            <ul>
+                                <li>Usa <strong>Img sinistra</strong> o <strong>Img destra</strong> per affiancare il testo all'immagine</li>
+                                <li>Usa <strong>Img centro</strong> per un'immagine a tutta larghezza</li>
+                                <li>⚠️ Evita di inserire due immagini affiancate — mettile in paragrafi separati</li>
+                                <li>Scrivi il testo <em>dopo</em> aver inserito l'immagine</li>
+                            </ul>
                         </div>
                     </div>
 
