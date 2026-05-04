@@ -393,6 +393,7 @@ function ArticoloSingolo() {
                                         alt={a.title}
                                         isSensitive={a.isSensitive}
                                         className="sidebar-thumb"
+                                        small={true}
                                     />
                                     <div>
                                         <p className="sidebar-cat">{a.category}</p>

@@ -204,13 +204,16 @@ function Categoria() {
 
                                     {/* meta — autore, data, tempo lettura, like */}
                                     <div className="categoria-card-meta">
-                                        <Link
-                                            to={`/profilo/${article.author?.handle}`}
+                                        <span
                                             className="categoria-card-author"
-                                            onClick={(e) => e.stopPropagation()} // evita che il click sull'autore apra l'articolo
+                                            onClick={(e) => {
+                                                e.preventDefault()
+                                                e.stopPropagation()
+                                                window.location.href = `/profilo/${article.author?.handle}`
+                                            }}
                                         >
                                             @{article.author?.handle}
-                                        </Link>
+                                        </span>
                                         <span>·</span>
                                         <span>{formatDate(article.createdAt)}</span>
                                         <span>·</span>

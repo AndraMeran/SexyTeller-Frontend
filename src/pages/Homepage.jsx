@@ -1,7 +1,7 @@
 import { Link } from "react-router-dom"
 import "./Homepage.css"
 import { useState, useEffect } from "react"
-import { getFeaturedArticles } from "../services/api"
+import { getFeaturedArticles, getArticles } from "../services/api"
 import ArticleImage from "../components/ArticleImage"
 import "../components/ArticleImage.css"
 
@@ -69,20 +69,35 @@ function Homepage() {
     const [featuredArticles, setFeaturedArticles] = useState([])//contiene gli articoli che arrivanodal backend, parte vuota
     const [loading, setLoading] = useState(true)//dice se stiamo ancora la rispota, parte true 
     const [error, setError] = useState(null)//se qlc va male, salva il messaggio di errore 
+    const [heroArticle, setHeroArticle] = useState(null) // articolo della redazione per la hero
 
-    useEffect(() => {//si esegue quando la pagina si carica per la prima volta (array vuoto alla fine)
-        const fetchFeatured = async () => {
+    // sceglie un articolo della redazione in modo deterministico
+    // cambia ogni 3 giorni — stesso articolo per tutti gli utenti
+    const getHeroArticle = (articles) => {
+        const redazione = articles.filter(a => a.isRedazione === true)
+        if (!redazione.length) return null
+        const treGiorni = 3 * 24 * 60 * 60 * 1000
+        const indice = Math.floor(Date.now() / treGiorni) % redazione.length
+        return redazione[indice]
+    }
+
+
+    useEffect(() => {
+        const fetchData = async () => {
             try {
-                const data = await getFeaturedArticles()//chiama  get dal ns api.js
-                setFeaturedArticles(data)//se va abene òla chiamata salva gli articoli
+                const [featured, all] = await Promise.all([
+                    getFeaturedArticles(),
+                    getArticles() // prende tutti gli articoli
+                ])
+                setFeaturedArticles(featured)
+                setHeroArticle(getHeroArticle(all)) // sceglie l'articolo hero
             } catch (err) {
-                setError("Errore nel caricamento degli articoli")//se va male salva il mess
+                setError("Errore nel caricamento degli articoli")
             } finally {
-                setLoading(false)//in ogni caso imposta loading a false 
+                setLoading(false)
             }
         }
-
-        fetchFeatured()
+        fetchData()
     }, [])
 
     return (
@@ -120,49 +135,36 @@ function Homepage() {
                 </div>
 
                 <article className="hero-card">
-                    <span className="tag">Stories</span>
-                    <div className="hero-card-content">
-                        <h2>Desiderio e libertà: una questione di scelta</h2>
-                        <p>di Andra M. <span></span> 5 min di lettura</p>
-                    </div>
-                    <div className="stamp">✶</div>
+                    {heroArticle ? (
+                        <Link to={`/articolo/${heroArticle._id}`} className="hero-card-link">
+                            <span className="tag">{heroArticle.category}</span>
+                            {heroArticle.coverImage && (
+                                <img
+                                    src={heroArticle.coverImage}
+                                    alt={heroArticle.title}
+                                    className="hero-card-bg-img"
+                                />
+                            )}
+                            <div className="hero-card-content">
+                                <h2>{heroArticle.title}</h2>
+                                <p>
+                                    di {heroArticle.author?.name}
+                                    <span></span>
+                                    {heroArticle.readTime} min di lettura
+                                </p>
+                                <span className="hero-read-link">
+                                    Leggi l'articolo →
+                                </span>
+                            </div>
+                            <div className="stamp">✶</div>
+                        </Link>
+                    ) : (
+                        <div className="hero-card-content">
+                            <h2>Benvenuto su SexyTeller</h2>
+                        </div>
+                    )}
                 </article>
             </section>
-
-            {/* MANIFESTO + CATEGORIE MOSAICO */}
-            <section className="manifesto-categories">
-                <aside className="manifesto-card">
-                    <h2>Il nostro manifesto</h2>
-                    <div className="small-line"></div>
-                    <p>
-                        Crediamo che parlare di sesso significhi parlare di libertà,
-                        consenso, piacere, identità.
-                    </p>
-                    <strong>
-                        Niente moralismi.
-                        <br />
-                        Solo storie vere.
-                    </strong>
-                    <Link to="/manifesto">
-                        Leggi il manifesto <span>→</span>
-                    </Link>
-                </aside>
-
-                <div className="category-mosaic">
-                    {categories.map((cat) => (
-                        <Link
-                            key={cat.slug}
-                            to={`/categoria/${cat.slug}`}
-                            className={`category-tile ${cat.className}`}
-                        >
-                            <h3>{cat.title}</h3>
-                            <p>{cat.text}</p>
-                            <span>Esplora →</span>
-                        </Link>
-                    ))}
-                </div>
-            </section>
-
 
             <section className="featured-section">
                 <div className="section-title">
@@ -217,6 +219,7 @@ function Homepage() {
                                                 alt={article.title}
                                                 isSensitive={article.isSensitive}
                                                 className="small-thumb"
+                                                small={true}
                                             />
                                             <div>
                                                 <span>{article.category}</span>
@@ -237,6 +240,43 @@ function Homepage() {
                     </div>
                 )}
             </section>
+
+            {/* MANIFESTO + CATEGORIE MOSAICO */}
+            <section className="manifesto-categories">
+                <aside className="manifesto-card">
+                    <h2>Il nostro manifesto</h2>
+                    <div className="small-line"></div>
+                    <p>
+                        Crediamo che parlare di sesso significhi parlare di libertà,
+                        consenso, piacere, identità.
+                    </p>
+                    <strong>
+                        Niente moralismi.
+                        <br />
+                        Solo storie vere.
+                    </strong>
+                    <Link to="/manifesto">
+                        Leggi il manifesto <span>→</span>
+                    </Link>
+                </aside>
+
+                <div className="category-mosaic">
+                    {categories.map((cat) => (
+                        <Link
+                            key={cat.slug}
+                            to={`/categoria/${cat.slug}`}
+                            className={`category-tile ${cat.className}`}
+                        >
+                            <h3>{cat.title}</h3>
+                            <p>{cat.text}</p>
+                            <span>Esplora →</span>
+                        </Link>
+                    ))}
+                </div>
+            </section>
+
+
+
 
             {/* CTA FINALE */}
             < section className="join-section" >

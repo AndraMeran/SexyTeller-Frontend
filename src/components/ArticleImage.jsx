@@ -6,7 +6,7 @@
 // - isSensitive: true/false
 // - className: classe CSS aggiuntiva per lo stile
 
-function ArticleImage({ src, alt, isSensitive, className }) {
+function ArticleImage({ src, alt, isSensitive, className, small }) {
     // se non c'è immagine non mostra nulla
     if (!src) return null
 
@@ -21,7 +21,7 @@ function ArticleImage({ src, alt, isSensitive, className }) {
             {isSensitive && (
                 <div className="article-img-overlay">
                     <i className="bi bi-lock-fill"></i>
-                    <span>Contenuto riservato ai 18+</span>
+                    {!small && <span>Contenuto riservato</span>}
                 </div>
             )}
         </div>
