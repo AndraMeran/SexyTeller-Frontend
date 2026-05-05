@@ -320,11 +320,14 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    /* ← cambia in flex-start per allineare in alto */
     padding: 10px 12px;
     border-radius: 8px;
     text-decoration: none;
     transition: background 0.25s ease;
     border: 0.5px solid transparent;
+    gap: 12px;
+    /* ← aggiunge spazio tra nome e verbo */
 }
 
 .sidebar-cat-link:hover {
@@ -343,6 +346,8 @@
     font-size: 14px;
     color: #F5F3FF;
     font-weight: 600;
+    flex: 1;
+    /* ← occupa lo spazio disponibile */
 }
 
 .sidebar-cat-verbo {
@@ -350,6 +355,10 @@
     color: #A8A0C0;
     text-transform: uppercase;
     letter-spacing: 0.06em;
+    white-space: nowrap;
+    /* ← non va mai a capo */
+    flex-shrink: 0;
+    /* ← non si restringe */
 }
 
 /* ── RESPONSIVE ──────────────────────────────── */

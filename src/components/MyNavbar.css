@@ -27,8 +27,7 @@
     font-size: 48px;
     font-weight: 700;
     letter-spacing: 0.02em;
-    color: #F5F3FF;
-    /* ← bianco puro */
+    color: #00C4A0;
     text-decoration: none !important;
     white-space: nowrap;
 }
@@ -91,7 +90,7 @@
     font-family: Georgia, serif;
     font-size: 13px;
     color: #0C0A14 !important;
-    background: linear-gradient(90deg, #00C4A0, #B8A0FF) !important;
+    background: #00C4A0 !important;
     text-decoration: none !important;
     padding: 7px 20px;
     border-radius: 20px;
@@ -133,7 +132,7 @@
     width: 34px;
     height: 34px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #00C4A0, #B8A0FF) !important;
+    background: #B8A0FF !important;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -193,14 +192,17 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    background: #B8A0FF;
     transition: width 0.3s ease;
 }
 
 .navbar-cat:hover {
     color: #F5F3FF !important;
     background: rgba(184, 160, 255, 0.06);
-    /* ← sfondo leggero al hover */
+}
+
+.navbar-cat:hover::after {
+    width: 100%;
 }
 
 .navbar-cat::after {
@@ -210,7 +212,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    background: #B8A0FF;
     transition: width 0.15s ease;
     /* ← da 0.3s a 0.15s — più veloce */
 }

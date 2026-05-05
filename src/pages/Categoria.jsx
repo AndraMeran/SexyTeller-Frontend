@@ -10,37 +10,37 @@ const categorieInfo = {
     stories: {
         numero: "01",
         nome: "Stories",
-        verbo: "Racconta",
-        descrizione: "Biografie, ascese e cadute, dietro le quinte. Come un documentario narrato."
+        verbo: "Raccontare",
+        descrizione: "Storie che seguono un filo dall'inizio alla fine."
     },
     decode: {
         numero: "02",
         nome: "Decode",
-        verbo: "Spiega",
-        descrizione: "Analisi, spiegazioni e approfondimenti culturali sulla sessualità."
+        verbo: "Spiegare",
+        descrizione: ".........."
     },
     crossover: {
         numero: "03",
         nome: "Crossover",
-        verbo: "Collega",
+        verbo: "Collegare",
         descrizione: "Quando il sesso incontra cinema, musica, arte e cultura pop."
     },
     trends: {
         numero: "04",
         nome: "Trends",
-        verbo: "Aggiorna",
+        verbo: "Aggiornare",
         descrizione: "Temi caldi, nuove prospettive e quello che sta succedendo ora."
     },
     darkside: {
         numero: "05",
         nome: "Dark Side",
-        verbo: "Approfondisce",
+        verbo: "Approfondire",
         descrizione: "Quello che nessuno dice. I lati nascosti e complessi della sessualità."
     },
     voices: {
         numero: "06",
         nome: "Voices",
-        verbo: "Dà voce",
+        verbo: "Dare voce",
         descrizione: "Le voci della nostra community. Storie personali e punti di vista."
     },
 }

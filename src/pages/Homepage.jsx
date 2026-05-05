@@ -9,37 +9,37 @@ const categories = [
     {
         title: "Stories",
         slug: "stories",
-        text: "Vite vere, raccontate senza filtri.",
+        text: "Storie che seguono un filo dall'inizio alla fine.",
         className: "cat-stories",
     },
     {
         title: "Decode",
         slug: "decode",
-        text: "Capire il sesso, oltre i tabù.",
+        text: "Andare oltre la superficie, fino a capire davvero.",
         className: "cat-decode",
     },
     {
         title: "Crossover",
         slug: "crossover",
-        text: "Quando il sesso incontra la cultura.",
+        text: "Quando altri mondi finiscono qui, e cambiano significato.",
         className: "cat-crossover",
     },
     {
         title: "Trends",
         slug: "trends",
-        text: "Temi caldi, nuove prospettive.",
+        text: "Ciò che succede ora, mentre sta cambiando.",
         className: "cat-trends",
     },
     {
         title: "Dark Side",
         slug: "darkside",
-        text: "Quello che nessuno dice.",
+        text: "La parte più complessa, quella che non si evita.",
         className: "cat-darkside",
     },
     {
         title: "Voices",
         slug: "voices",
-        text: "Le voci della nostra community.",
+        text: "Quando a parlare sono gli altri, non solo tu.",
         className: "cat-voices",
     },
 ]
@@ -107,13 +107,14 @@ function Homepage() {
             <section className="home-hero">
                 <div className="hero-copy">
                     <h1>
-                        Il sesso è ovunque.
-                        <span>Ma nessuno lo racconta davvero.</span>
+                        <span className="hero-h1-first">In un mondo che guarda,</span>
+                        <span>noi raccontiamo.</span>
                     </h1>
 
                     <p>
-                        SexyTeller è lo spazio dove le storie incontrano la verità.
-                        Senza filtri.
+                        <span>SexyTeller non è solo un sito.</span>
+                        <span>Non è solo un social.</span>
+                        <span>È un nuovo modo di raccontare il sesso.</span>
                     </p>
 
                     <Link to="/categoria/stories" className="home-btn">
@@ -156,7 +157,6 @@ function Homepage() {
                                     Leggi l'articolo →
                                 </span>
                             </div>
-                            <div className="stamp">✶</div>
                         </Link>
                     ) : (
                         <div className="hero-card-content">
@@ -168,7 +168,7 @@ function Homepage() {
 
             <section className="featured-section">
                 <div className="section-title">
-                    <h2>Le voci in evidenza</h2>
+                    <h2>Le voci di Sexyteller</h2>
                     <Link to="/categoria/stories">Vedi tutti gli articoli →</Link>
                 </div>
 
@@ -245,19 +245,19 @@ function Homepage() {
             <section className="manifesto-categories">
                 <aside className="manifesto-card">
                     <h2>Il nostro manifesto</h2>
-                    <div className="small-line"></div>
-                    <p>
-                        Crediamo che parlare di sesso significhi parlare di libertà,
-                        consenso, piacere, identità.
-                    </p>
-                    <strong>
-                        Niente moralismi.
-                        <br />
-                        Solo storie vere.
-                    </strong>
                     <Link to="/manifesto">
                         Leggi il manifesto <span>→</span>
                     </Link>
+                    <div className="small-line"></div>
+                    <p>
+                        SexyTeller non divide i contenuti per argomento, ma per modo di raccontarli.
+                    </p>
+                    <strong>
+
+                        <br />
+
+                    </strong>
+
                 </aside>
 
                 <div className="category-mosaic">
@@ -281,15 +281,18 @@ function Homepage() {
             {/* CTA FINALE */}
             < section className="join-section" >
                 <div className="join-copy">
-                    <span>Diventa SexyTeller</span>
                     <h2>
                         Non sei solo qui per leggere.
                         <br />
-                        Sei qui per <em>raccontare.</em>
+                        Puoi essere parte di tutto questo.
                     </h2>
                     <p>
-                        Unisciti alla community, condividi la tua voce
-                        e lascia il segno.
+                        SexyTeller non è solo un nome.
+                        <br />
+                        È una voce.
+
+                        E può essere anche la tua.
+
                     </p>
                     <Link to="/register" className="home-btn">
                         Diventa SexyTeller <span>→</span>

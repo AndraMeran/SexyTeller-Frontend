@@ -46,9 +46,7 @@ function MyNavbar() {
 
                 {/* SINISTRA — Manifesto + campo ricerca */}
                 <div className="navbar-left">
-                    <Link to="/manifesto" className="btn-secondary" onClick={closeAll}>
-                        Manifesto
-                    </Link>
+
                     <input
                         type="text"
                         placeholder="Cerca..."
