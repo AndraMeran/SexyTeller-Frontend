@@ -27,10 +27,8 @@
     font-size: 48px;
     font-weight: 700;
     letter-spacing: 0.02em;
-    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
-    -webkit-background-clip: text;
-    background-clip: text;
-    -webkit-text-fill-color: transparent;
+    color: #F5F3FF;
+    /* ← bianco puro */
     text-decoration: none !important;
     white-space: nowrap;
 }
