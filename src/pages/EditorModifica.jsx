@@ -12,12 +12,12 @@ import { getArticleById, updateArticle, uploadImage } from "../services/api"
 import "./Editor.css" // riusa lo stesso CSS dell'editor
 
 const categorie = [
-    { nome: "Stories", slug: "stories", verbo: "Racconta" },
-    { nome: "Decode", slug: "decode", verbo: "Spiega" },
-    { nome: "Crossover", slug: "crossover", verbo: "Collega" },
-    { nome: "Trends", slug: "trends", verbo: "Aggiorna" },
-    { nome: "Dark Side", slug: "darkside", verbo: "Approfondisce" },
-    { nome: "Voices", slug: "voices", verbo: "Dà voce" },
+    { nome: "Stories", slug: "stories", verbo: "Raccontare", descrizione: "Stories è la categoria narrativa. Qui i contenuti: raccontano una storia, seguono un filo narrativo, hanno inizio, sviluppo e fine. Può trattarsi di biografie, eventi, ascesa/caduta, dietro le quinte, racconti narrativi. Lo stile è simile a: documentario, storytelling, narrativa.", descrizione2: "Se sembra un documentario o un racconto → Stories" },
+    { nome: "Decode", slug: "decode", verbo: "Spiegare", descrizione: "Decode è la categoria analitica. Qui i contenuti spiegano fenomeni, analizzano comportamenti, approfondiscono concetti. Esempi: fetish spiegati, categorie pornografiche, psicologia del desiderio. Risponde sempre a 'Perché esiste questa cosa?'", descrizione2: "Se insegna qualcosa → Decode " },
+    { nome: "Crossover", slug: "crossover", verbo: "Collegare", descrizione: "Crossover è il ponte tra mondi. Qui si analizzano collegamenti tra: sessualità / erotismo / pornografia e altri ambiti. Esempi: cinema, musica, moda, arte, sport, ecc. Mostra come questi mondi si influenzano tra loro.", descrizione2: "Se collega due mondi → Crossover" },
+    { nome: "Trends", slug: "trends", verbo: "Aggiornare", descrizione: "Trends raccoglie contenuti veloci, attuali, immediati. Esempi: notizie, trend, top 10/classifiche, novità. Contenuti pensati per essere letti rapidamente ed essere condivisi.", descrizione2: "Se è veloce e attuale → Trends" },
+    { nome: "Dark Side", slug: "darkside", verbo: "Approfondire", descrizione: "Dark Side affronta i temi più complessi e scomodi. Qui trovi problemi reali, distorsioni, aspetti negativi, temi delicati. Esempi: misteri, crime, dipendenza, sfruttamento, dinamiche tossiche.", descrizione2: "Se è scomodo ma reale → Dark Side" },
+    { nome: "Voices", slug: "voices", verbo: "Dare voce", descrizione: "Voices è la categoria delle voci. Contiene contenuti basati su dialogo, confronto, testimoniaza diretta. Esempi: interviste, Q&A, conversazioni. Qui non racconti da solo, dai spazio a qualcun altro. ", descrizione2: "Se ci sono domande e risposte → Voices " },
 ]
 
 function EditorModifica() {
@@ -67,7 +67,7 @@ function EditorModifica() {
                 openOnClick: false,
             }),
             Placeholder.configure({
-                placeholder: "Modifica il tuo contenuto...",
+                placeholder: "Scrivi qualcosa che lasci il segno...",
             }),
             TextAlign.configure({
                 types: ["heading", "paragraph"], // funziona su titoli e paragrafi
@@ -271,7 +271,7 @@ function EditorModifica() {
 
                     {/* STEP 1 — CATEGORIA */}
                     <div className="editor-step">
-                        <p className="step-label">01 — Come stai raccontando?</p>
+                        <p className="step-label"> Scegli come raccontare</p>
                         <div className="cat-grid">
                             {categorie.map((cat) => (
                                 <button
@@ -285,10 +285,23 @@ function EditorModifica() {
                             ))}
                         </div>
                     </div>
+                    {/* BOX DESCRIZIONE CATEGORIA SELEZIONATA */}
+                    {categoria && (
+                        <div className="cat-descrizione-box">
+                            <p className="cat-descrizione-titolo">
+                                Hai scelto <strong>{categorie.find(c => c.slug === categoria)?.nome}</strong>
+                            </p>
+                            <p className="cat-descrizione-testo">
+                                {categorie.find(c => c.slug === categoria)?.descrizione}
+                                <br />
+                                {categorie.find(c => c.slug === categoria)?.descrizione2}
+                            </p>
+                        </div>
+                    )}
 
                     {/* STEP 2 — TITOLO */}
                     <div className="editor-step">
-                        <p className="step-label">02 — Titolo</p>
+                        <p className="step-label">Titolo</p>
                         <input
                             type="text"
                             className="editor-titolo"
@@ -300,19 +313,19 @@ function EditorModifica() {
 
                     {/* STEP 2B — SOTTOTITOLO */}
                     <div className="editor-step">
-                        <p className="step-label">02b — Sottotitolo</p>
+                        <p className="step-label">Sottotitolo</p>
                         <input
                             type="text"
                             className="editor-sottotitolo"
-                            placeholder="Un sottotitolo che amplia il titolo... (opzionale)"
+                            placeholder="Dai profondità a quello che vuoi dire... (opzionale)"
                             value={subtitle}
                             onChange={(e) => setSubtitle(e.target.value)}
                         />
                     </div>
 
-                    {/* STEP 3 — IMMAGINE */}
+                    {/* STEP 3 — IMMAGINE COPERTINA */}
                     <div className="editor-step">
-                        <p className="step-label">03 — Immagine di copertina</p>
+                        <p className="step-label">Immagine di copertina</p>
                         {coverImage ? (
                             <div className="cover-preview">
                                 <img src={coverImage} alt="copertina" />
@@ -338,13 +351,11 @@ function EditorModifica() {
 
                     {/* STEP 4 — CONTENUTO */}
                     <div className="editor-step">
-                        <p className="step-label">04 — Contenuto</p>
-                        {/* toolbar con pulsanti formattazione e upload immagini */}
+                        <p className="step-label">Contenuto</p>
                         <EditorToolbar
                             editor={editor}
                             onImageUpload={handleBodyImageUpload}
                         />
-                        {/* area di scrittura Tiptap */}
                         <EditorContent
                             editor={editor}
                             className="tiptap-editor"
@@ -394,12 +405,11 @@ function EditorModifica() {
 
                     <div className="sidebar-card sidebar-guida">
                         <p className="sidebar-label">Guida SexyTeller</p>
-                        <p>"Non pubblicare. Racconta."</p>
+                        <p>Qui non pubblichi semplicemente un contenuto.</p>
                         <ul>
-                            <li>Aggiungi contesto</li>
-                            <li>Costruisci un punto di vista</li>
-                            <li>Dai significato</li>
-                            <li>Evita il vuoto</li>
+                            <li>Scrivi. Spiega. Racconta. </li>
+                            <li>Qualcosa che meriti di essere ascoltato.</li>
+
                         </ul>
                         <div className="guida-tip">
                             <p className="sidebar-label" style={{ marginTop: "12px" }}>

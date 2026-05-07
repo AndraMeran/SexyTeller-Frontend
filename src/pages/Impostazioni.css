@@ -154,7 +154,7 @@
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: linear-gradient(135deg, #00C4A0, #B8A0FF);
+      background: #B8A0FF;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -260,13 +260,12 @@
   }
 
   /* ── PULSANTI ────────────────────────────────── */
-  /* pulsante salva — gradiente */
   .btn-salva {
       align-self: flex-start;
       font-family: Georgia, serif;
       font-size: 14px;
       color: #0C0A14;
-      background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+      background: #00C4A0;
       border: none;
       padding: 10px 24px;
       border-radius: 999px;

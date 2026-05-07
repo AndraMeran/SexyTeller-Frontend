@@ -40,7 +40,7 @@
     font-weight: 700;
     color: #F5F3FF;
     margin-bottom: 48px;
-    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    background: #B8A0FF;
     -webkit-background-clip: text;
     /* prefisso webkit per Chrome/Safari */
     background-clip: text;

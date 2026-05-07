@@ -54,7 +54,7 @@
 .categoria-line {
     width: 40px;
     height: 2px;
-    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    background: #B8A0FF;
     margin: 0 auto 20px;
 }
 
@@ -102,9 +102,9 @@
     color: #B8A0FF;
 }
 
-/* filtro attivo — gradiente */
+/* filtro attivo */
 .filtro-btn.active {
-    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    background: #00C4A0;
     color: #0C0A14;
     border-color: transparent;
     font-weight: 700;
@@ -283,7 +283,7 @@
 
 /* pagina attiva */
 .pag-btn.active {
-    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    background: #00C4A0;
     color: #0C0A14;
     border-color: transparent;
     font-weight: 700;

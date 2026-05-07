@@ -75,7 +75,7 @@
 /* ── PULSANTI ────────────────────────────────── */
 .btn-auth {
     margin-top: 8px;
-    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    background: #00C4A0;
     color: #0C0A14;
     border: none;
     padding: 12px 24px;

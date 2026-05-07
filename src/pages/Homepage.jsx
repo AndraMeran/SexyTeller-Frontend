@@ -118,7 +118,7 @@ function Homepage() {
                     </p>
 
                     <Link to="/categoria/stories" className="home-btn">
-                        Scopri le storie <span>→</span>
+                        Clicca qui per saperne di più <span>→</span>
                     </Link>
 
                     <div className="community-row">

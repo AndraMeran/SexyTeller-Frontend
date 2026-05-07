@@ -74,7 +74,7 @@
     width: 96px;
     height: 96px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #00C4A0, #B8A0FF);
+    background: #B8A0FF;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -157,7 +157,7 @@
     font-family: Georgia, serif;
     font-size: 13px;
     color: #0C0A14;
-    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    background: #00C4A0;
     border: none;
     padding: 7px 20px;
     border-radius: 999px;
@@ -264,7 +264,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    background: #B8A0FF;
     transition: width 0.3s ease;
 }
 

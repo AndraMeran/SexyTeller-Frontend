@@ -65,7 +65,7 @@
     font-family: Georgia, serif;
     font-size: 36px;
     font-weight: 700;
-    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    background: #B8A0FF;
     -webkit-background-clip: text;
     background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -128,7 +128,7 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: linear-gradient(90deg, #00C4A0, #B8A0FF);
+    background: #B8A0FF;
     transition: width 0.3s ease;
 }
 
@@ -216,7 +216,7 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: linear-gradient(135deg, #00C4A0, #B8A0FF);
+    background: #B8A0FF;
     display: flex;
     align-items: center;
     justify-content: center;
