@@ -170,7 +170,17 @@
 }
 
 .editor-titolo::placeholder {
-    color: #A8A0C0;
+    width: 100%;
+    background: transparent;
+    border: none;
+
+    padding: 10px 0;
+    font-family: Georgia, serif;
+    font-size: 20px;
+    color: #2a2240;
+    outline: none;
+    transition: border-color 0.25s ease;
+    font-style: italic;
 }
 
 /* sottotitolo — leggermente più piccolo del titolo */
@@ -833,5 +843,48 @@
 
     .anteprima-content h1 {
         font-size: 28px;
+    }
+}
+
+/* ── BOX DESCRIZIONE CATEGORIA ───────────────── */
+/* appare sotto la griglia quando l'utente seleziona una categoria */
+.cat-descrizione-box {
+    margin-top: 16px;
+    margin-bottom: 40px;
+    background: rgba(0, 196, 160, 0.06);
+    border: 1px solid rgba(0, 196, 160, 0.3);
+    border-radius: 10px;
+    padding: 16px 20px;
+    animation: fadeIn 0.3s ease;
+    /* animazione entrata */
+}
+
+.cat-descrizione-titolo {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #A8A0C0;
+    margin-bottom: 8px;
+}
+
+.cat-descrizione-titolo strong {
+    color: #00C4A0;
+}
+
+.cat-descrizione-testo {
+    font-family: Georgia, serif;
+    font-size: 14px;
+    color: #D8D2EA;
+    line-height: 1.6;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
     }
 }
