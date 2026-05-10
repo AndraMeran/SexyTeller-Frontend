@@ -6,22 +6,67 @@ function MyFooter() {
         <>
             <div className="footer-divider"></div>
             <footer className="footer">
-                <span className="footer-copy">© SexyTeller 2026</span>
 
-                <div className="footer-social">
-                    <a href="https://facebook.com" target="_blank" rel="noreferrer" className="footer-social-link">
-                        Facebook
+                {/* ── SEZIONE BRAND ── */}
+                <div className="footer-brand">
+                    <span className="footer-logo">SexyTeller</span>
+                    <p className="footer-tagline">
+                        In un mondo che guarda, noi raccontiamo.
+                    </p>
+                    <div className="footer-social">
+                        <a href="https://facebook.com" target="_blank" rel="noreferrer" className="footer-social-link">
+                            <i className="bi bi-facebook"></i>
+                        </a>
+                        <a href="https://instagram.com" target="_blank" rel="noreferrer" className="footer-social-link">
+                            <i className="bi bi-instagram"></i>
+                        </a>
+                        <a href="https://tiktok.com" target="_blank" rel="noreferrer" className="footer-social-link">
+                            <i className="bi bi-tiktok"></i>
+                        </a>
+                    </div>
+                </div>
+
+
+
+                {/* ── SEZIONE CHI SIAMO ── */}
+                <div className="footer-col">
+                    <p className="footer-col-title">Chi siamo</p>
+                    <Link to="/manifesto" className="footer-link">Il nostro manifesto</Link>
+                    <Link to="/register" className="footer-link">Diventa SexyTeller</Link>
+                </div>
+
+                {/* ── SEZIONE CONTATTI ── */}
+                <div className="footer-col">
+                    <p className="footer-col-title">Contatti</p>
+                    <a href="mailto:info@sexyteller.com" className="footer-link">
+                        <i className="bi bi-envelope"></i> info@sexyteller.com
                     </a>
-                    <a href="https://instagram.com" target="_blank" rel="noreferrer" className="footer-social-link">
-                        Instagram
+                    <a href="mailto:support@sexyteller.com" className="footer-link">
+                        <i className="bi bi-headset"></i> Supporto utenti
                     </a>
-                    <a href="https://x.com" target="_blank" rel="noreferrer" className="footer-social-link">
-                        X
+                    <a href="mailto:claim@sexyteller.com" className="footer-link">
+                        <i className="bi bi-flag"></i> Segnalazioni
                     </a>
                 </div>
 
-                <span className="footer-made">Made by Andra M.</span>
+                {/* ── SEZIONE LEGALE ── */}
+                <div className="footer-col">
+                    <p className="footer-col-title">Legale</p>
+                    <a href="#" className="footer-link">Privacy Policy</a>
+                    <a href="#" className="footer-link">Cookie Policy</a>
+                    <a href="#" className="footer-link">Termini e Condizioni</a>
+                    <p className="footer-18">
+                        Contenuto riservato ai maggiori di 18 anni.
+                    </p>
+                </div>
+
             </footer>
+
+            {/* ── COPYRIGHT ── */}
+            <div className="footer-bottom">
+                <span>© SexyTeller 2026</span>
+
+            </div>
         </>
     )
 }

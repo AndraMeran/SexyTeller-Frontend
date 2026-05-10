@@ -1,77 +1,143 @@
 /* ── DIVIDER ─────────────────────────────────── */
 .footer-divider {
-    height: 3px;
-    background: #ffffff;
+    height: 0.5px;
+    background: #2a2240;
     width: 100%;
 }
 
 /* ── FOOTER ──────────────────────────────────── */
+/* layout a 4 colonne — brand + chi siamo + contatti + legale */
 .footer {
     background: #0C0A14;
-    padding: 24px 32px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+    padding: 48px 40px;
+    display: grid;
+    grid-template-columns: 2fr 1fr 1fr 1fr;
+    gap: 48px;
+    align-items: flex-start;
 }
 
-/* ── TESTO COPYRIGHT ─────────────────────────── */
-.footer-copy {
+/* ── BRAND ───────────────────────────────────── */
+.footer-logo {
     font-family: Georgia, serif;
-    font-size: 12px;
-    color: #ffffff;
-    letter-spacing: 0.03em;
-    white-space: nowrap;
+    font-size: 28px;
+    font-weight: 700;
+    color: #F5F3FF;
+    display: block;
+    margin-bottom: 12px;
+}
+
+.footer-tagline {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #A8A0C0;
+    line-height: 1.6;
+    font-style: italic;
+    margin-bottom: 24px;
+    max-width: 280px;
 }
 
 /* ── SOCIAL ──────────────────────────────────── */
 .footer-social {
     display: flex;
-    gap: 24px;
+    gap: 16px;
     align-items: center;
 }
 
 .footer-social-link {
-    font-family: Georgia, serif;
-    font-size: 12px;
-    color: #ffffff;
+    font-size: 18px;
+    color: #A8A0C0;
     text-decoration: none;
-    letter-spacing: 0.06em;
-    text-transform: uppercase;
     transition: color 0.25s ease;
+    line-height: 1;
 }
 
 .footer-social-link:hover {
-    color: #B8A0FF;
+    color: #00C4A0;
 }
 
-/* ── MADE BY ─────────────────────────────────── */
-.footer-made {
+/* ── COLONNE ─────────────────────────────────── */
+.footer-col {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+/* titolo colonna */
+.footer-col-title {
+    font-family: Georgia, serif;
+    font-size: 11px;
+    color: #F5F3FF;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    margin-bottom: 4px;
+    padding-bottom: 8px;
+    border-bottom: 0.5px solid #2a2240;
+}
+
+/* link colonna */
+.footer-link {
+    font-family: Georgia, serif;
+    font-size: 13px;
+    color: #A8A0C0;
+    text-decoration: none;
+    transition: color 0.25s ease;
+}
+
+.footer-link:hover {
+    color: #00C4A0;
+}
+
+/* nota +18 */
+.footer-18 {
+    font-size: 11px;
+    color: #A8A0C0;
+    line-height: 1.5;
+    margin-top: 8px;
+    padding-top: 8px;
+    border-top: 0.5px solid #2a2240;
+    font-style: italic;
+}
+
+/* ── BOTTOM — copyright ──────────────────────── */
+.footer-bottom {
+    background: #0C0A14;
+    padding: 16px 40px;
+    border-top: 0.5px solid #2a2240;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
     font-family: Georgia, serif;
     font-size: 12px;
-    color: #ffffff;
-    letter-spacing: 0.03em;
-    white-space: nowrap;
+    color: #A8A0C0;
 }
 
-/* ── RESPONSIVE MOBILE ───────────────────────── */
+/* ── RESPONSIVE ──────────────────────────────── */
 @media (max-width: 768px) {
     .footer {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .footer-brand {
+        grid-column: 1 / 3;
+    }
+}
+
+@media (max-width: 576px) {
+    .footer {
+        grid-template-columns: 1fr;
+        padding: 32px 16px;
+        gap: 32px;
+    }
+
+    .footer-brand {
+        grid-column: 1;
+    }
+
+    .footer-bottom {
         flex-direction: column;
-        gap: 16px;
-        padding: 24px 16px;
+        gap: 8px;
         text-align: center;
-    }
-
-    .footer-social {
-        gap: 20px;
-    }
-
-    .footer-copy,
-    .footer-made {
-        font-size: 11px;
-    }
-
-    .footer-social-link {
-        font-size: 11px;
+        padding: 16px;
     }
 }
