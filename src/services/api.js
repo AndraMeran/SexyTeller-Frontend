@@ -203,3 +203,9 @@ export async function uploadImage(formData) {
   })
   return response.json()
 }
+
+// ricerca globale — restituisce articoli e utenti in una sola chiamata
+export async function searchGlobal(query) {
+  const response = await fetch(`${BASE_URL}/api/search?q=${encodeURIComponent(query)}`)
+  return response.json()
+}

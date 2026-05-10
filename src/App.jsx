@@ -14,6 +14,7 @@ import Manifesto from "./pages/Manifesto"
 import Impostazioni from "./pages/Impostazioni"
 import Admin from "./pages/Admin"
 import ScrollToTop from "./components/ScrollToTop"
+import Cerca from "./pages/Cerca"
 
 // Route protetta — solo utenti loggati
 function PrivateRoute({ children }) {
@@ -75,6 +76,7 @@ function App() {
               </AdminRoute>
             }
           />
+          <Route path="/cerca" element={<Cerca />} />
         </Routes>
       </main>
       <MyFooter />

@@ -291,6 +291,28 @@
         width: 130px;
     }
 
+    /* ── SEARCH WRAPPER ──────────────────────────── */
+    .navbar-search-wrapper {
+        position: relative;
+        display: flex;
+        align-items: center;
+        margin-left: 12px;
+    }
+
+    .navbar-search-icon {
+        position: absolute;
+        left: 12px;
+        color: #A8A0C0;
+        font-size: 13px;
+        pointer-events: none;
+        /* la lente non è cliccabile */
+    }
+
+    .navbar-search {
+        padding-left: 32px;
+        /* spazio per la lente */
+    }
+
     /* ── HAMBURGER ── */
     .hamburger {
         background: none;
