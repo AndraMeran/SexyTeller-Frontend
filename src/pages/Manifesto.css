@@ -12,22 +12,20 @@
 
 /* ── CONTENUTO ───────────────────────────────── */
 /* max-width stretto (560px) per creare l'effetto colonna tipografica stile Kinfolk */
-/* testo centrato — tutto il manifesto è allineato al centro */
+
 .manifesto-content {
     max-width: 560px;
     width: 100%;
-    text-align: center;
+    text-align: left;
+    /* ← cambia da center a left */
 }
 
 /* ── LABEL ───────────────────────────────────── */
 /* piccola scritta sopra il titolo — stile editoriale */
 /* letter-spacing ampio per effetto tipografico */
 .manifesto-label {
-    font-size: 11px;
-    color: #A1A1AA;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    margin-bottom: 24px;
+    text-align: left;
+    color: #00D4B8;
 }
 
 /* ── TITOLO ──────────────────────────────────── */
@@ -35,12 +33,15 @@
 /* min: 40px su mobile, max: 72px su desktop, 6vw nel mezzo */
 /* gradiente sul testo — stesso effetto del logo in navbar */
 .manifesto-title {
-    font-family: Georgia, serif;
-    font-size: clamp(40px, 6vw, 72px);
+
+
+    font-family: 'Playfair Display', serif;
     font-weight: 700;
-    color: #F5F5F5;
+    font-size: 35px;
+    letter-spacing: 1px;
+    color: #ffffff;
     margin-bottom: 48px;
-    background: #00D4B8;
+    background: #ffffff;
     -webkit-background-clip: text;
     /* prefisso webkit per Chrome/Safari */
     background-clip: text;
@@ -62,16 +63,16 @@
     font-family: Georgia, serif;
     font-size: 18px;
     line-height: 1.7;
-    color: #D8D2EA;
+    color: #ffffff;
     font-weight: 400;
-    /* peso normale — nessun grassetto */
+    text-align: left;
 }
 
 .manifesto-chiusura {
     font-family: Georgia, serif;
     font-size: 18px;
     line-height: 1.7;
-    color: #D8D2EA;
+    color: #ffffff;
     font-weight: 400;
     /* peso normale — nessun grassetto */
 }
