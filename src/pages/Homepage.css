@@ -512,7 +512,7 @@
 
 /* Immagini del mosaico */
 
-.cat-stories {
+/*.cat-stories {
     background-image: url('/images/categorie/stories.jpeg');
     background-size: cover;
     background-position: right center;
@@ -520,6 +520,30 @@
 
 .cat-darkside {
     background-image: url('/images/categorie/darkside.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.cat-trends {
+    background-image: url('/images/categorie/trends.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.cat-voices {
+    background-image: url('/images/categorie/voices.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.cat-crossover {
+    background-image: url('/images/categorie/crossover.jpeg');
+    background-size: cover;
+    background-position: center;
+}
+
+.cat-decode {
+    background-image: url('/images/categorie/decode.jpeg');
     background-size: cover;
     background-position: center;
 }

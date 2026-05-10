@@ -49,7 +49,7 @@ function MyNavbar() {
                         <i className="bi bi-search navbar-search-icon"></i>
                         <input
                             type="text"
-                            placeholder="Cerca..."
+                            placeholder="Cerca qualsiasi cosa..."
                             className="navbar-search"
                             value={searchQuery}
                             onChange={(e) => setSearchQuery(e.target.value)}
