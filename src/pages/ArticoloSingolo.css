@@ -5,7 +5,7 @@
     padding: 80px 32px;
     font-family: Georgia, serif;
     font-size: 16px;
-    color: #A8A0C0;
+    color: #A1A1AA;
 }
 
 /* ── SCHERMATA 18+ ───────────────────────────── */
@@ -40,8 +40,8 @@
 }
 
 .sensitive-card {
-    background: #16121F;
-    border: 1px solid #2a2240;
+    background: #14111F;
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 16px;
     padding: 40px;
     max-width: 480px;
@@ -54,20 +54,20 @@
 .sensitive-card h2 {
     font-family: Georgia, serif;
     font-size: 24px;
-    color: #F5F3FF;
+    color: #F5F5F5;
     margin-bottom: 12px;
 }
 
 .sensitive-card p {
     font-size: 14px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     line-height: 1.6;
     margin-bottom: 12px;
 }
 
 .sensitive-quote {
     font-style: italic;
-    color: #B8A0FF !important;
+    color: #00D4B8 !important;
     margin: 20px 0 24px !important;
 }
 
@@ -77,7 +77,7 @@
     font-size: 15px;
     font-weight: 700;
     color: #0C0A14;
-    background: #00C4A0;
+    background: #00D4B8;
     border: none;
     padding: 14px 24px;
     border-radius: 999px;
@@ -93,7 +93,7 @@
 
 .sensitive-divider {
     font-size: 12px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     text-align: center;
     margin-bottom: 16px;
     position: relative;
@@ -106,7 +106,7 @@
     top: 50%;
     width: 40%;
     height: 0.5px;
-    background: #2a2240;
+    background: rgba(255,255,255,0.08);
 }
 
 .sensitive-divider::before {
@@ -129,9 +129,9 @@
     text-align: center;
     font-family: Georgia, serif;
     font-size: 14px;
-    color: #B8A0FF;
-    background: #1F1A2E;
-    border: 1px solid #B8A0FF;
+    color: #00D4B8;
+    background: #14111F;
+    border: 1px solid rgba(255,255,255,0.1);
     padding: 11px 24px;
     border-radius: 999px;
     text-decoration: none;
@@ -140,7 +140,7 @@
 }
 
 .btn-sensitive-login:hover {
-    background: rgba(184, 160, 255, 0.1);
+    background: rgba(0, 212, 184, 0.1);
 }
 
 .btn-sensitive-register {
@@ -148,9 +148,9 @@
     text-align: center;
     font-family: Georgia, serif;
     font-size: 14px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     background: none;
-    border: 1px solid #2a2240;
+    border: 1px solid rgba(255,255,255,0.08);
     padding: 11px 24px;
     border-radius: 999px;
     text-decoration: none;
@@ -159,13 +159,13 @@
 }
 
 .btn-sensitive-register:hover {
-    border-color: #B8A0FF;
-    color: #B8A0FF;
+    border-color: rgba(255,255,255,0.1);
+    color: #00D4B8;
 }
 
 .sensitive-disclaimer {
     font-size: 11px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     text-align: center;
     line-height: 1.5;
     margin-bottom: 4px;
@@ -176,20 +176,20 @@
     text-align: center;
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     text-decoration: none;
     margin-top: 16px;
     transition: color 0.25s ease;
 }
 
 .sensitive-back:hover {
-    color: #B8A0FF;
+    color: #00D4B8;
 }
 
 /* ── ARTICOLO PAGE ───────────────────────────── */
 .articolo-page {
     background: #0C0A14;
-    color: #F5F3FF;
+    color: #F5F5F5;
     min-height: 100vh;
 }
 
@@ -202,25 +202,25 @@
 
 .articolo-breadcrumb {
     font-size: 12px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     margin-bottom: 20px;
 }
 
 .articolo-breadcrumb a {
-    color: #A8A0C0;
+    color: #A1A1AA;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .articolo-breadcrumb a:hover {
-    color: #B8A0FF;
+    color: #00D4B8;
 }
 
 .articolo-badge {
     display: inline-block;
     font-size: 10px;
-    color: #00C4A0;
-    border: 1px solid #00C4A0;
+    color: #00D4B8;
+    border: 1px solid #00D4B8;
     border-radius: 999px;
     padding: 3px 10px;
     font-weight: 700;
@@ -233,8 +233,8 @@
 .articolo-badge-redazione {
     display: inline-block;
     font-size: 10px;
-    color: #B8A0FF;
-    border: 1px solid #B8A0FF;
+    color: #00D4B8;
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 999px;
     padding: 3px 10px;
     font-weight: 700;
@@ -248,7 +248,7 @@
     font-size: clamp(28px, 4vw, 48px);
     font-weight: 700;
     line-height: 1.15;
-    color: #F5F3FF;
+    color: #F5F5F5;
     margin-bottom: 24px;
 }
 
@@ -257,7 +257,7 @@
     font-family: Georgia, serif;
     font-size: 20px;
     font-style: italic;
-    color: #A8A0C0;
+    color: #A1A1AA;
     margin-bottom: 20px;
     line-height: 1.4;
 }
@@ -269,10 +269,10 @@
     gap: 12px;
     flex-wrap: wrap;
     padding: 16px 0;
-    border-top: 0.5px solid #2a2240;
-    border-bottom: 0.5px solid #2a2240;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
 }
 
 .meta-author {
@@ -285,7 +285,7 @@
     width: 32px;
     height: 32px;
     border-radius: 50%;
-    background: #B8A0FF;
+    background: #00D4B8;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -298,22 +298,22 @@
 .meta-author-name {
     font-size: 13px;
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
     text-decoration: none;
     transition: color 0.2s ease;
 }
 
 .meta-author-name:hover {
-    color: #00C4A0;
+    color: #00D4B8;
 }
 
 .meta-author-handle {
     font-size: 11px;
-    color: #A8A0C0;
+    color: #A1A1AA;
 }
 
 .meta-sep {
-    color: #2a2240;
+    color: rgba(255,255,255,0.08);
 }
 
 .meta-actions {
@@ -329,9 +329,9 @@
     gap: 6px;
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     background: none;
-    border: 1px solid #2a2240;
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 999px;
     padding: 6px 14px;
     cursor: pointer;
@@ -340,8 +340,8 @@
 
 .btn-like:hover,
 .btn-like.liked {
-    color: #FF4DA6;
-    border-color: #FF4DA6;
+    color: #D95D82;
+    border-color: #D95D82;
 }
 
 .btn-share {
@@ -350,9 +350,9 @@
     gap: 6px;
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #B8A0FF;
+    color: #00D4B8;
     background: none;
-    border: 1px solid #B8A0FF;
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 999px;
     padding: 6px 14px;
     cursor: pointer;
@@ -360,7 +360,7 @@
 }
 
 .btn-share:hover {
-    background: rgba(184, 160, 255, 0.1);
+    background: rgba(0, 212, 184, 0.1);
 }
 
 /* pulsante modifica — visibile solo all'autore */
@@ -370,9 +370,9 @@
     gap: 6px;
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #00C4A0;
+    color: #00D4B8;
     background: none;
-    border: 1px solid #00C4A0;
+    border: 1px solid #00D4B8;
     border-radius: 999px;
     padding: 6px 14px;
     text-decoration: none;
@@ -380,7 +380,7 @@
 }
 
 .btn-modifica-articolo:hover {
-    background: rgba(0, 196, 160, 0.1);
+    background: rgba(0, 212, 184, 0.1);
 }
 
 /* ── COPERTINA FULLWIDTH ─────────────────────── */
@@ -409,7 +409,7 @@
 /* ── COLONNA SINISTRA ────────────────────────── */
 .articolo-main {
     padding: 40px 48px;
-    border-right: 0.5px solid #2a2240;
+    border-right: 0.5px solid rgba(255,255,255,0.08);
 }
 
 /* ── CORPO ARTICOLO ──────────────────────────── */
@@ -435,7 +435,7 @@
 
 .articolo-body h2 {
     font-size: 24px;
-    color: #F5F3FF;
+    color: #F5F5F5;
     margin: 32px 0 16px;
     clear: both;
     /* evita sovrapposizioni con immagini floatate */
@@ -443,16 +443,16 @@
 
 .articolo-body h3 {
     font-size: 20px;
-    color: #F5F3FF;
+    color: #F5F5F5;
     margin: 24px 0 12px;
     clear: both;
 }
 
 .articolo-body blockquote {
-    border-left: 3px solid #B8A0FF;
+    border-left: 3px solid rgba(255,255,255,0.1);
     padding: 12px 20px;
     margin: 24px 0;
-    color: #A8A0C0;
+    color: #A1A1AA;
     font-style: italic;
     clear: both;
 }
@@ -501,7 +501,7 @@
 /* ── COMMENTI ────────────────────────────────── */
 /* clear: both evita sovrapposizioni con immagini floatate */
 .commenti-section {
-    border-top: 0.5px solid #2a2240;
+    border-top: 0.5px solid rgba(255,255,255,0.08);
     padding-top: 32px;
     clear: both;
 }
@@ -510,7 +510,7 @@
     font-family: Georgia, serif;
     font-size: 18px;
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
     margin-bottom: 24px;
 }
 
@@ -522,11 +522,11 @@
 }
 
 .commento-input {
-    background: #16121F;
-    border: 1px solid #2a2240;
+    background: #14111F;
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 10px;
     padding: 14px;
-    color: #F5F3FF;
+    color: #F5F5F5;
     font-family: Georgia, serif;
     font-size: 14px;
     resize: vertical;
@@ -535,16 +535,16 @@
 }
 
 .commento-input:focus {
-    border-color: #B8A0FF;
+    border-color: rgba(255,255,255,0.1);
 }
 
 .commento-input::placeholder {
-    color: #A8A0C0;
+    color: #A1A1AA;
 }
 
 .btn-commento {
     align-self: flex-end;
-    background: #00C4A0;
+    background: #00D4B8;
     color: #0C0A14;
     border: none;
     padding: 8px 20px;
@@ -563,19 +563,19 @@
 
 .commenti-login {
     font-size: 14px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     margin-bottom: 24px;
 }
 
 .commenti-login a {
-    color: #00C4A0;
+    color: #00D4B8;
     text-decoration: none;
     font-weight: 700;
 }
 
 .commento {
     padding: 16px 0;
-    border-bottom: 0.5px solid #2a2240;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
 }
 
 .commento-header {
@@ -588,12 +588,12 @@
 .commento-author {
     font-size: 13px;
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
 }
 
 .commento-date {
     font-size: 11px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     margin-left: auto;
 }
 
@@ -613,7 +613,7 @@
 .btn-like-comment {
     font-family: Georgia, serif;
     font-size: 12px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     background: none;
     border: none;
     cursor: pointer;
@@ -623,13 +623,13 @@
 
 .btn-like-comment:hover,
 .btn-like-comment.liked {
-    color: #FF4DA6;
+    color: #D95D82;
 }
 
 .btn-delete-comment {
     font-family: Georgia, serif;
     font-size: 12px;
-    color: #FF4DA6;
+    color: #D95D82;
     background: none;
     border: none;
     cursor: pointer;
@@ -650,15 +650,15 @@
 }
 
 .sidebar-card {
-    background: #16121F;
-    border: 0.5px solid #2a2240;
+    background: #14111F;
+    border: 0.5px solid rgba(255,255,255,0.08);
     border-radius: 12px;
     padding: 20px;
 }
 
 .sidebar-label {
     font-size: 10px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin-bottom: 14px;
@@ -676,7 +676,7 @@
     width: 44px;
     height: 44px;
     border-radius: 50%;
-    background: #B8A0FF;
+    background: #00D4B8;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -689,17 +689,17 @@
 .author-name {
     font-size: 14px;
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
 }
 
 .author-handle {
     font-size: 12px;
-    color: #A8A0C0;
+    color: #A1A1AA;
 }
 
 .author-bio {
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     line-height: 1.5;
     font-style: italic;
     margin-top: 8px;
@@ -710,7 +710,7 @@
     gap: 12px;
     text-decoration: none;
     padding: 12px 0;
-    border-bottom: 0.5px solid #2a2240;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
     transition: opacity 0.25s ease;
 }
 
@@ -728,12 +728,12 @@
     border-radius: 6px;
     object-fit: cover;
     flex-shrink: 0;
-    background: #2a2240;
+    background: rgba(255,255,255,0.08);
 }
 
 .sidebar-cat {
     font-size: 10px;
-    color: #00C4A0;
+    color: #00D4B8;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.06em;
@@ -743,14 +743,14 @@
 .sidebar-article-title {
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #F5F3FF;
+    color: #F5F5F5;
     line-height: 1.3;
     margin-bottom: 4px;
 }
 
 .sidebar-article-meta {
     font-size: 11px;
-    color: #A8A0C0;
+    color: #A1A1AA;
 }
 
 /* ── ARTICLE IMAGE WRAPPER nella sidebar ─────── */
@@ -775,7 +775,7 @@
 
     .articolo-main {
         border-right: none;
-        border-bottom: 0.5px solid #2a2240;
+        border-bottom: 0.5px solid rgba(255,255,255,0.08);
         padding: 32px 24px;
     }
 

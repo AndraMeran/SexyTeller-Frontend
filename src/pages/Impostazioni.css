@@ -2,7 +2,7 @@
   /* layout a due colonne — menu laterale + contenuto */
   .impostazioni-page {
       background: #0C0A14;
-      color: #F5F3FF;
+      color: #F5F5F5;
       min-height: 100vh;
       display: grid;
       grid-template-columns: 240px 1fr;
@@ -23,7 +23,7 @@
   .impostazioni-menu-title {
       font-family: Georgia, serif;
       font-size: 11px;
-      color: #A8A0C0;
+      color: #A1A1AA;
       text-transform: uppercase;
       letter-spacing: 0.12em;
       margin-bottom: 16px;
@@ -39,7 +39,7 @@
   .impostazioni-nav-item {
       font-family: Georgia, serif;
       font-size: 14px;
-      color: #A8A0C0;
+      color: #A1A1AA;
       background: none;
       border: none;
       text-align: left;
@@ -50,25 +50,25 @@
   }
 
   .impostazioni-nav-item:hover {
-      background: rgba(184, 160, 255, 0.08);
-      color: #B8A0FF;
+      background: rgba(0, 212, 184, 0.08);
+      color: #00D4B8;
   }
 
   /* voce attiva — evidenziata con gradiente leggero */
   .impostazioni-nav-item.active {
-      background: rgba(0, 196, 160, 0.08);
-      color: #00C4A0;
+      background: rgba(0, 212, 184, 0.08);
+      color: #00D4B8;
       font-weight: 600;
   }
 
   /* voce elimina account — rossa per indicare pericolo */
   .impostazioni-nav-item.danger {
-      color: #FF4DA6;
+      color: #D95D82;
   }
 
   .impostazioni-nav-item.danger:hover {
-      background: rgba(255, 77, 166, 0.08);
-      color: #FF4DA6;
+      background: rgba(217, 93, 130, 0.08);
+      color: #D95D82;
   }
 
   /* ── CONTENUTO ───────────────────────────────── */
@@ -81,44 +81,44 @@
       font-family: Georgia, serif;
       font-size: 20px;
       font-weight: 700;
-      color: #F5F3FF;
+      color: #F5F5F5;
       margin-bottom: 24px;
       padding-bottom: 12px;
-      border-bottom: 0.5px solid #2a2240;
+      border-bottom: 0.5px solid rgba(255,255,255,0.08);
   }
 
   /* titolo sezione elimina — rosso per indicare pericolo */
   .danger-title {
-      color: #FF4DA6;
+      color: #D95D82;
   }
 
   /* testo descrittivo nelle sezioni */
   .impostazioni-description {
       font-family: Georgia, serif;
       font-size: 14px;
-      color: #A8A0C0;
+      color: #A1A1AA;
       line-height: 1.6;
       margin-bottom: 24px;
   }
 
   /* ── MESSAGGI ────────────────────────────────── */
   .impostazioni-success {
-      color: #00C4A0;
+      color: #00D4B8;
       font-size: 13px;
       padding: 10px 16px;
-      border: 1px solid #00C4A0;
+      border: 1px solid #00D4B8;
       border-radius: 8px;
-      background: rgba(0, 196, 160, 0.08);
+      background: rgba(0, 212, 184, 0.08);
       margin-bottom: 20px;
   }
 
   .impostazioni-error {
-      color: #FF4DA6;
+      color: #D95D82;
       font-size: 13px;
       padding: 10px 16px;
-      border: 1px solid #FF4DA6;
+      border: 1px solid #D95D82;
       border-radius: 8px;
-      background: rgba(255, 77, 166, 0.08);
+      background: rgba(217, 93, 130, 0.08);
       margin-bottom: 20px;
   }
 
@@ -146,7 +146,7 @@
       height: 80px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid #2a2240;
+      border: 2px solid rgba(255,255,255,0.08);
   }
 
   /* placeholder avatar con iniziale del nome */
@@ -154,7 +154,7 @@
       width: 80px;
       height: 80px;
       border-radius: 50%;
-      background: #B8A0FF;
+      background: #00D4B8;
       display: flex;
       align-items: center;
       justify-content: center;
@@ -170,7 +170,7 @@
       height: 80px;
       object-fit: cover;
       border-radius: 8px;
-      border: 2px solid #2a2240;
+      border: 2px solid rgba(255,255,255,0.08);
   }
 
   /* placeholder cover */
@@ -178,17 +178,17 @@
       width: 200px;
       height: 80px;
       border-radius: 8px;
-      background: linear-gradient(135deg, #16121F, #2a2240);
-      border: 2px solid #2a2240;
+      background: linear-gradient(135deg, #14111F, rgba(255,255,255,0.08));
+      border: 2px solid rgba(255,255,255,0.08);
   }
 
   /* pulsante upload immagine — label che wrappa l'input file nascosto */
   .btn-upload-img {
       font-family: Georgia, serif;
       font-size: 12px;
-      color: #B8A0FF;
-      background: #1F1A2E;
-      border: 1px solid #B8A0FF;
+      color: #00D4B8;
+      background: #14111F;
+      border: 1px solid rgba(255,255,255,0.1);
       padding: 5px 14px;
       border-radius: 999px;
       cursor: pointer;
@@ -196,7 +196,7 @@
   }
 
   .btn-upload-img:hover {
-      background: rgba(184, 160, 255, 0.1);
+      background: rgba(0, 212, 184, 0.1);
   }
 
   /* ── FORM ────────────────────────────────────── */
@@ -215,7 +215,7 @@
   .form-group label {
       font-family: Georgia, serif;
       font-size: 12px;
-      color: #A8A0C0;
+      color: #A1A1AA;
       letter-spacing: 0.04em;
       text-transform: uppercase;
   }
@@ -225,9 +225,9 @@
   .impostazioni-textarea {
       background: transparent;
       border: none;
-      border-bottom: 1px solid #2a2240;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       padding: 10px 0;
-      color: #F5F3FF;
+      color: #F5F5F5;
       font-family: Georgia, serif;
       font-size: 15px;
       outline: none;
@@ -237,12 +237,12 @@
 
   .form-group input:focus,
   .impostazioni-textarea:focus {
-      border-bottom-color: #B8A0FF;
+      border-bottom-color: rgba(255,255,255,0.1);
   }
 
   /* input disabilitato — handle ed email non modificabili */
   .input-disabled {
-      color: #A8A0C0 !important;
+      color: #A1A1AA !important;
       cursor: not-allowed;
   }
 
@@ -254,7 +254,7 @@
   /* suggerimento sotto i campi */
   .form-hint {
       font-size: 12px;
-      color: #A8A0C0;
+      color: #A1A1AA;
       font-style: italic;
       line-height: 1.5;
   }
@@ -265,7 +265,7 @@
       font-family: Georgia, serif;
       font-size: 14px;
       color: #0C0A14;
-      background: #00C4A0;
+      background: #00D4B8;
       border: none;
       padding: 10px 24px;
       border-radius: 999px;
@@ -288,9 +288,9 @@
   .btn-delete {
       font-family: Georgia, serif;
       font-size: 14px;
-      color: #FF4DA6;
-      background: rgba(255, 77, 166, 0.08);
-      border: 1px solid #FF4DA6;
+      color: #D95D82;
+      background: rgba(217, 93, 130, 0.08);
+      border: 1px solid #D95D82;
       padding: 10px 24px;
       border-radius: 999px;
       cursor: pointer;
@@ -298,16 +298,16 @@
   }
 
   .btn-delete:hover {
-      background: rgba(255, 77, 166, 0.15);
+      background: rgba(217, 93, 130, 0.15);
   }
 
   /* pulsante annulla */
   .btn-annulla {
       font-family: Georgia, serif;
       font-size: 14px;
-      color: #A8A0C0;
+      color: #A1A1AA;
       background: none;
-      border: 1px solid #2a2240;
+      border: 1px solid rgba(255,255,255,0.08);
       padding: 10px 24px;
       border-radius: 999px;
       cursor: pointer;
@@ -315,14 +315,14 @@
   }
 
   .btn-annulla:hover {
-      border-color: #B8A0FF;
-      color: #B8A0FF;
+      border-color: rgba(255,255,255,0.1);
+      color: #00D4B8;
   }
 
   /* ── BADGE ───────────────────────────────────── */
   .badge-card {
-      background: #16121F;
-      border: 0.5px solid #2a2240;
+      background: #14111F;
+      border: 0.5px solid rgba(255,255,255,0.08);
       border-radius: 12px;
       padding: 24px;
       display: flex;
@@ -344,18 +344,18 @@
   }
 
   .badge-nuovo {
-      color: #A8A0C0;
-      border-color: #A8A0C0;
+      color: #A1A1AA;
+      border-color: #A1A1AA;
   }
 
   .badge-attivo {
-      color: #00C4A0;
-      border-color: #00C4A0;
+      color: #00D4B8;
+      border-color: #00D4B8;
   }
 
   .badge-in_evidenza {
-      color: #B8A0FF;
-      border-color: #B8A0FF;
+      color: #00D4B8;
+      border-color: rgba(255,255,255,0.1);
   }
 
   .badge-description {
@@ -367,8 +367,8 @@
 
   /* ── CONFERMA ELIMINAZIONE ───────────────────── */
   .delete-confirm {
-      background: rgba(255, 77, 166, 0.05);
-      border: 1px solid rgba(255, 77, 166, 0.3);
+      background: rgba(217, 93, 130, 0.05);
+      border: 1px solid rgba(217, 93, 130, 0.3);
       border-radius: 12px;
       padding: 24px;
       display: flex;
@@ -384,7 +384,7 @@
   }
 
   .delete-confirm strong {
-      color: #FF4DA6;
+      color: #D95D82;
   }
 
   .delete-confirm-actions {

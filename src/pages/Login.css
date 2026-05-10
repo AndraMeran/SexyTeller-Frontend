@@ -21,12 +21,12 @@
     font-family: Georgia, serif;
     font-size: 36px;
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
     margin-bottom: 8px;
 }
 
 .auth-sub {
-    color: #A8A0C0;
+    color: #A1A1AA;
     font-size: 15px;
     margin-bottom: 36px;
 }
@@ -48,7 +48,7 @@
 .form-group label {
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #F5F3FF !important;
+    color: #F5F5F5 !important;
     ;
     letter-spacing: 0.03em;
 }
@@ -56,9 +56,9 @@
 .form-group input {
     background: transparent;
     border: none;
-    border-bottom: 1px solid #2a2240;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
     padding: 10px 0;
-    color: #F5F3FF;
+    color: #F5F5F5;
     font-family: Georgia, serif;
     font-size: 15px;
     outline: none;
@@ -66,17 +66,17 @@
 }
 
 .form-group input:focus {
-    border-bottom-color: #B8A0FF;
+    border-bottom-color: rgba(255,255,255,0.1);
 }
 
 .form-group input::placeholder {
-    color: #A8A0C0;
+    color: #A1A1AA;
 }
 
 /* ── PULSANTI ────────────────────────────────── */
 .btn-auth {
     margin-top: 8px;
-    background: #00C4A0;
+    background: #00D4B8;
     color: #0C0A14;
     border: none;
     padding: 12px 24px;
@@ -102,8 +102,8 @@
 .btn-google {
     margin-top: 12px;
     background: transparent;
-    color: #B8A0FF;
-    border: 1px solid #B8A0FF;
+    color: #00D4B8;
+    border: 1px solid rgba(255,255,255,0.1);
     padding: 11px 24px;
     border-radius: 999px;
     font-family: Georgia, serif;
@@ -115,37 +115,37 @@
 }
 
 .btn-google:hover {
-    background: rgba(184, 160, 255, 0.1);
-    color: #F5F3FF;
+    background: rgba(0, 212, 184, 0.1);
+    color: #F5F5F5;
 }
 
 /* ── ERRORE ──────────────────────────────────── */
 .auth-error {
-    color: #FF4DA6;
+    color: #D95D82;
     font-size: 13px;
     margin-bottom: 16px;
     padding: 10px 16px;
-    border: 1px solid #FF4DA6;
+    border: 1px solid #D95D82;
     border-radius: 8px;
-    background: rgba(255, 77, 166, 0.08);
+    background: rgba(217, 93, 130, 0.08);
 }
 
 /* ── SWITCH ──────────────────────────────────── */
 .auth-switch {
     margin-top: 24px;
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     text-align: center;
 }
 
 .auth-switch a {
-    color: #00C4A0;
+    color: #00D4B8;
     text-decoration: none;
     font-weight: 700;
 }
 
 .auth-switch a:hover {
-    color: #B8A0FF;
+    color: #00D4B8;
 }
 
 /* ── QUOTE SIDE ──────────────────────────────── */
@@ -154,7 +154,7 @@
     align-items: center;
     justify-content: center;
     padding: 60px 48px;
-    border-left: 0.5px solid #2a2240;
+    border-left: 0.5px solid rgba(255,255,255,0.08);
     background: linear-gradient(145deg, #12101d, #08070c);
 }
 
@@ -162,7 +162,7 @@
     font-family: Georgia, serif;
     font-size: 28px;
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
     line-height: 1.4;
     text-align: center;
     max-width: 320px;
@@ -189,13 +189,13 @@
     cursor: pointer;
     font-size: 16px;
     padding: 4px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     transition: color 0.25s ease;
     line-height: 1;
 }
 
 .btn-toggle-password:hover {
-    color: #B8A0FF;
+    color: #00D4B8;
 }
 
 /* ── RESPONSIVE ──────────────────────────────── */

@@ -5,13 +5,13 @@
     padding: 80px 32px;
     font-family: Georgia, serif;
     font-size: 16px;
-    color: #A8A0C0;
+    color: #A1A1AA;
 }
 
 /* ── PAGINA ──────────────────────────────────── */
 .profilo-page {
     background: #0C0A14;
-    color: #F5F3FF;
+    color: #F5F5F5;
     min-height: 100vh;
 }
 
@@ -34,7 +34,7 @@
 .profilo-cover-placeholder {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #16121F, #2a2240);
+    background: linear-gradient(135deg, #14111F, rgba(255,255,255,0.08));
 }
 
 /* ── PROFILO INFO ────────────────────────────── */
@@ -50,7 +50,7 @@
     gap: 24px;
     align-items: flex-start;
     padding-bottom: 24px;
-    border-bottom: 0.5px solid #2a2240;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
 }
 
 /* ── AVATAR ──────────────────────────────────── */
@@ -74,7 +74,7 @@
     width: 96px;
     height: 96px;
     border-radius: 50%;
-    background: #B8A0FF;
+    background: #00D4B8;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -106,13 +106,13 @@
     font-family: Georgia, serif;
     font-size: 24px;
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
     margin-bottom: 4px;
 }
 
 .profilo-handle {
     font-size: 14px;
-    color: #A8A0C0;
+    color: #A1A1AA;
 }
 
 /* ── AZIONI ──────────────────────────────────── */
@@ -136,20 +136,20 @@
 
 /* nuovo → grigio */
 .badge-nuovo {
-    color: #A8A0C0;
-    border-color: #A8A0C0;
+    color: #A1A1AA;
+    border-color: #A1A1AA;
 }
 
 /* attivo → verde smeraldo */
 .badge-attivo {
-    color: #00C4A0;
-    border-color: #00C4A0;
+    color: #00D4B8;
+    border-color: #00D4B8;
 }
 
 /* in_evidenza → lavanda */
 .badge-in_evidenza {
-    color: #B8A0FF;
-    border-color: #B8A0FF;
+    color: #00D4B8;
+    border-color: rgba(255,255,255,0.1);
 }
 
 /* pulsante Segui — placeholder, non ha funzionalità reale */
@@ -157,7 +157,7 @@
     font-family: Georgia, serif;
     font-size: 13px;
     color: #0C0A14;
-    background: #00C4A0;
+    background: #00D4B8;
     border: none;
     padding: 7px 20px;
     border-radius: 999px;
@@ -174,9 +174,9 @@
 .btn-modifica {
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #B8A0FF;
-    background: #1F1A2E;
-    border: 1px solid #B8A0FF;
+    color: #00D4B8;
+    background: #14111F;
+    border: 1px solid rgba(255,255,255,0.1);
     padding: 6px 18px;
     border-radius: 999px;
     text-decoration: none;
@@ -184,7 +184,7 @@
 }
 
 .btn-modifica:hover {
-    background: rgba(184, 160, 255, 0.1);
+    background: rgba(0, 212, 184, 0.1);
 }
 
 /* ── BIO ─────────────────────────────────────── */
@@ -193,7 +193,7 @@
     font-family: Georgia, serif;
     font-size: 15px;
     font-style: italic;
-    color: #A8A0C0;
+    color: #A1A1AA;
     margin-bottom: 16px;
     line-height: 1.5;
 }
@@ -216,12 +216,12 @@
     font-family: Georgia, serif;
     font-size: 20px;
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
 }
 
 .stat-label {
     font-size: 11px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
@@ -238,7 +238,7 @@
 .profilo-tabs {
     display: flex;
     gap: 0;
-    border-bottom: 0.5px solid #2a2240;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
     margin-bottom: 32px;
 }
 
@@ -246,7 +246,7 @@
 .profilo-tab {
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     background: none;
     border: none;
     padding: 12px 20px;
@@ -264,16 +264,16 @@
     left: 0;
     width: 0;
     height: 2px;
-    background: #B8A0FF;
+    background: #00D4B8;
     transition: width 0.3s ease;
 }
 
 .profilo-tab:hover {
-    color: #B8A0FF;
+    color: #00D4B8;
 }
 
 .profilo-tab.active {
-    color: #00C4A0;
+    color: #00D4B8;
     font-weight: 600;
 }
 
@@ -291,7 +291,7 @@
 
 .profilo-empty {
     text-align: center;
-    color: #A8A0C0;
+    color: #A1A1AA;
     font-family: Georgia, serif;
     font-size: 15px;
     padding: 40px 0;
@@ -306,8 +306,8 @@
 
 /* card articolo — link cliccabile */
 .profilo-article-card {
-    background: #16121F;
-    border: 0.5px solid #2a2240;
+    background: #14111F;
+    border: 0.5px solid rgba(255,255,255,0.08);
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
@@ -315,7 +315,7 @@
 }
 
 .profilo-article-card:hover {
-    border-color: #B8A0FF;
+    border-color: rgba(255,255,255,0.1);
 }
 
 /* immagine copertina dell'articolo */
@@ -335,7 +335,7 @@
     align-items: center;
     gap: 8px;
     font-size: 10px;
-    color: #00C4A0;
+    color: #00D4B8;
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -345,9 +345,9 @@
 /* badge SENSIBILE — appare solo se isSensitive: true */
 .badge-sensitive {
     font-size: 9px;
-    background: rgba(255, 77, 166, 0.15);
-    color: #FF4DA6;
-    border: 1px solid #FF4DA6;
+    background: rgba(217, 93, 130, 0.15);
+    color: #D95D82;
+    border: 1px solid #D95D82;
     padding: 2px 6px;
     border-radius: 999px;
 }
@@ -356,14 +356,14 @@
     font-family: Georgia, serif;
     font-size: 16px;
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
     line-height: 1.3;
     margin-bottom: 8px;
 }
 
 .profilo-article-meta {
     font-size: 11px;
-    color: #A8A0C0;
+    color: #A1A1AA;
 }
 
 /* ── ARTICLE IMAGE WRAPPER ───────────────────── */

@@ -1,7 +1,7 @@
 /* ── PAGINA ──────────────────────────────────── */
 .categoria-page {
     background: #0C0A14;
-    color: #F5F3FF;
+    color: #F5F5F5;
     min-height: 100vh;
 }
 
@@ -13,14 +13,14 @@
     padding: 60px 32px;
     font-family: Georgia, serif;
     font-size: 16px;
-    color: #A8A0C0;
+    color: #A1A1AA;
 }
 
 /* ── HEADER CATEGORIA ────────────────────────── */
 .categoria-header {
     text-align: center;
     padding: 56px 32px 40px;
-    border-bottom: 0.5px solid #2a2240;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
     position: relative;
     overflow: hidden;
     background-size: cover;
@@ -79,7 +79,7 @@
     font-family: Georgia, serif;
     font-size: clamp(28px, 4vw, 48px);
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
     margin-bottom: 8px;
     text-transform: uppercase;
     letter-spacing: 0.08em;
@@ -87,7 +87,7 @@
 
 .categoria-verbo {
     font-size: 12px;
-    color: #00C4A0;
+    color: #00D4B8;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     font-weight: 700;
@@ -101,7 +101,7 @@
 .categoria-descrizione {
     font-family: Georgia, serif;
     font-size: 16px;
-    color: #F5F3FF;
+    color: #F5F5F5;
     max-width: 560px;
     margin: 0 auto;
     line-height: 1.6;
@@ -113,7 +113,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px 32px;
-    border-bottom: 0.5px solid #2a2240;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
     flex-wrap: wrap;
     gap: 12px;
 }
@@ -128,9 +128,9 @@
 .filtro-btn {
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     background: none;
-    border: 1px solid #2a2240;
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 999px;
     padding: 6px 16px;
     cursor: pointer;
@@ -138,13 +138,13 @@
 }
 
 .filtro-btn:hover {
-    border-color: #B8A0FF;
-    color: #B8A0FF;
+    border-color: rgba(255,255,255,0.1);
+    color: #00D4B8;
 }
 
 /* filtro attivo */
 .filtro-btn.active {
-    background: #00C4A0;
+    background: #00D4B8;
     color: #0C0A14;
     border-color: transparent;
     font-weight: 700;
@@ -152,7 +152,7 @@
 
 .categoria-count {
     font-size: 12px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     letter-spacing: 0.04em;
 }
 
@@ -168,7 +168,7 @@
 /* ── FEED ARTICOLI ───────────────────────────── */
 .categoria-feed {
     padding: 32px;
-    border-right: 0.5px solid #2a2240;
+    border-right: 0.5px solid rgba(255,255,255,0.08);
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -179,8 +179,8 @@
     display: grid;
     grid-template-columns: 200px 1fr;
     gap: 20px;
-    background: #16121F;
-    border: 0.5px solid #2a2240;
+    background: #14111F;
+    border: 0.5px solid rgba(255,255,255,0.08);
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
@@ -188,7 +188,7 @@
 }
 
 .categoria-card:hover {
-    border-color: #B8A0FF;
+    border-color: rgba(255,255,255,0.1);
 }
 
 /* immagine copertina della card */
@@ -215,8 +215,8 @@
 
 .badge-cat {
     font-size: 10px;
-    color: #00C4A0;
-    border: 1px solid #00C4A0;
+    color: #00D4B8;
+    border: 1px solid #00D4B8;
     border-radius: 999px;
     padding: 2px 8px;
     font-weight: 700;
@@ -226,8 +226,8 @@
 
 .badge-redazione {
     font-size: 10px;
-    color: #B8A0FF;
-    border: 1px solid #B8A0FF;
+    color: #00D4B8;
+    border: 1px solid rgba(255,255,255,0.1);
     border-radius: 999px;
     padding: 2px 8px;
     font-weight: 700;
@@ -237,9 +237,9 @@
 
 .badge-featured {
     font-size: 10px;
-    color: #00C4A0;
-    background: rgba(0, 196, 160, 0.1);
-    border: 1px solid #00C4A0;
+    color: #00D4B8;
+    background: rgba(0, 212, 184, 0.1);
+    border: 1px solid #00D4B8;
     border-radius: 999px;
     padding: 2px 8px;
     font-weight: 700;
@@ -249,9 +249,9 @@
 
 .badge-sensitive {
     font-size: 10px;
-    color: #FF4DA6;
-    background: rgba(255, 77, 166, 0.1);
-    border: 1px solid #FF4DA6;
+    color: #D95D82;
+    background: rgba(217, 93, 130, 0.1);
+    border: 1px solid #D95D82;
     border-radius: 999px;
     padding: 2px 8px;
     font-weight: 700;
@@ -263,7 +263,7 @@
     font-family: Georgia, serif;
     font-size: 18px;
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
     line-height: 1.3;
 }
 
@@ -273,13 +273,13 @@
     align-items: center;
     gap: 8px;
     font-size: 12px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     flex-wrap: wrap;
     margin-top: auto;
 }
 
 .categoria-card-author {
-    color: #B8A0FF;
+    color: #00D4B8;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.2s ease;
@@ -287,7 +287,7 @@
 }
 
 .categoria-card-author:hover {
-    color: #00C4A0;
+    color: #00D4B8;
 }
 
 /* ── PAGINAZIONE ─────────────────────────────── */
@@ -302,9 +302,9 @@
 .pag-btn {
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     background: none;
-    border: 1px solid #2a2240;
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 8px;
     padding: 6px 12px;
     cursor: pointer;
@@ -312,12 +312,12 @@
 }
 
 .pag-btn:hover {
-    border-color: #B8A0FF;
-    color: #B8A0FF;
+    border-color: rgba(255,255,255,0.1);
+    color: #00D4B8;
 }
 
 .pag-btn.active {
-    background: #00C4A0;
+    background: #00D4B8;
     color: #0C0A14;
     border-color: transparent;
     font-weight: 700;
@@ -353,12 +353,12 @@
 .citazione-line {
     width: 32px;
     height: 1px;
-    background: #B8A0FF;
+    background: #00D4B8;
 }
 
 .citazione-autore {
     font-size: 11px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 600;
@@ -385,7 +385,7 @@
 
     .categoria-sidebar {
         position: static;
-        border-top: 0.5px solid #2a2240;
+        border-top: 0.5px solid rgba(255,255,255,0.08);
         padding: 32px 24px;
     }
 

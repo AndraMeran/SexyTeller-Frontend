@@ -2,7 +2,7 @@
 /* flexbox centrato — il contenuto è al centro sia orizzontalmente che verticalmente */
 .manifesto-page {
     background: #0C0A14;
-    color: #F5F3FF;
+    color: #F5F5F5;
     min-height: 100vh;
     display: flex;
     align-items: center;
@@ -24,7 +24,7 @@
 /* letter-spacing ampio per effetto tipografico */
 .manifesto-label {
     font-size: 11px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     letter-spacing: 0.12em;
     text-transform: uppercase;
     margin-bottom: 24px;
@@ -38,9 +38,9 @@
     font-family: Georgia, serif;
     font-size: clamp(40px, 6vw, 72px);
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
     margin-bottom: 48px;
-    background: #B8A0FF;
+    background: #00D4B8;
     -webkit-background-clip: text;
     /* prefisso webkit per Chrome/Safari */
     background-clip: text;

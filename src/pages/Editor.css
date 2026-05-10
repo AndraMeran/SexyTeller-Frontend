@@ -1,7 +1,7 @@
 /* ── EDITOR PAGE ─────────────────────────────── */
 .editor-page {
     background: #0C0A14;
-    color: #F5F3FF;
+    color: #F5F5F5;
     min-height: 100vh;
     padding: 0 0 60px;
 }
@@ -12,7 +12,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 16px 32px;
-    border-bottom: 0.5px solid #2a2240;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
     background: #0C0A14;
     position: sticky;
     top: 0;
@@ -21,7 +21,7 @@
 
 .editor-draft {
     font-size: 12px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     font-family: Georgia, serif;
 }
 
@@ -34,9 +34,9 @@
 .btn-anteprima {
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #B8A0FF;
-    background: #1F1A2E;
-    border: 1px solid #B8A0FF;
+    color: #00D4B8;
+    background: #14111F;
+    border: 1px solid rgba(255,255,255,0.1);
     padding: 7px 18px;
     border-radius: 999px;
     cursor: pointer;
@@ -44,7 +44,7 @@
 }
 
 .btn-anteprima:hover {
-    background: rgba(184, 160, 255, 0.1);
+    background: rgba(0, 212, 184, 0.1);
 }
 
 .btn-anteprima:disabled {
@@ -56,7 +56,7 @@
     font-family: Georgia, serif;
     font-size: 13px;
     color: #0C0A14;
-    background: #00C4A0;
+    background: #00D4B8;
     border: none;
     padding: 8px 20px;
     border-radius: 999px;
@@ -78,10 +78,10 @@
 
 /* ── ERRORE ──────────────────────────────────── */
 .editor-error {
-    color: #FF4DA6;
+    color: #D95D82;
     font-size: 13px;
     padding: 12px 32px;
-    border-bottom: 0.5px solid #FF4DA6;
+    border-bottom: 0.5px solid #D95D82;
 }
 
 /* ── LAYOUT ──────────────────────────────────── */
@@ -102,7 +102,7 @@
 .step-label {
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     letter-spacing: 0.06em;
     margin-bottom: 16px;
     text-transform: uppercase;
@@ -116,8 +116,8 @@
 }
 
 .cat-btn {
-    background: #16121F;
-    border: 1px solid #2a2240;
+    background: #14111F;
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 10px;
     padding: 16px;
     cursor: pointer;
@@ -129,24 +129,24 @@
 }
 
 .cat-btn:hover {
-    border-color: #B8A0FF;
+    border-color: rgba(255,255,255,0.1);
 }
 
 .cat-btn.active {
-    border-color: #00C4A0;
-    background: rgba(0, 196, 160, 0.08);
+    border-color: #00D4B8;
+    background: rgba(0, 212, 184, 0.08);
 }
 
 .cat-btn-nome {
     font-family: Georgia, serif;
     font-size: 15px;
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
 }
 
 .cat-btn-verbo {
     font-size: 11px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     text-transform: uppercase;
     letter-spacing: 0.06em;
 }
@@ -156,17 +156,17 @@
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: 1px solid #2a2240;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
     padding: 12px 0;
     font-family: Georgia, serif;
     font-size: 28px;
-    color: #F5F3FF;
+    color: #F5F5F5;
     outline: none;
     transition: border-color 0.25s ease;
 }
 
 .editor-titolo:focus {
-    border-bottom-color: #B8A0FF;
+    border-bottom-color: rgba(255,255,255,0.1);
 }
 
 .editor-titolo::placeholder {
@@ -177,7 +177,7 @@
     padding: 10px 0;
     font-family: Georgia, serif;
     font-size: 20px;
-    color: #2a2240;
+    color: rgba(255,255,255,0.08);
     outline: none;
     transition: border-color 0.25s ease;
     font-style: italic;
@@ -188,22 +188,22 @@
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: 1px solid #2a2240;
+    border-bottom: 1px solid rgba(255,255,255,0.08);
     padding: 10px 0;
     font-family: Georgia, serif;
     font-size: 20px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     outline: none;
     transition: border-color 0.25s ease;
     font-style: italic;
 }
 
 .editor-sottotitolo:focus {
-    border-bottom-color: #B8A0FF;
+    border-bottom-color: rgba(255,255,255,0.1);
 }
 
 .editor-sottotitolo::placeholder {
-    color: #2a2240;
+    color: rgba(255,255,255,0.08);
 }
 
 /* ── UPLOAD IMMAGINE ─────────────────────────── */
@@ -211,19 +211,19 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px dashed #2a2240;
+    border: 1px dashed rgba(255,255,255,0.08);
     border-radius: 10px;
     padding: 40px;
     cursor: pointer;
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     transition: border-color 0.25s ease, color 0.25s ease;
 }
 
 .upload-area:hover {
-    border-color: #B8A0FF;
-    color: #B8A0FF;
+    border-color: rgba(255,255,255,0.1);
+    color: #00D4B8;
 }
 
 .cover-preview {
@@ -244,8 +244,8 @@
     top: 12px;
     right: 12px;
     background: rgba(12, 10, 20, 0.8);
-    color: #FF4DA6;
-    border: 1px solid #FF4DA6;
+    color: #D95D82;
+    border: 1px solid #D95D82;
     padding: 5px 12px;
     border-radius: 999px;
     font-size: 12px;
@@ -264,9 +264,9 @@
     gap: 8px;
     font-family: Georgia, serif;
     font-size: 12px;
-    color: #B8A0FF;
-    background: #1F1A2E;
-    border: 1px solid #B8A0FF;
+    color: #00D4B8;
+    background: #14111F;
+    border: 1px solid rgba(255,255,255,0.1);
     padding: 6px 16px;
     border-radius: 999px;
     cursor: pointer;
@@ -274,27 +274,27 @@
 }
 
 .btn-body-image:hover {
-    background: rgba(184, 160, 255, 0.1);
+    background: rgba(0, 212, 184, 0.1);
 }
 
 .body-image-hint {
     font-size: 11px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     margin-left: 12px;
     font-style: italic;
 }
 
 /* ── MD EDITOR ────────────────────────────── */
 .w-md-editor {
-    background: #16121F !important;
-    border: 1px solid #2a2240 !important;
+    background: #14111F !important;
+    border: 1px solid rgba(255,255,255,0.08) !important;
     border-radius: 8px !important;
-    color: #F5F3FF !important;
+    color: #F5F5F5 !important;
 }
 
 .w-md-editor-text-pre>code,
 .w-md-editor-text-input {
-    color: #F5F3FF !important;
+    color: #F5F5F5 !important;
     font-family: Georgia, serif !important;
     font-size: 16px !important;
 }
@@ -307,15 +307,15 @@
 }
 
 .sidebar-card {
-    background: #16121F;
-    border: 0.5px solid #2a2240;
+    background: #14111F;
+    border: 0.5px solid rgba(255,255,255,0.08);
     border-radius: 10px;
     padding: 16px;
 }
 
 .sidebar-label {
     font-size: 10px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     text-transform: uppercase;
     letter-spacing: 0.08em;
     margin-bottom: 10px;
@@ -325,7 +325,7 @@
     font-family: Georgia, serif;
     font-size: 18px;
     font-weight: 700;
-    color: #00C4A0;
+    color: #00D4B8;
 }
 
 /* ── CHECKLIST ───────────────────────────────── */
@@ -338,12 +338,12 @@
 
 .checklist li {
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     transition: color 0.25s ease;
 }
 
 .checklist li.done {
-    color: #00C4A0;
+    color: #00D4B8;
 }
 
 /* ── SENSIBILE ───────────────────────────────── */
@@ -353,13 +353,13 @@
     gap: 10px;
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #F5F3FF;
+    color: #F5F5F5;
     cursor: pointer;
 }
 
 .sensitive-note {
     font-size: 12px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     margin-top: 10px;
     line-height: 1.5;
 }
@@ -368,7 +368,7 @@
 .sidebar-guida p {
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #F5F3FF;
+    color: #F5F5F5;
     font-style: italic;
     margin-bottom: 12px;
 }
@@ -382,16 +382,16 @@
 
 .sidebar-guida ul li {
     font-size: 12px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     padding-left: 12px;
-    border-left: 2px solid #2a2240;
+    border-left: 2px solid rgba(255,255,255,0.08);
 }
 
 /* ── ANTEPRIMA ───────────────────────────────── */
 .editor-anteprima {
     background: #0C0A14;
     min-height: 100vh;
-    color: #F5F3FF;
+    color: #F5F5F5;
 }
 
 .anteprima-bar {
@@ -399,15 +399,15 @@
     align-items: center;
     gap: 16px;
     padding: 16px 32px;
-    border-bottom: 0.5px solid #2a2240;
+    border-bottom: 0.5px solid rgba(255,255,255,0.08);
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
 }
 
 .btn-back {
     background: none;
     border: none;
-    color: #B8A0FF;
+    color: #00D4B8;
     font-family: Georgia, serif;
     font-size: 13px;
     cursor: pointer;
@@ -429,7 +429,7 @@
 
 .anteprima-cat {
     font-size: 11px;
-    color: #00C4A0;
+    color: #00D4B8;
     text-transform: uppercase;
     letter-spacing: 0.1em;
     font-weight: 700;
@@ -446,7 +446,7 @@
 
 .anteprima-meta {
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     margin-bottom: 32px;
     display: flex;
     align-items: center;
@@ -457,9 +457,9 @@
 
 .badge-sensitive {
     font-size: 10px;
-    background: rgba(255, 77, 166, 0.15);
-    color: #FF4DA6;
-    border: 1px solid #FF4DA6;
+    background: rgba(217, 93, 130, 0.15);
+    color: #D95D82;
+    border: 1px solid #D95D82;
     padding: 2px 8px;
     border-radius: 999px;
 }
@@ -481,14 +481,14 @@
 
 .anteprima-body h2 {
     font-size: 24px;
-    color: #F5F3FF;
+    color: #F5F5F5;
     margin: 32px 0 16px;
 }
 
 .anteprima-body blockquote {
-    border-left: 3px solid #B8A0FF;
+    border-left: 3px solid rgba(255,255,255,0.1);
     padding-left: 20px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     font-style: italic;
     margin: 24px 0;
 }
@@ -508,11 +508,11 @@
     z-index: 1000;
     min-width: 280px;
     font-size: 13px;
-    color: #00C4A0;
+    color: #00D4B8;
     padding: 10px 16px;
-    border: 1px solid #00C4A0;
+    border: 1px solid #00D4B8;
     border-radius: 8px;
-    background: rgba(0, 196, 160, 0.08);
+    background: rgba(0, 212, 184, 0.08);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
     animation: slideIn 0.3s ease;
 }
@@ -524,11 +524,11 @@
     z-index: 1000;
     min-width: 280px;
     font-size: 13px;
-    color: #FF4DA6;
+    color: #D95D82;
     padding: 10px 16px;
-    border: 1px solid #FF4DA6;
+    border: 1px solid #D95D82;
     border-radius: 8px;
-    background: rgba(255, 77, 166, 0.08);
+    background: rgba(217, 93, 130, 0.08);
     box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
     animation: slideIn 0.3s ease;
 }
@@ -540,8 +540,8 @@
     align-items: center;
     gap: 4px;
     flex-wrap: wrap;
-    background: #16121F;
-    border: 1px solid #2a2240;
+    background: #14111F;
+    border: 1px solid rgba(255,255,255,0.08);
     border-bottom: none;
     border-radius: 8px 8px 0 0;
     padding: 8px 12px;
@@ -551,7 +551,7 @@
 .toolbar-btn {
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     background: none;
     border: 1px solid transparent;
     border-radius: 6px;
@@ -562,31 +562,31 @@
 }
 
 .toolbar-btn:hover {
-    background: rgba(184, 160, 255, 0.08);
-    color: #B8A0FF;
-    border-color: #2a2240;
+    background: rgba(0, 212, 184, 0.08);
+    color: #00D4B8;
+    border-color: rgba(255,255,255,0.08);
 }
 
 /* pulsante attivo — formato applicato */
 .toolbar-btn.active {
-    background: rgba(0, 196, 160, 0.1);
-    color: #00C4A0;
-    border-color: #00C4A0;
+    background: rgba(0, 212, 184, 0.1);
+    color: #00D4B8;
+    border-color: #00D4B8;
 }
 
 /* separatore verticale tra gruppi di pulsanti */
 .toolbar-sep {
     width: 1px;
     height: 20px;
-    background: #2a2240;
+    background: rgba(255,255,255,0.08);
     margin: 0 4px;
 }
 
 /* ── TIPTAP EDITOR ───────────────────────────── */
 /* area di scrittura */
 .tiptap-editor {
-    background: #16121F;
-    border: 1px solid #2a2240;
+    background: #14111F;
+    border: 1px solid rgba(255,255,255,0.08);
     border-radius: 0 0 8px 8px;
     min-height: 400px;
     cursor: text;
@@ -600,13 +600,13 @@
     font-family: Georgia, serif;
     font-size: 16px;
     line-height: 1.8;
-    color: #F5F3FF;
+    color: #F5F5F5;
 }
 
 /* placeholder — testo grigio quando l'editor è vuoto */
 .tiptap-editor .ProseMirror p.is-editor-empty:first-child::before {
     content: attr(data-placeholder);
-    color: #A8A0C0;
+    color: #A1A1AA;
     font-style: italic;
     pointer-events: none;
     float: left;
@@ -617,14 +617,14 @@
 .tiptap-editor .ProseMirror h2 {
     font-size: 24px;
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
     margin: 24px 0 12px;
 }
 
 .tiptap-editor .ProseMirror h3 {
     font-size: 20px;
     font-weight: 700;
-    color: #F5F3FF;
+    color: #F5F5F5;
     margin: 20px 0 10px;
 }
 
@@ -633,10 +633,10 @@
 }
 
 .tiptap-editor .ProseMirror blockquote {
-    border-left: 3px solid #B8A0FF;
+    border-left: 3px solid rgba(255,255,255,0.1);
     padding: 8px 16px;
     margin: 16px 0;
-    color: #A8A0C0;
+    color: #A1A1AA;
     font-style: italic;
 }
 
@@ -692,13 +692,13 @@
 /* stili per il corpo dell'articolo quando viene mostrato come HTML */
 .anteprima-body h2 {
     font-size: 24px;
-    color: #F5F3FF;
+    color: #F5F5F5;
     margin: 32px 0 16px;
 }
 
 .anteprima-body h3 {
     font-size: 20px;
-    color: #F5F3FF;
+    color: #F5F5F5;
     margin: 24px 0 12px;
 }
 
@@ -851,8 +851,8 @@
 .cat-descrizione-box {
     margin-top: 16px;
     margin-bottom: 40px;
-    background: rgba(0, 196, 160, 0.06);
-    border: 1px solid rgba(0, 196, 160, 0.3);
+    background: rgba(0, 212, 184, 0.06);
+    border: 1px solid rgba(0, 212, 184, 0.3);
     border-radius: 10px;
     padding: 16px 20px;
     animation: fadeIn 0.3s ease;
@@ -862,12 +862,12 @@
 .cat-descrizione-titolo {
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #A8A0C0;
+    color: #A1A1AA;
     margin-bottom: 8px;
 }
 
 .cat-descrizione-titolo strong {
-    color: #00C4A0;
+    color: #00D4B8;
 }
 
 .cat-descrizione-testo {
