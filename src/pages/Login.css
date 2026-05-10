@@ -48,7 +48,8 @@
 .form-group label {
     font-family: Georgia, serif;
     font-size: 13px;
-    color: #A8A0C0;
+    color: #F5F3FF !important;
+    ;
     letter-spacing: 0.03em;
 }
 

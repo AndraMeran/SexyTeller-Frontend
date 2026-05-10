@@ -64,7 +64,7 @@ function Login() {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            placeholder="la-tua@email.com"
+                            placeholder="la tua email"
                             required
                         />
                     </div>

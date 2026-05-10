@@ -69,7 +69,7 @@ function Register() {
                             name="name"
                             value={formData.name}
                             onChange={handleChange}
-                            placeholder="Come ti chiami?"
+                            placeholder="il tuo nome"
                             required
                         />
                     </div>
@@ -93,7 +93,7 @@ function Register() {
                             name="email"
                             value={formData.email}
                             onChange={handleChange}
-                            placeholder="la-tua@email.com"
+                            placeholder="la tua email"
                             required
                         />
                     </div>
