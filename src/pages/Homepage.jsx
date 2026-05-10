@@ -9,36 +9,42 @@ const categories = [
     {
         title: "Stories",
         slug: "stories",
+        verbo: "Raccontare",
         text: "Storie che seguono un filo dall'inizio alla fine.",
         className: "cat-stories",
     },
     {
         title: "Decode",
         slug: "decode",
+        verbo: "Spiegare",
         text: "Andare oltre la superficie, fino a capire davvero.",
         className: "cat-decode",
     },
     {
         title: "Crossover",
         slug: "crossover",
+        verbo: "Collegare",
         text: "Quando altri mondi finiscono qui, e cambiano significato.",
         className: "cat-crossover",
     },
     {
         title: "Trends",
         slug: "trends",
+        verbo: "Aggiornare",
         text: "Ciò che succede ora, mentre sta cambiando.",
         className: "cat-trends",
     },
     {
         title: "Dark Side",
         slug: "darkside",
+        verbo: "Approfondire",
         text: "La parte più complessa, quella che non si evita.",
         className: "cat-darkside",
     },
     {
         title: "Voices",
         slug: "voices",
+        verbo: "Dare voce",
         text: "Quando a parlare sono gli altri, non solo tu.",
         className: "cat-voices",
     },
@@ -268,6 +274,7 @@ function Homepage() {
                             className={`category-tile ${cat.className}`}
                         >
                             <h3>{cat.title}</h3>
+                            <span className="cat-verbo">{cat.verbo}</span> {/* ← aggiunto */}
                             <p>{cat.text}</p>
                             <span>Esplora →</span>
                         </Link>

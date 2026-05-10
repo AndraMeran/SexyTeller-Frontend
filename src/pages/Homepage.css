@@ -303,6 +303,17 @@
     color: #F5F3FF;
 }
 
+/* verbo sotto il titolo nel mosaico */
+.cat-verbo {
+    font-size: 11px;
+    color: #00C4A0;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    font-weight: 700;
+    display: block;
+    margin-bottom: 12px;
+}
+
 .cat-stories {
     grid-column: 1 / 3;
     grid-row: 1;
@@ -497,6 +508,20 @@
 .join-copy p {
     color: #D8D2EA;
     max-width: 430px;
+}
+
+/* Immagini del mosaico */
+
+.cat-stories {
+    background-image: url('/images/categorie/stories.jpeg');
+    background-size: cover;
+    background-position: right center;
+}
+
+.cat-darkside {
+    background-image: url('/images/categorie/darkside.jpeg');
+    background-size: cover;
+    background-position: center;
 }
 
 /* ── RESPONSIVE ──────────────────────────────── */

@@ -17,7 +17,7 @@ const categorieInfo = {
         numero: "02",
         nome: "Decode",
         verbo: "Spiegare",
-        descrizione: ".........."
+        descrizione: "Andare oltre la superficie, fino a capire davvero."
     },
     crossover: {
         numero: "03",
@@ -45,6 +45,46 @@ const categorieInfo = {
     },
 }
 
+// citazioni per ogni categoria — una viene scelta a random ad ogni caricamento della pagina
+const citazioni = {
+    stories: [
+        { testo: "Scrivere è come fare l'amore. Non preoccuparti dell'orgasmo, preoccupati del processo.", autore: "Isabel Allende" },
+        { testo: "Ogni storia cambia chi la racconta.", autore: "Elif Shafak" },
+        { testo: "Ogni persona nasconde un romanzo.", autore: "Truman Capote" },
+        { testo: "Raccontare è un modo per capire cosa ci è successo.", autore: "Joan Didion" },
+    ],
+    decode: [
+        { testo: "Capire cambia tutto.", autore: "Susan Sontag" },
+        { testo: "Ogni desiderio ha un linguaggio.", autore: "Jacques Lacan" },
+        { testo: "Capire sé stessi è un lavoro senza fine.", autore: "Clarice Lispector" },
+        { testo: "Ciò che non viene compreso ritorna sotto altre forme.", autore: "Françoise Dolto" },
+    ],
+    crossover: [
+        { testo: "La cultura è mescolare tutto.", autore: "David Bowie" },
+        { testo: "Nulla esiste da solo.", autore: "Marshall McLuhan" },
+        { testo: "L'arte più interessante nasce dagli incroci.", autore: "Brian Eno" },
+        { testo: "Tutto si collega, prima o poi.", autore: "Virginia Woolf" },
+    ],
+    trends: [
+        { testo: "Il futuro arriva sempre prima del previsto.", autore: "Alvin Toffler" },
+        { testo: "Le mode cambiano. I segnali restano.", autore: "Anna Wintour" },
+        { testo: "Ogni generazione reinventa ciò che desidera.", autore: "Zygmunt Bauman" },
+        { testo: "Le nuove idee spaventano sempre all'inizio.", autore: "Susan Sontag" },
+    ],
+    darkside: [
+        { testo: "La vita interiore dell'uomo è un territorio oscuro.", autore: "Anaïs Nin" },
+        { testo: "Dentro ogni desiderio esiste anche un'ombra.", autore: "Carl Jung" },
+        { testo: "Le persone ignorano ciò che le mette a disagio.", autore: "David Lynch" },
+        { testo: "L'occhio è atratto dalla luce, ma le ombre hanno più da dire.", autore: "Gregory Maguire" },
+    ],
+    voices: [
+        { testo: "Ascoltare è una forma di rispetto.", autore: "Haruki Murakami" },
+        { testo: "Ogni voce cambia la storia che racconta.", autore: "Toni Morrison" },
+        { testo: "Le conversazioni sincere lasciano tracce.", autore: "Alain de Botton" },
+        { testo: "Parlare davvero è più raro di quanto sembri.", autore: "Michel Foucault" },
+    ],
+}
+
 // opzioni di ordinamento
 const filtri = ["Recenti", "Più letti", "Redazione", "SexyTeller"]
 
@@ -52,7 +92,7 @@ const filtri = ["Recenti", "Più letti", "Redazione", "SexyTeller"]
 const ARTICOLI_PER_PAGINA = 6
 
 function Categoria() {
-    const { nome } = useParams() // legge il parametro :nome dall'URL — es. /categoria/stories → nome = "stories"
+    const { nome } = useParams() // legge il parametro :nome dall'URL
 
     const [articles, setArticles] = useState([]) // tutti gli articoli della categoria
     const [filtered, setFiltered] = useState([]) // articoli dopo i filtri applicati
@@ -60,8 +100,9 @@ function Categoria() {
     const [error, setError] = useState(null)
     const [filtroAttivo, setFiltroAttivo] = useState("Recenti") // filtro attivo — default "Recenti"
     const [paginaCorrente, setPaginaCorrente] = useState(1) // pagina corrente per la paginazione
+    const [citazione, setCitazione] = useState(null) // citazione random della categoria corrente
 
-    // info della categoria corrente — es. { numero: "01", nome: "Stories", ... }
+    // info della categoria corrente
     const categoriaInfo = categorieInfo[nome] || {
         numero: "—",
         nome: nome,
@@ -75,8 +116,16 @@ function Categoria() {
             setLoading(true)
             setFiltroAttivo("Recenti") // resetta il filtro quando cambia categoria
             setPaginaCorrente(1) // resetta la pagina quando cambia categoria
+
+            // sceglie una citazione random per la categoria corrente
+            const pool = citazioni[nome] || []
+            if (pool.length > 0) {
+                const random = pool[Math.floor(Math.random() * pool.length)]
+                setCitazione(random)
+            }
+
             try {
-                const data = await getArticles(nome) // passa il nome come filtro categoria
+                const data = await getArticles(nome)
                 setArticles(data)
                 setFiltered(data)
             } catch (err) {
@@ -90,24 +139,20 @@ function Categoria() {
 
     // applica il filtro selezionato ogni volta che cambia filtroAttivo o articles
     useEffect(() => {
-        let result = [...articles] // copia l'array per non modificare l'originale
+        let result = [...articles]
 
         if (filtroAttivo === "Recenti") {
-            // ordina per data decrescente — più recenti prima
             result.sort((a, b) => new Date(b.createdAt) - new Date(a.createdAt))
         } else if (filtroAttivo === "Più letti") {
-            // ordina per numero di like decrescente
             result.sort((a, b) => b.likes.length - a.likes.length)
         } else if (filtroAttivo === "Redazione") {
-            // mostra solo articoli della redazione
             result = result.filter(a => a.isRedazione === true)
         } else if (filtroAttivo === "SexyTeller") {
-            // mostra solo articoli degli utenti
             result = result.filter(a => a.isRedazione === false)
         }
 
         setFiltered(result)
-        setPaginaCorrente(1) // resetta la pagina quando cambia filtro
+        setPaginaCorrente(1)
     }, [filtroAttivo, articles])
 
     // calcola gli articoli da mostrare nella pagina corrente
@@ -127,21 +172,18 @@ function Categoria() {
     if (error) return <div className="categoria-error">{error}</div>
 
     return (
-        <div className="categoria-page">
+        <div className="categoria-page" data-categoria={nome}>
 
             {/* ── HEADER CATEGORIA ── */}
             <div className="categoria-header">
-                <span className="categoria-numero">{categoriaInfo.numero}</span>
                 <h1 className="categoria-nome">{categoriaInfo.nome}</h1>
                 <span className="categoria-verbo">{categoriaInfo.verbo}</span>
-                <div className="categoria-line" />
                 <p className="categoria-descrizione">{categoriaInfo.descrizione}</p>
             </div>
 
             {/* ── FILTRI + CONTATORE ── */}
             <div className="categoria-toolbar">
                 <div className="categoria-filtri">
-                    {/* bottone per ogni filtro — classe active sul filtro selezionato */}
                     {filtri.map((f) => (
                         <button
                             key={f}
@@ -152,7 +194,6 @@ function Categoria() {
                         </button>
                     ))}
                 </div>
-                {/* contatore articoli totali */}
                 <span className="categoria-count">
                     {filtered.length} contenuti
                 </span>
@@ -176,8 +217,6 @@ function Categoria() {
                                 to={`/articolo/${article._id}`}
                                 className="categoria-card"
                             >
-                                {/* immagine copertina — mostrata solo se esiste */}
-                                {/* immagine copertina — usa ArticleImage per gestire il blur sui contenuti sensibili */}
                                 <ArticleImage
                                     src={article.coverImage}
                                     alt={article.title}
@@ -186,7 +225,6 @@ function Categoria() {
                                 />
 
                                 <div className="categoria-card-body">
-                                    {/* badge categoria + badge SENSIBILE + badge IN EVIDENZA */}
                                     <div className="categoria-card-badges">
                                         <span className="badge-cat">{article.category}</span>
                                         {article.isRedazione && (
@@ -202,7 +240,6 @@ function Categoria() {
 
                                     <h2 className="categoria-card-title">{article.title}</h2>
 
-                                    {/* meta — autore, data, tempo lettura, like */}
                                     <div className="categoria-card-meta">
                                         <span
                                             className="categoria-card-author"
@@ -229,7 +266,6 @@ function Categoria() {
                     {/* ── PAGINAZIONE ── */}
                     {totalePagine > 1 && (
                         <div className="paginazione">
-                            {/* pulsante precedente */}
                             <button
                                 className="pag-btn"
                                 onClick={() => setPaginaCorrente(p => p - 1)}
@@ -238,7 +274,6 @@ function Categoria() {
                                 ←
                             </button>
 
-                            {/* numeri di pagina */}
                             {Array.from({ length: totalePagine }, (_, i) => i + 1).map((num) => (
                                 <button
                                     key={num}
@@ -249,7 +284,6 @@ function Categoria() {
                                 </button>
                             ))}
 
-                            {/* pulsante successivo */}
                             <button
                                 className="pag-btn"
                                 onClick={() => setPaginaCorrente(p => p + 1)}
@@ -261,19 +295,15 @@ function Categoria() {
                     )}
                 </div>
 
-                {/* ── SIDEBAR — tutte le categorie ── */}
+                {/* ── SIDEBAR — citazione random ── */}
                 <aside className="categoria-sidebar">
-                    <p className="sidebar-label">Tutte le categorie</p>
-                    {Object.entries(categorieInfo).map(([slug, info]) => (
-                        <Link
-                            key={slug}
-                            to={`/categoria/${slug}`}
-                            className={`sidebar-cat-link ${nome === slug ? "active" : ""}`}
-                        >
-                            <span className="sidebar-cat-nome">{info.nome}</span>
-                            <span className="sidebar-cat-verbo">{info.verbo}</span>
-                        </Link>
-                    ))}
+                    {citazione && (
+                        <div className="sidebar-citazione">
+                            <p className="citazione-testo">"{citazione.testo}"</p>
+                            <div className="citazione-line" />
+                            <p className="citazione-autore">— {citazione.autore}</p>
+                        </div>
+                    )}
                 </aside>
             </div>
         </div>

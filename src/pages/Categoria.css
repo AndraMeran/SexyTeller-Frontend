@@ -21,23 +21,68 @@
     text-align: center;
     padding: 56px 32px 40px;
     border-bottom: 0.5px solid #2a2240;
+    position: relative;
+    overflow: hidden;
+    background-size: cover;
+    background-position: center;
+    min-height: 280px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    box-sizing: border-box;
 }
 
-.categoria-numero {
-    font-size: 12px;
-    color: #A8A0C0;
-    letter-spacing: 0.12em;
-    text-transform: uppercase;
-    display: block;
-    margin-bottom: 12px;
+/* overlay scuro sopra l'immagine per far leggere il testo */
+.categoria-header::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: rgba(12, 10, 20, 0.3);
+    z-index: 0;
 }
+
+/* tutti gli elementi dentro l'header devono stare sopra l'overlay */
+.categoria-header>* {
+    position: relative;
+    z-index: 1;
+}
+
+/* immagine di sfondo per ogni categoria */
+.categoria-page[data-categoria="stories"] .categoria-header {
+    background-image: url('/images/categorie/stories.jpeg');
+}
+
+.categoria-page[data-categoria="decode"] .categoria-header {
+    background-image: url('/images/categorie/decode.jpeg');
+}
+
+.categoria-page[data-categoria="crossover"] .categoria-header {
+    background-image: url('/images/categorie/crossover.jpeg');
+}
+
+.categoria-page[data-categoria="trends"] .categoria-header {
+    background-image: url('/images/categorie/trends.jpeg');
+}
+
+.categoria-page[data-categoria="darkside"] .categoria-header {
+    background-image: url('/images/categorie/darkside.jpeg');
+}
+
+.categoria-page[data-categoria="voices"] .categoria-header {
+    background-image: url('/images/categorie/voices.jpeg');
+}
+
 
 .categoria-nome {
     font-family: Georgia, serif;
-    font-size: clamp(36px, 5vw, 64px);
+    font-size: clamp(28px, 4vw, 48px);
     font-weight: 700;
     color: #F5F3FF;
     margin-bottom: 8px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
 }
 
 .categoria-verbo {
@@ -51,17 +96,12 @@
 }
 
 /* linea decorativa sotto il verbo */
-.categoria-line {
-    width: 40px;
-    height: 2px;
-    background: #B8A0FF;
-    margin: 0 auto 20px;
-}
+
 
 .categoria-descrizione {
     font-family: Georgia, serif;
     font-size: 16px;
-    color: #A8A0C0;
+    color: #F5F3FF;
     max-width: 560px;
     margin: 0 auto;
     line-height: 1.6;
@@ -173,7 +213,6 @@
     flex-wrap: wrap;
 }
 
-/* badge categoria */
 .badge-cat {
     font-size: 10px;
     color: #00C4A0;
@@ -185,7 +224,6 @@
     text-transform: uppercase;
 }
 
-/* badge Redazione */
 .badge-redazione {
     font-size: 10px;
     color: #B8A0FF;
@@ -197,7 +235,6 @@
     text-transform: uppercase;
 }
 
-/* badge In Evidenza */
 .badge-featured {
     font-size: 10px;
     color: #00C4A0;
@@ -210,7 +247,6 @@
     text-transform: uppercase;
 }
 
-/* badge Sensibile — rosso per attirare attenzione */
 .badge-sensitive {
     font-size: 10px;
     color: #FF4DA6;
@@ -240,15 +276,14 @@
     color: #A8A0C0;
     flex-wrap: wrap;
     margin-top: auto;
-    /* spinge la meta bar in fondo alla card */
 }
 
-/* link autore nella meta bar */
 .categoria-card-author {
     color: #B8A0FF;
     text-decoration: none;
     font-weight: 600;
     transition: color 0.2s ease;
+    cursor: pointer;
 }
 
 .categoria-card-author:hover {
@@ -281,7 +316,6 @@
     color: #B8A0FF;
 }
 
-/* pagina attiva */
 .pag-btn.active {
     background: #00C4A0;
     color: #0C0A14;
@@ -289,76 +323,58 @@
     font-weight: 700;
 }
 
-/* pulsante disabilitato — prima/ultima pagina */
 .pag-btn:disabled {
     opacity: 0.3;
     cursor: not-allowed;
 }
 
-/* ── SIDEBAR ─────────────────────────────────── */
+/* ── SIDEBAR — citazione random ──────────────── */
 .categoria-sidebar {
-    padding: 32px 24px;
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
+    padding: 48px 24px;
     position: sticky;
     top: 80px;
-    /* rimane visibile durante lo scroll */
     height: fit-content;
 }
 
-.sidebar-label {
-    font-size: 10px;
-    color: #A8A0C0;
-    text-transform: uppercase;
-    letter-spacing: 0.08em;
-    margin-bottom: 8px;
-}
-
-/* link categoria nella sidebar */
-.sidebar-cat-link {
+.sidebar-citazione {
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    /* ← cambia in flex-start per allineare in alto */
-    padding: 10px 12px;
-    border-radius: 8px;
-    text-decoration: none;
-    transition: background 0.25s ease;
-    border: 0.5px solid transparent;
-    gap: 12px;
-    /* ← aggiunge spazio tra nome e verbo */
+    flex-direction: column;
+    gap: 16px;
 }
 
-.sidebar-cat-link:hover {
-    background: rgba(184, 160, 255, 0.08);
-    border-color: #2a2240;
-}
-
-/* categoria attiva nella sidebar */
-.sidebar-cat-link.active {
-    background: rgba(0, 196, 160, 0.08);
-    border-color: #00C4A0;
-}
-
-.sidebar-cat-nome {
+.citazione-testo {
     font-family: Georgia, serif;
-    font-size: 14px;
-    color: #F5F3FF;
-    font-weight: 600;
-    flex: 1;
-    /* ← occupa lo spazio disponibile */
+    font-size: 17px;
+    font-style: italic;
+    color: #D8D2EA;
+    line-height: 1.7;
 }
 
-.sidebar-cat-verbo {
+.citazione-line {
+    width: 32px;
+    height: 1px;
+    background: #B8A0FF;
+}
+
+.citazione-autore {
     font-size: 11px;
     color: #A8A0C0;
     text-transform: uppercase;
-    letter-spacing: 0.06em;
-    white-space: nowrap;
-    /* ← non va mai a capo */
+    letter-spacing: 0.1em;
+    font-weight: 600;
+}
+
+/* ── ARTICLE IMAGE WRAPPER nella card ───────── */
+.categoria-card .article-img-wrapper {
+    width: 200px;
+    height: 140px;
     flex-shrink: 0;
-    /* ← non si restringe */
+}
+
+.categoria-card .article-img-wrapper img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* ── RESPONSIVE ──────────────────────────────── */
@@ -367,18 +383,10 @@
         grid-template-columns: 1fr;
     }
 
-    /* sidebar va sotto il feed su tablet/mobile */
     .categoria-sidebar {
         position: static;
         border-top: 0.5px solid #2a2240;
-        padding: 24px;
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 8px;
-    }
-
-    .sidebar-label {
-        width: 100%;
+        padding: 32px 24px;
     }
 
     .categoria-feed {
@@ -394,9 +402,9 @@
 
     .categoria-header {
         padding: 40px 16px 32px;
+        min-height: 200px;
     }
 
-    /* su mobile la card diventa verticale */
     .categoria-card {
         grid-template-columns: 1fr;
     }
@@ -409,23 +417,7 @@
     .categoria-card-body {
         padding: 16px;
     }
-}
 
-/* ── ARTICLE IMAGE WRAPPER nella card ───────── */
-/* il wrapper del componente ArticleImage deve mantenere le dimensioni della card */
-.categoria-card .article-img-wrapper {
-    width: 200px;
-    height: 140px;
-    flex-shrink: 0;
-}
-
-.categoria-card .article-img-wrapper img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-@media (max-width: 576px) {
     .categoria-card .article-img-wrapper {
         width: 100%;
         height: 180px;

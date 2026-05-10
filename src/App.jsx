@@ -13,6 +13,7 @@ import Register from "./pages/Register"
 import Manifesto from "./pages/Manifesto"
 import Impostazioni from "./pages/Impostazioni"
 import Admin from "./pages/Admin"
+import ScrollToTop from "./components/ScrollToTop"
 
 // Route protetta — solo utenti loggati
 function PrivateRoute({ children }) {
@@ -31,6 +32,7 @@ function AdminRoute({ children }) {
 function App() {
   return (
     <BrowserRouter>
+      <ScrollToTop />
       <MyNavbar />
       <main className="main-content">
         <Routes>
