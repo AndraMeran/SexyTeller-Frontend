@@ -20,12 +20,17 @@
 .categoria-header {
     text-align: center;
     padding: 56px 32px 40px;
-    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
     position: relative;
     overflow: hidden;
-    background-size: cover;
+    /* background-size: cover;
     background-position: center;
-    min-height: 280px;
+    min-height: 280px; */
+
+    background-size: cover;
+    background-position: center 40%;
+    background-repeat: no-repeat;
+    min-height: 320px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -113,7 +118,7 @@
     align-items: center;
     justify-content: space-between;
     padding: 16px 32px;
-    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
     flex-wrap: wrap;
     gap: 12px;
 }
@@ -130,7 +135,7 @@
     font-size: 13px;
     color: #A1A1AA;
     background: none;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 999px;
     padding: 6px 16px;
     cursor: pointer;
@@ -138,7 +143,7 @@
 }
 
 .filtro-btn:hover {
-    border-color: rgba(255,255,255,0.1);
+    border-color: rgba(255, 255, 255, 0.1);
     color: #00D4B8;
 }
 
@@ -168,7 +173,7 @@
 /* ── FEED ARTICOLI ───────────────────────────── */
 .categoria-feed {
     padding: 32px;
-    border-right: 0.5px solid rgba(255,255,255,0.08);
+    border-right: 0.5px solid rgba(255, 255, 255, 0.08);
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -180,7 +185,7 @@
     grid-template-columns: 200px 1fr;
     gap: 20px;
     background: #14111F;
-    border: 0.5px solid rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
@@ -188,7 +193,7 @@
 }
 
 .categoria-card:hover {
-    border-color: rgba(255,255,255,0.1);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* immagine copertina della card */
@@ -227,7 +232,7 @@
 .badge-redazione {
     font-size: 10px;
     color: #00D4B8;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 999px;
     padding: 2px 8px;
     font-weight: 700;
@@ -304,7 +309,7 @@
     font-size: 13px;
     color: #A1A1AA;
     background: none;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 8px;
     padding: 6px 12px;
     cursor: pointer;
@@ -312,7 +317,7 @@
 }
 
 .pag-btn:hover {
-    border-color: rgba(255,255,255,0.1);
+    border-color: rgba(255, 255, 255, 0.1);
     color: #00D4B8;
 }
 
@@ -385,7 +390,7 @@
 
     .categoria-sidebar {
         position: static;
-        border-top: 0.5px solid rgba(255,255,255,0.08);
+        border-top: 0.5px solid rgba(255, 255, 255, 0.08);
         padding: 32px 24px;
     }
 
@@ -402,7 +407,10 @@
 
     .categoria-header {
         padding: 40px 16px 32px;
-        min-height: 200px;
+        /* min-height: 200px; */
+        min-height: 240px;
+        background-position: center center;
+        /*aggiunto ora */
     }
 
     .categoria-card {

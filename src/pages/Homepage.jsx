@@ -50,26 +50,7 @@ const categories = [
     },
 ]
 
-const smallArticles = [
-    {
-        category: "Decode",
-        title: "Consenso: parliamone senza paura",
-        author: "Sara B.",
-        time: "4 min",
-    },
-    {
-        category: "Dark Side",
-        title: "Quando il porno non è la realtà",
-        author: "Mark D.",
-        time: "6 min",
-    },
-    {
-        category: "Voices",
-        title: "Lettera a me stessa, a 20 anni",
-        author: "Giulia R.",
-        time: "3 min",
-    },
-]
+
 
 function Homepage() {
     const [featuredArticles, setFeaturedArticles] = useState([])//contiene gli articoli che arrivanodal backend, parte vuota
@@ -174,7 +155,7 @@ function Homepage() {
 
             <section className="featured-section">
                 <div className="section-title">
-                    <h2>Le voci di Sexyteller</h2>
+                    <h2>Le voci di SexyTeller</h2>
                     <Link to="/categoria/stories">Vedi tutti gli articoli →</Link>
                 </div>
 

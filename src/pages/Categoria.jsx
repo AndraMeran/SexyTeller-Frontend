@@ -11,37 +11,37 @@ const categorieInfo = {
         numero: "01",
         nome: "Stories",
         verbo: "Raccontare",
-        descrizione: "Storie che seguono un filo dall'inizio alla fine."
+        descrizione: "Ci sono storie che si consumano in un istante. E altre che lasciano tracce. Qui trovi racconti, confessioni, biografie e narrazioni che seguono un filo preciso, dall’inizio alla fine"
     },
     decode: {
         numero: "02",
         nome: "Decode",
         verbo: "Spiegare",
-        descrizione: "Andare oltre la superficie, fino a capire davvero."
+        descrizione: "Ci sono storie che si consumano in un istante. E altre che lasciano tracce. Qui trovi racconti, confessioni, biografie e narrazioni che seguono un filo preciso, dall’inizio alla fine."
     },
     crossover: {
         numero: "03",
         nome: "Crossover",
         verbo: "Collegare",
-        descrizione: "Quando il sesso incontra cinema, musica, arte e cultura pop."
+        descrizione: "Esistono mondi che sembrano lontani. Poi si incontrano, si contaminano e cambiano significato. Qui la sessualità si intreccia con cultura, potere, sport, arte, internet e tutto ciò che influenza l’immaginario contemporaneo."
     },
     trends: {
         numero: "04",
         nome: "Trends",
         verbo: "Aggiornare",
-        descrizione: "Temi caldi, nuove prospettive e quello che sta succedendo ora."
+        descrizione: "Il domani corre veloce. Tendenze, notizie e fenomeni nascono, si diffondono e spariscono nel tempo di uno scroll. Qui trovi ciò che sta attirando l’attenzione proprio adesso."
     },
     darkside: {
         numero: "05",
         nome: "Dark Side",
         verbo: "Approfondire",
-        descrizione: "Quello che nessuno dice. I lati nascosti e complessi della sessualità."
+        descrizione: "Non tutto viene raccontato apertamente. Qui si esplorano le parti più controverse, delicate e difficili da raccontare, senza semplificazioni e senza filtri."
     },
     voices: {
         numero: "06",
         nome: "Voices",
         verbo: "Dare voce",
-        descrizione: "Le voci della nostra community. Storie personali e punti di vista."
+        descrizione: "A volte la parte più interessante è ascoltare qualcun altro. Qui le storie passano attraverso dialoghi, interviste e testimonianze dirette.."
     },
 }
 
