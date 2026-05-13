@@ -55,9 +55,7 @@ function MyFooter() {
                     <a href="#" className="footer-link">Privacy Policy</a>
                     <a href="#" className="footer-link">Cookie Policy</a>
                     <a href="#" className="footer-link">Termini e Condizioni</a>
-                    <p className="footer-18">
-                        Contenuto riservato ai maggiori di 18 anni.
-                    </p>
+
                 </div>
 
             </footer>
