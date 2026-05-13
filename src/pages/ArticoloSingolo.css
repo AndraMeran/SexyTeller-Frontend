@@ -424,7 +424,7 @@
     font-family: Georgia, serif;
     font-size: 17px;
     line-height: 1.8;
-    color: #D8D2EA;
+    color: #F5F5F5;
     margin-bottom: 48px;
 }
 
@@ -467,7 +467,7 @@
 .articolo-body ul {
     padding-left: 20px;
     margin-bottom: 16px;
-    color: #D8D2EA;
+    color: #F5F5F5;
 }
 
 .articolo-body li {
@@ -606,7 +606,7 @@
 
 .commento-body {
     font-size: 14px;
-    color: #D8D2EA;
+    color: #A1A1AA;
     line-height: 1.6;
     margin-bottom: 10px;
 }

@@ -482,7 +482,7 @@
     font-family: Georgia, serif;
     font-size: 17px;
     line-height: 1.8;
-    color: #D8D2EA;
+    color: #F5F5F5;
     max-width: 760px;
     margin: 0 auto;
     padding: 0 32px;
@@ -550,10 +550,6 @@
 /* ── TIPTAP TOOLBAR ──────────────────────────── */
 /* barra degli strumenti dell'editor */
 .tiptap-toolbar {
-    position: sticky;
-    top: 57px;
-    /* altezza navbar editor header */
-    z-index: 40;
     display: flex;
     align-items: center;
     gap: 4px;
@@ -563,6 +559,10 @@
     border-bottom: none;
     border-radius: 8px 8px 0 0;
     padding: 8px 12px;
+    position: sticky;
+    top: 126px;
+    /* ← altezza esatta dell'editor-header */
+    z-index: 40;
 }
 
 /* pulsante della toolbar */
@@ -723,7 +723,7 @@
 .anteprima-body ul {
     padding-left: 20px;
     margin-bottom: 16px;
-    color: #D8D2EA;
+    color: #F5F5F5;
 }
 
 .anteprima-body li {
@@ -891,7 +891,7 @@
 .cat-descrizione-testo {
     font-family: Georgia, serif;
     font-size: 14px;
-    color: #D8D2EA;
+    color: #A1A1AA;
     line-height: 1.6;
 }
 

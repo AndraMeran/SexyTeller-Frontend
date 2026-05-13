@@ -67,6 +67,7 @@ function Impostazioni() {
                 const updated = await updateMe({ avatar: data.url })
                 if (updated.token) login(updated.token)
                 setSuccess("Avatar aggiornato!")
+                setTimeout(() => window.location.reload(), 1000)
             }
         } catch (err) {
             setError("Errore nel caricamento dell'avatar")
@@ -86,6 +87,7 @@ function Impostazioni() {
                 const updated = await updateMe({ cover: data.url })
                 if (updated.token) login(updated.token)
                 setSuccess("Immagine di copertina aggiornata!")
+                setTimeout(() => window.location.reload(), 1000)
             }
         } catch (err) {
             setError("Errore nel caricamento della copertina")

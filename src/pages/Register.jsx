@@ -146,9 +146,16 @@ function Register() {
             </div>
 
             <div className="auth-quote-side">
-                <blockquote>
-                    "Non sei solo qui<br />per leggere.<br />Puoi raccontare."
-                </blockquote>
+                <div className="nebula-1"></div>
+                <div className="nebula-2"></div>
+                <div className="nebula-3"></div>
+                <div className="nebula-4"></div>
+                <div className="nebula-5"></div>
+                <div className="auth-quote-content">
+                    <span className="auth-quote-logo">SexyTeller</span>
+                    <div className="auth-quote-divider"></div>
+                    <p className="auth-quote-tagline">Parliamo di ciò che esiste da sempre.<br />Senza filtri. Senza maschere.</p>
+                </div>
             </div>
         </div>
     )

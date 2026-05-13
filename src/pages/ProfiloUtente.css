@@ -19,22 +19,35 @@
 /* immagine fullwidth in cima alla pagina */
 .profilo-cover {
     width: 100%;
-    height: 240px;
+    height: 280px;
     overflow: hidden;
+    background: #0C0A14;
+    /* ← sfondo per le aree vuote */
 }
 
 .profilo-cover img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
-    /* ritaglia l'immagine per riempire lo spazio */
+    object-fit: contain;
+    object-position: center center;
+    background: #0C0A14;
+}
+
+.impostazioni-cover {
+    width: 200px;
+    height: 80px;
+    object-fit: contain;
+    border-radius: 8px;
+    border: 2px solid rgba(255, 255, 255, 0.08);
+    background: #14111F;
+    /* ← aggiunto per le aree vuote */
 }
 
 /* placeholder colorato se non c'è immagine di copertina */
 .profilo-cover-placeholder {
     width: 100%;
     height: 100%;
-    background: linear-gradient(135deg, #14111F, rgba(255,255,255,0.08));
+    background: linear-gradient(135deg, #14111F, rgba(255, 255, 255, 0.08));
 }
 
 /* ── PROFILO INFO ────────────────────────────── */
@@ -50,7 +63,7 @@
     gap: 24px;
     align-items: flex-start;
     padding-bottom: 24px;
-    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ── AVATAR ──────────────────────────────────── */
@@ -149,7 +162,7 @@
 /* in_evidenza → lavanda */
 .badge-in_evidenza {
     color: #00D4B8;
-    border-color: rgba(255,255,255,0.1);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* pulsante Segui — placeholder, non ha funzionalità reale */
@@ -176,7 +189,7 @@
     font-size: 13px;
     color: #00D4B8;
     background: #14111F;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 6px 18px;
     border-radius: 999px;
     text-decoration: none;
@@ -238,7 +251,7 @@
 .profilo-tabs {
     display: flex;
     gap: 0;
-    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
     margin-bottom: 32px;
 }
 
@@ -307,7 +320,7 @@
 /* card articolo — link cliccabile */
 .profilo-article-card {
     background: #14111F;
-    border: 0.5px solid rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
     overflow: hidden;
     text-decoration: none;
@@ -315,7 +328,7 @@
 }
 
 .profilo-article-card:hover {
-    border-color: rgba(255,255,255,0.1);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 /* immagine copertina dell'articolo */

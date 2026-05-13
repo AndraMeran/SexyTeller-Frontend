@@ -106,9 +106,16 @@ function Login() {
             </div>
 
             <div className="auth-quote-side">
-                <blockquote>
-                    "In un mondo che guarda,<br />noi raccontiamo."
-                </blockquote>
+                <div className="nebula-1"></div>
+                <div className="nebula-2"></div>
+                <div className="nebula-3"></div>
+                <div className="nebula-4"></div>
+                <div className="nebula-5"></div>
+                <div className="auth-quote-content">
+                    <span className="auth-quote-logo">SexyTeller</span>
+                    <div className="auth-quote-divider"></div>
+                    <p className="auth-quote-tagline">In un mondo che guarda, noi raccontiamo</p>
+                </div>
             </div>
         </div>
     )

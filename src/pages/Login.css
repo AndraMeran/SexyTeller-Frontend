@@ -56,7 +56,7 @@
 .form-group input {
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 10px 0;
     color: #F5F5F5;
     font-family: Georgia, serif;
@@ -66,7 +66,7 @@
 }
 
 .form-group input:focus {
-    border-bottom-color: rgba(255,255,255,0.1);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 .form-group input::placeholder {
@@ -103,7 +103,7 @@
     margin-top: 12px;
     background: transparent;
     color: #00D4B8;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 11px 24px;
     border-radius: 999px;
     font-family: Georgia, serif;
@@ -150,22 +150,142 @@
 
 /* ── QUOTE SIDE ──────────────────────────────── */
 .auth-quote-side {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 60px 48px;
-    border-left: 0.5px solid rgba(255,255,255,0.08);
-    background: linear-gradient(145deg, #12101d, #08070c);
+    position: relative;
+    overflow: hidden;
+    background: #0C0A14;
 }
 
-.auth-quote-side blockquote {
+/* linee decorative */
+.auth-quote-side::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(0, 212, 184, 0.5), transparent);
+    z-index: 2;
+}
+
+.auth-quote-side::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, rgba(217, 93, 130, 0.4), transparent);
+    z-index: 2;
+}
+
+/* nuvole nebula */
+.auth-quote-side .nebula-1 {
+    position: absolute;
+    width: 440px;
+    height: 440px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 212, 184, 0.40) 0%, rgba(0, 212, 184, 0.20) 40%, transparent 70%);
+    top: -150px;
+    left: -150px;
+    animation: nebula-breathe 8s ease-in-out infinite;
+}
+
+.auth-quote-side .nebula-2 {
+    position: absolute;
+    width: 400px;
+    height: 400px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217, 93, 130, 0.35) 0%, rgba(217, 93, 130, 0.15) 40%, transparent 70%);
+    bottom: -120px;
+    right: -100px;
+    animation: nebula-breathe 10s ease-in-out infinite reverse;
+}
+
+.auth-quote-side .nebula-3 {
+    position: absolute;
+    width: 340px;
+    height: 340px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 212, 184, 0.28) 0%, transparent 70%);
+    top: 30px;
+    right: -80px;
+    animation: nebula-breathe 12s ease-in-out infinite;
+}
+
+.auth-quote-side .nebula-4 {
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(217, 93, 130, 0.25) 0%, transparent 70%);
+    bottom: 20px;
+    left: -60px;
+    animation: nebula-breathe 9s ease-in-out infinite reverse;
+}
+
+.auth-quote-side .nebula-5 {
+    position: absolute;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(0, 212, 184, 0.15) 0%, transparent 70%);
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    animation: nebula-breathe 11s ease-in-out infinite;
+}
+
+@keyframes nebula-breathe {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.15);
+        opacity: 0.7;
+    }
+}
+
+/* contenuto */
+.auth-quote-content {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100%;
+    padding: 48px;
+    text-align: center;
+}
+
+.auth-quote-logo {
     font-family: Georgia, serif;
-    font-size: 28px;
+    font-size: 52px;
     font-weight: 700;
     color: #F5F5F5;
-    line-height: 1.4;
-    text-align: center;
-    max-width: 320px;
+    letter-spacing: -0.02em;
+    margin-bottom: 20px;
+    text-shadow: 0 0 80px rgba(0, 212, 184, 0.35), 0 0 120px rgba(0, 212, 184, 0.15);
+}
+
+.auth-quote-divider {
+    width: 32px;
+    height: 1px;
+    background: #00D4B8;
+    margin-bottom: 20px;
+    opacity: 0.7;
+}
+
+.auth-quote-tagline {
+    font-size: 11px;
+    color: rgba(255, 255, 255, 0.38);
+    letter-spacing: 0.18em;
+    text-transform: uppercase;
+    font-family: Inter, sans-serif;
 }
 
 /* ── CAMPO PASSWORD CON OCCHIOLINO ───────────── */
