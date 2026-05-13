@@ -451,7 +451,7 @@
     font-family: Georgia, serif;
     font-size: 20px;
     font-style: italic;
-    color: #A1A1AA;
+    color: #F5F5F5;
     margin-bottom: 20px;
     line-height: 1.4;
     text-align: center;
@@ -681,7 +681,7 @@
 .tiptap-editor .ProseMirror img.img-left {
     float: left;
     margin: 8px 20px 8px 0;
-    max-width: 45%;
+    max-width: 30%;
 }
 
 /* immagine centrata */
@@ -696,7 +696,7 @@
 .tiptap-editor .ProseMirror img.img-right {
     float: right;
     margin: 8px 0 8px 20px;
-    max-width: 45%;
+    max-width: 30%;
 }
 
 /* clearfix — evita che il float rompa il layout */
@@ -734,7 +734,7 @@
 .anteprima-body img.img-left {
     float: left;
     margin: 8px 20px 8px 0;
-    max-width: 45%;
+    max-width: 30%;
     border-radius: 8px;
 }
 
@@ -749,7 +749,7 @@
 .anteprima-body img.img-right {
     float: right;
     margin: 8px 0 8px 20px;
-    max-width: 45%;
+    max-width: 30%;
     border-radius: 8px;
 }
 

@@ -183,10 +183,8 @@ function ArticoloSingolo() {
     return (
         <div className="articolo-page">
 
-            {/* ── HEADER FULLWIDTH ── */}
+            {/* ── HEADER — breadcrumb, badge, titolo, sottotitolo ── */}
             <div className="articolo-header">
-
-                {/* breadcrumb — mostra il percorso Home > Categoria > Titolo */}
                 <p className="articolo-breadcrumb">
                     <Link to="/">Home</Link>
                     <span> › </span>
@@ -195,29 +193,33 @@ function ArticoloSingolo() {
                     <span>{article.title}</span>
                 </p>
 
-                {/* badge categoria — sempre visibile */}
                 <span className="articolo-badge">{article.category}</span>
-
-                {/* badge Redazione — visibile solo se isRedazione: true */}
                 {article.isRedazione && (
                     <span className="articolo-badge-redazione">Redazione</span>
                 )}
 
                 <h1 className="articolo-title">{article.title}</h1>
 
-                {/* sottotitolo — mostrato solo se esiste */}
                 {article.subtitle && (
                     <p className="articolo-subtitle">{article.subtitle}</p>
                 )}
+            </div>
 
-                {/* meta bar — autore, data, tempo di lettura, like, condividi */}
+            {/* ── IMMAGINE COPERTINA FULLWIDTH ── */}
+            {article.coverImage && (
+                <div className="articolo-cover">
+                    <img src={article.coverImage} alt={article.title} />
+                </div>
+            )}
+
+            {/* ── META BAR — sotto l'immagine ── */}
+            <div className="articolo-meta-wrapper">
                 <div className="articolo-meta">
                     <div className="meta-author">
                         <div className="meta-avatar">
                             {article.author?.name?.charAt(0).toUpperCase()}
                         </div>
                         <div>
-                            {/* link al profilo dell'autore — aggiornato da /@ a /profilo/ */}
                             <Link
                                 to={`/profilo/${article.author?.handle}`}
                                 className="meta-author-name"
@@ -234,19 +236,15 @@ function ArticoloSingolo() {
                     <span>{article.readTime} min di lettura</span>
 
                     <div className="meta-actions">
-                        {/* pulsante like — classe "liked" aggiunge il colore rosa se già messo like */}
                         <button
                             className={`btn-like ${isLiked ? "liked" : ""}`}
                             onClick={handleLike}
                         >
                             ♥ {article.likes?.length || 0}
                         </button>
-
-                        {/* pulsante condividi — copia URL negli appunti */}
                         <button className="btn-share" onClick={handleShare}>
                             {copied ? "✓ Copiato!" : "↗ Condividi"}
                         </button>
-                        {/* pulsante modifica — visibile solo all'autore */}
                         {user?.id === article.author?._id && (
                             <Link
                                 to={`/modifica/${article._id}`}
@@ -259,33 +257,16 @@ function ArticoloSingolo() {
                 </div>
             </div>
 
-            {/* ── IMMAGINE COPERTINA FULLWIDTH ── */}
-            {/* mostrata solo se esiste */}
-            {article.coverImage && (
-                <div className="articolo-cover">
-                    <img src={article.coverImage} alt={article.title} />
-                </div>
-            )}
-
             {/* ── CORPO A DUE COLONNE ── */}
             <div className="articolo-layout">
-
-                {/* ── COLONNA SINISTRA — corpo + commenti ── */}
                 <div className="articolo-main">
-
-                    {/* corpo dell'articolo in markdown — ReactMarkdown converte in HTML */}
                     <div
                         className="articolo-body"
                         dangerouslySetInnerHTML={{ __html: article.body }}
                     />
 
-                    {/* ── SEZIONE COMMENTI ── */}
                     <div className="commenti-section">
-                        <h3 className="commenti-title">
-                            Commenti ({comments.length})
-                        </h3>
-
-                        {/* form commento — visibile solo se loggato */}
+                        <h3 className="commenti-title">Commenti ({comments.length})</h3>
                         {user ? (
                             <form onSubmit={handleComment} className="commento-form">
                                 <textarea
@@ -295,22 +276,15 @@ function ArticoloSingolo() {
                                     className="commento-input"
                                     rows={3}
                                 />
-                                <button
-                                    type="submit"
-                                    className="btn-commento"
-                                    disabled={commentLoading}
-                                >
+                                <button type="submit" className="btn-commento" disabled={commentLoading}>
                                     {commentLoading ? "Invio..." : "Pubblica commento"}
                                 </button>
                             </form>
                         ) : (
-                            // messaggio per utenti non loggati
                             <p className="commenti-login">
                                 <Link to="/login">Accedi</Link> per lasciare un commento.
                             </p>
                         )}
-
-                        {/* lista commenti */}
                         <div className="commenti-list">
                             {comments.map((comment) => (
                                 <div key={comment._id} className="commento">
@@ -318,24 +292,17 @@ function ArticoloSingolo() {
                                         <div className="meta-avatar" style={{ width: 28, height: 28, fontSize: 11 }}>
                                             {comment.author?.name?.charAt(0).toUpperCase()}
                                         </div>
-                                        <span className="commento-author">
-                                            {comment.author?.name}
-                                        </span>
-                                        <span className="commento-date">
-                                            {formatDate(comment.createdAt)}
-                                        </span>
+                                        <span className="commento-author">{comment.author?.name}</span>
+                                        <span className="commento-date">{formatDate(comment.createdAt)}</span>
                                     </div>
                                     <p className="commento-body">{comment.body}</p>
                                     <div className="commento-actions">
-                                        {/* like commento — funziona come toggle */}
                                         <button
                                             className={`btn-like-comment ${comment.likes?.includes(user?.id) ? "liked" : ""}`}
                                             onClick={() => handleLikeComment(comment._id)}
                                         >
                                             ♥ {comment.likes?.length || 0}
                                         </button>
-
-                                        {/* elimina commento — visibile solo all'autore o alla redazione */}
                                         {(user?.id === comment.author?._id || user?.isRedazione) && (
                                             <button
                                                 className="btn-delete-comment"
@@ -351,16 +318,10 @@ function ArticoloSingolo() {
                     </div>
                 </div>
 
-                {/* ── SIDEBAR ── */}
                 <aside className="articolo-sidebar">
-
-                    {/* BOX AUTORE — link al profilo aggiornato da /@ a /profilo/ */}
                     <div className="sidebar-card">
                         <p className="sidebar-label">Autore</p>
-                        <Link
-                            to={`/profilo/${article.author?.handle}`}
-                            className="author-box"
-                        >
+                        <Link to={`/profilo/${article.author?.handle}`} className="author-box">
                             <div className="author-avatar">
                                 {article.author?.name?.charAt(0).toUpperCase()}
                             </div>
@@ -369,23 +330,16 @@ function ArticoloSingolo() {
                                 <p className="author-handle">@{article.author?.handle}</p>
                             </div>
                         </Link>
-                        {/* bio autore — mostrata solo se esiste */}
                         {article.author?.bio && (
                             <p className="author-bio">{article.author.bio}</p>
                         )}
                     </div>
 
-                    {/* ARTICOLI IN EVIDENZA — mostrati solo se esistono */}
                     {featured.length > 0 && (
                         <div className="sidebar-card">
                             <p className="sidebar-label">In evidenza</p>
                             {featured.map((a) => (
-                                <Link
-                                    key={a._id}
-                                    to={`/articolo/${a._id}`}
-                                    className="sidebar-article"
-                                >
-                                    {/* immagine articolo — mostrata solo se esiste */}
+                                <Link key={a._id} to={`/articolo/${a._id}`} className="sidebar-article">
                                     <ArticleImage
                                         src={a.coverImage}
                                         alt={a.title}
@@ -396,9 +350,7 @@ function ArticoloSingolo() {
                                     <div>
                                         <p className="sidebar-cat">{a.category}</p>
                                         <p className="sidebar-article-title">{a.title}</p>
-                                        <p className="sidebar-article-meta">
-                                            {a.author?.name} · {a.readTime} min
-                                        </p>
+                                        <p className="sidebar-article-meta">{a.author?.name} · {a.readTime} min</p>
                                     </div>
                                 </Link>
                             ))}
