@@ -12,7 +12,7 @@
     justify-content: space-between;
     align-items: center;
     padding: 16px 32px;
-    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
     background: #0C0A14;
     position: sticky;
     top: 0;
@@ -36,7 +36,7 @@
     font-size: 13px;
     color: #00D4B8;
     background: #14111F;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 7px 18px;
     border-radius: 999px;
     cursor: pointer;
@@ -117,7 +117,7 @@
 
 .cat-btn {
     background: #14111F;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 10px;
     padding: 16px;
     cursor: pointer;
@@ -129,7 +129,7 @@
 }
 
 .cat-btn:hover {
-    border-color: rgba(255,255,255,0.1);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .cat-btn.active {
@@ -156,7 +156,7 @@
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 12px 0;
     font-family: Georgia, serif;
     font-size: 28px;
@@ -166,7 +166,7 @@
 }
 
 .editor-titolo:focus {
-    border-bottom-color: rgba(255,255,255,0.1);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 .editor-titolo::placeholder {
@@ -177,7 +177,7 @@
     padding: 10px 0;
     font-family: Georgia, serif;
     font-size: 20px;
-    color: rgba(255,255,255,0.08);
+    color: rgba(255, 255, 255, 0.08);
     outline: none;
     transition: border-color 0.25s ease;
     font-style: italic;
@@ -188,7 +188,7 @@
     width: 100%;
     background: transparent;
     border: none;
-    border-bottom: 1px solid rgba(255,255,255,0.08);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
     padding: 10px 0;
     font-family: Georgia, serif;
     font-size: 20px;
@@ -199,11 +199,11 @@
 }
 
 .editor-sottotitolo:focus {
-    border-bottom-color: rgba(255,255,255,0.1);
+    border-bottom-color: rgba(255, 255, 255, 0.1);
 }
 
 .editor-sottotitolo::placeholder {
-    color: rgba(255,255,255,0.08);
+    color: rgba(255, 255, 255, 0.08);
 }
 
 /* ── UPLOAD IMMAGINE ─────────────────────────── */
@@ -211,7 +211,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 1px dashed rgba(255,255,255,0.08);
+    border: 1px dashed rgba(255, 255, 255, 0.08);
     border-radius: 10px;
     padding: 40px;
     cursor: pointer;
@@ -222,7 +222,7 @@
 }
 
 .upload-area:hover {
-    border-color: rgba(255,255,255,0.1);
+    border-color: rgba(255, 255, 255, 0.1);
     color: #00D4B8;
 }
 
@@ -235,8 +235,11 @@
 .cover-preview img {
     width: 100%;
     max-height: 300px;
-    object-fit: cover;
+    object-fit: contain;
+    /* ← mostra l'immagine intera */
     border-radius: 10px;
+    background: #14111F;
+    /* ← sfondo per le aree vuote */
 }
 
 .btn-remove-cover {
@@ -266,7 +269,7 @@
     font-size: 12px;
     color: #00D4B8;
     background: #14111F;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 6px 16px;
     border-radius: 999px;
     cursor: pointer;
@@ -287,7 +290,7 @@
 /* ── MD EDITOR ────────────────────────────── */
 .w-md-editor {
     background: #14111F !important;
-    border: 1px solid rgba(255,255,255,0.08) !important;
+    border: 1px solid rgba(255, 255, 255, 0.08) !important;
     border-radius: 8px !important;
     color: #F5F5F5 !important;
 }
@@ -308,7 +311,7 @@
 
 .sidebar-card {
     background: #14111F;
-    border: 0.5px solid rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
     border-radius: 10px;
     padding: 16px;
 }
@@ -384,7 +387,7 @@
     font-size: 12px;
     color: #A1A1AA;
     padding-left: 12px;
-    border-left: 2px solid rgba(255,255,255,0.08);
+    border-left: 2px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ── ANTEPRIMA ───────────────────────────────── */
@@ -399,7 +402,7 @@
     align-items: center;
     gap: 16px;
     padding: 16px 32px;
-    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
     font-size: 13px;
     color: #A1A1AA;
 }
@@ -422,7 +425,7 @@
 .anteprima-cover {
     width: 100%;
     max-height: 400px;
-    object-fit: cover;
+    object-fit: contain;
     border-radius: 10px;
     margin-bottom: 32px;
 }
@@ -442,6 +445,17 @@
     line-height: 1.2;
     margin: 16px 0 12px;
     text-align: center;
+}
+
+.anteprima-subtitle {
+    font-family: Georgia, serif;
+    font-size: 20px;
+    font-style: italic;
+    color: #A1A1AA;
+    margin-bottom: 20px;
+    line-height: 1.4;
+    text-align: center;
+    /* ← aggiunto */
 }
 
 .anteprima-meta {
@@ -486,7 +500,7 @@
 }
 
 .anteprima-body blockquote {
-    border-left: 3px solid rgba(255,255,255,0.1);
+    border-left: 3px solid rgba(255, 255, 255, 0.1);
     padding-left: 20px;
     color: #A1A1AA;
     font-style: italic;
@@ -536,12 +550,16 @@
 /* ── TIPTAP TOOLBAR ──────────────────────────── */
 /* barra degli strumenti dell'editor */
 .tiptap-toolbar {
+    position: sticky;
+    top: 57px;
+    /* altezza navbar editor header */
+    z-index: 40;
     display: flex;
     align-items: center;
     gap: 4px;
     flex-wrap: wrap;
     background: #14111F;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-bottom: none;
     border-radius: 8px 8px 0 0;
     padding: 8px 12px;
@@ -564,7 +582,7 @@
 .toolbar-btn:hover {
     background: rgba(0, 212, 184, 0.08);
     color: #00D4B8;
-    border-color: rgba(255,255,255,0.08);
+    border-color: rgba(255, 255, 255, 0.08);
 }
 
 /* pulsante attivo — formato applicato */
@@ -578,7 +596,7 @@
 .toolbar-sep {
     width: 1px;
     height: 20px;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
     margin: 0 4px;
 }
 
@@ -586,7 +604,7 @@
 /* area di scrittura */
 .tiptap-editor {
     background: #14111F;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 0 0 8px 8px;
     min-height: 400px;
     cursor: text;
@@ -633,7 +651,7 @@
 }
 
 .tiptap-editor .ProseMirror blockquote {
-    border-left: 3px solid rgba(255,255,255,0.1);
+    border-left: 3px solid rgba(255, 255, 255, 0.1);
     padding: 8px 16px;
     margin: 16px 0;
     color: #A1A1AA;

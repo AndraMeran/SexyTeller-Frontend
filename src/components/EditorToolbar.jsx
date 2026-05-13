@@ -4,6 +4,8 @@ function EditorToolbar({ editor, onImageUpload }) {
 
     return (
         <div className="tiptap-toolbar">
+
+            {/* ── FORMATTAZIONE TESTO ── */}
             <button
                 type="button"
                 className={`toolbar-btn ${editor.isActive("bold") ? "active" : ""}`}
@@ -24,24 +26,60 @@ function EditorToolbar({ editor, onImageUpload }) {
 
             <button
                 type="button"
-                className={`toolbar-btn ${editor.isActive("heading", { level: 2 }) ? "active" : ""}`}
-                onClick={() => editor.chain().focus().toggleHeading({ level: 2 }).run()}
-                title="Titolo"
+                className={`toolbar-btn ${editor.isActive("underline") ? "active" : ""}`}
+                onClick={() => editor.chain().focus().toggleUnderline().run()}
+                title="Sottolineato"
             >
-                H2
+                <u>U</u>
             </button>
 
-            <button
-                type="button"
-                className={`toolbar-btn ${editor.isActive("heading", { level: 3 }) ? "active" : ""}`}
-                onClick={() => editor.chain().focus().toggleHeading({ level: 3 }).run()}
-                title="Sottotitolo"
-            >
-                H3
-            </button>
             <div className="toolbar-sep" />
 
-            {/* allineamento sinistra */}
+            {/* ── GRANDEZZA CARATTERE ── */}
+            <select
+                className="toolbar-btn"
+                value={
+                    editor.isActive("heading", { level: 2 }) ? "grande" :
+                        editor.isActive("heading", { level: 3 }) ? "medio" : "normale"
+                }
+                onChange={(e) => {
+                    const val = e.target.value
+                    if (val === "grande") {
+                        editor.chain().focus().toggleHeading({ level: 2 }).run()
+                    } else if (val === "medio") {
+                        editor.chain().focus().toggleHeading({ level: 3 }).run()
+                    } else {
+                        editor.chain().focus().setParagraph().run()
+                    }
+                }}
+                title="Grandezza testo"
+                style={{ cursor: "pointer" }}
+            >
+                <option value="normale">Normale</option>
+                <option value="medio">Medio</option>
+                <option value="grande">Grande</option>
+            </select>
+
+            {/* ── TIPO DI CARATTERE ── */}
+            <select
+                className="toolbar-btn"
+                onChange={(e) => editor.chain().focus().setFontFamily(e.target.value).run()}
+                defaultValue=""
+                title="Tipo di carattere"
+                style={{ cursor: "pointer" }}
+            >
+                <option value="" disabled>Font</option>
+                <option value="Georgia, serif">Georgia</option>
+                <option value="Inter, sans-serif">Inter</option>
+                <option value="'Cormorant Garamond', serif">Cormorant</option>
+                <option value="'Courier New', monospace">Courier</option>
+                <option value="Verdana, sans-serif">Verdana</option>
+                <option value="'Roboto Serif', serif">Roboto Serif</option>
+            </select>
+
+            <div className="toolbar-sep" />
+
+            {/* ── ALLINEAMENTO ── */}
             <button
                 type="button"
                 className={`toolbar-btn ${editor.isActive({ textAlign: "left" }) ? "active" : ""}`}
@@ -51,7 +89,6 @@ function EditorToolbar({ editor, onImageUpload }) {
                 <i className="bi bi-text-left"></i>
             </button>
 
-            {/* allineamento centro */}
             <button
                 type="button"
                 className={`toolbar-btn ${editor.isActive({ textAlign: "center" }) ? "active" : ""}`}
@@ -61,7 +98,6 @@ function EditorToolbar({ editor, onImageUpload }) {
                 <i className="bi bi-text-center"></i>
             </button>
 
-            {/* allineamento destra */}
             <button
                 type="button"
                 className={`toolbar-btn ${editor.isActive({ textAlign: "right" }) ? "active" : ""}`}
@@ -71,10 +107,18 @@ function EditorToolbar({ editor, onImageUpload }) {
                 <i className="bi bi-text-right"></i>
             </button>
 
-            <div className="toolbar-sep" />
+            <button
+                type="button"
+                className={`toolbar-btn ${editor.isActive({ textAlign: "justify" }) ? "active" : ""}`}
+                onClick={() => editor.chain().focus().setTextAlign("justify").run()}
+                title="Giustificato"
+            >
+                <i className="bi bi-justify"></i>
+            </button>
 
             <div className="toolbar-sep" />
 
+            {/* ── ELEMENTI ── */}
             <button
                 type="button"
                 className={`toolbar-btn ${editor.isActive("blockquote") ? "active" : ""}`}
@@ -95,8 +139,9 @@ function EditorToolbar({ editor, onImageUpload }) {
 
             <div className="toolbar-sep" />
 
+            {/* ── IMMAGINI ── */}
             <label className="toolbar-btn" title="Immagine a sinistra">
-                ◧ Add Img sinistra
+                ◧ Img sinistra
                 <input
                     type="file"
                     accept="image/*"
@@ -106,7 +151,7 @@ function EditorToolbar({ editor, onImageUpload }) {
             </label>
 
             <label className="toolbar-btn" title="Immagine centrata">
-                ☐ Add Img centro
+                ☐ Img centro
                 <input
                     type="file"
                     accept="image/*"
@@ -116,7 +161,7 @@ function EditorToolbar({ editor, onImageUpload }) {
             </label>
 
             <label className="toolbar-btn" title="Immagine a destra">
-                ◨ Add Img destra
+                ◨ Img destra
                 <input
                     type="file"
                     accept="image/*"
@@ -127,6 +172,7 @@ function EditorToolbar({ editor, onImageUpload }) {
 
             <div className="toolbar-sep" />
 
+            {/* ── CRONOLOGIA ── */}
             <button
                 type="button"
                 className="toolbar-btn"
@@ -144,6 +190,7 @@ function EditorToolbar({ editor, onImageUpload }) {
             >
                 ↪
             </button>
+
         </div>
     )
 }

@@ -41,7 +41,7 @@
 
 .sensitive-card {
     background: #14111F;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 16px;
     padding: 40px;
     max-width: 480px;
@@ -106,7 +106,7 @@
     top: 50%;
     width: 40%;
     height: 0.5px;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .sensitive-divider::before {
@@ -131,7 +131,7 @@
     font-size: 14px;
     color: #00D4B8;
     background: #14111F;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     padding: 11px 24px;
     border-radius: 999px;
     text-decoration: none;
@@ -150,7 +150,7 @@
     font-size: 14px;
     color: #A1A1AA;
     background: none;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     padding: 11px 24px;
     border-radius: 999px;
     text-decoration: none;
@@ -159,7 +159,7 @@
 }
 
 .btn-sensitive-register:hover {
-    border-color: rgba(255,255,255,0.1);
+    border-color: rgba(255, 255, 255, 0.1);
     color: #00D4B8;
 }
 
@@ -234,7 +234,7 @@
     display: inline-block;
     font-size: 10px;
     color: #00D4B8;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 999px;
     padding: 3px 10px;
     font-weight: 700;
@@ -258,8 +258,12 @@
     font-size: 20px;
     font-style: italic;
     color: #A1A1AA;
+    margin-top: -16px;
+    /* ← avvicina al titolo */
     margin-bottom: 20px;
     line-height: 1.4;
+    display: block;
+    width: 100%;
 }
 
 /* ── META BAR ────────────────────────────────── */
@@ -269,8 +273,8 @@
     gap: 12px;
     flex-wrap: wrap;
     padding: 16px 0;
-    border-top: 0.5px solid rgba(255,255,255,0.08);
-    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    border-top: 0.5px solid rgba(255, 255, 255, 0.08);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
     font-size: 13px;
     color: #A1A1AA;
 }
@@ -313,7 +317,7 @@
 }
 
 .meta-sep {
-    color: rgba(255,255,255,0.08);
+    color: rgba(255, 255, 255, 0.08);
 }
 
 .meta-actions {
@@ -331,7 +335,7 @@
     font-size: 13px;
     color: #A1A1AA;
     background: none;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 999px;
     padding: 6px 14px;
     cursor: pointer;
@@ -352,7 +356,7 @@
     font-size: 13px;
     color: #00D4B8;
     background: none;
-    border: 1px solid rgba(255,255,255,0.1);
+    border: 1px solid rgba(255, 255, 255, 0.1);
     border-radius: 999px;
     padding: 6px 14px;
     cursor: pointer;
@@ -386,7 +390,7 @@
 /* ── COPERTINA FULLWIDTH ─────────────────────── */
 .articolo-cover {
     width: 100%;
-    max-height: 500px;
+    /* max-height: 500px; */
     overflow: hidden;
     margin-bottom: 0;
 }
@@ -394,7 +398,10 @@
 .articolo-cover img {
     width: 100%;
     max-height: 500px;
-    object-fit: cover;
+    object-fit: contain;
+    /* ← cambia da cover a contain */
+    background: #0C0A14;
+    /* ← sfondo per le aree vuote */
 }
 
 /* ── LAYOUT DUE COLONNE ──────────────────────── */
@@ -409,7 +416,7 @@
 /* ── COLONNA SINISTRA ────────────────────────── */
 .articolo-main {
     padding: 40px 48px;
-    border-right: 0.5px solid rgba(255,255,255,0.08);
+    border-right: 0.5px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ── CORPO ARTICOLO ──────────────────────────── */
@@ -449,7 +456,7 @@
 }
 
 .articolo-body blockquote {
-    border-left: 3px solid rgba(255,255,255,0.1);
+    border-left: 3px solid rgba(255, 255, 255, 0.1);
     padding: 12px 20px;
     margin: 24px 0;
     color: #A1A1AA;
@@ -501,7 +508,7 @@
 /* ── COMMENTI ────────────────────────────────── */
 /* clear: both evita sovrapposizioni con immagini floatate */
 .commenti-section {
-    border-top: 0.5px solid rgba(255,255,255,0.08);
+    border-top: 0.5px solid rgba(255, 255, 255, 0.08);
     padding-top: 32px;
     clear: both;
 }
@@ -523,7 +530,7 @@
 
 .commento-input {
     background: #14111F;
-    border: 1px solid rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.08);
     border-radius: 10px;
     padding: 14px;
     color: #F5F5F5;
@@ -535,7 +542,7 @@
 }
 
 .commento-input:focus {
-    border-color: rgba(255,255,255,0.1);
+    border-color: rgba(255, 255, 255, 0.1);
 }
 
 .commento-input::placeholder {
@@ -575,7 +582,7 @@
 
 .commento {
     padding: 16px 0;
-    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
 }
 
 .commento-header {
@@ -651,7 +658,7 @@
 
 .sidebar-card {
     background: #14111F;
-    border: 0.5px solid rgba(255,255,255,0.08);
+    border: 0.5px solid rgba(255, 255, 255, 0.08);
     border-radius: 12px;
     padding: 20px;
 }
@@ -710,7 +717,7 @@
     gap: 12px;
     text-decoration: none;
     padding: 12px 0;
-    border-bottom: 0.5px solid rgba(255,255,255,0.08);
+    border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
     transition: opacity 0.25s ease;
 }
 
@@ -728,7 +735,7 @@
     border-radius: 6px;
     object-fit: cover;
     flex-shrink: 0;
-    background: rgba(255,255,255,0.08);
+    background: rgba(255, 255, 255, 0.08);
 }
 
 .sidebar-cat {
@@ -775,7 +782,7 @@
 
     .articolo-main {
         border-right: none;
-        border-bottom: 0.5px solid rgba(255,255,255,0.08);
+        border-bottom: 0.5px solid rgba(255, 255, 255, 0.08);
         padding: 32px 24px;
     }
 

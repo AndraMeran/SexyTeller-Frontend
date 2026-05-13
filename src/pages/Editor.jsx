@@ -6,6 +6,9 @@ import Image from "@tiptap/extension-image"
 import { Link as TiptapLink } from "@tiptap/extension-link"
 import Placeholder from "@tiptap/extension-placeholder"
 import TextAlign from "@tiptap/extension-text-align"
+import Underline from "@tiptap/extension-underline"
+import FontFamily from "@tiptap/extension-font-family"
+import { TextStyle } from "@tiptap/extension-text-style"
 import { useAuth } from "../context/useAuth"
 import { createArticle, uploadImage } from "../services/api"
 import EditorToolbar from "../components/EditorToolbar"
@@ -44,6 +47,11 @@ function Editor() {
     const editor = useEditor({
         extensions: [
             StarterKit,
+            Underline,
+            TextStyle.configure({
+                types: ["textStyle"],
+            }),
+            FontFamily,
             Image.configure({
                 HTMLAttributes: {
                     class: "tiptap-img",
