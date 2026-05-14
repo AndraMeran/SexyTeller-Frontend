@@ -90,3 +90,24 @@
         font-size: 16px;
     }
 }
+
+@media (max-width: 430px) {
+    .manifesto-page {
+        padding: 36px 14px;
+    }
+
+    .manifesto-title {
+        font-size: 26px;
+    }
+
+    .manifesto-body p,
+    .manifesto-chiusura {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 375px) {
+    .manifesto-title {
+        font-size: 22px;
+    }
+}

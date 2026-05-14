@@ -468,3 +468,29 @@
           min-width: unset;
       }
   }
+
+  @media (max-width: 430px) {
+      .impostazioni-page {
+          padding: 20px 14px;
+          gap: 16px;
+      }
+
+      .impostazioni-section-title {
+          font-size: 17px;
+      }
+
+      .impostazioni-nav-item {
+          font-size: 11px;
+          padding: 6px 10px;
+      }
+
+      .impostazioni-images {
+          gap: 20px;
+      }
+  }
+
+  @media (max-width: 375px) {
+      .impostazioni-page {
+          padding: 16px 12px;
+      }
+  }

@@ -740,7 +740,7 @@
 
 /* HERO */
 .hero-copy h1 {
-    font-size: clamp(42px, 5vw, 39px);
+    font-size: clamp(26px, 7vw, 42px);
     line-height: 1;
     letter-spacing: -0.035em;
 }
@@ -865,4 +865,109 @@
     font-family: "Inter", sans-serif;
     font-size: 15px;
     line-height: 1.7;
+}
+
+/* ── RESPONSIVE 430px / 375px ───────────────── */
+@media (max-width: 430px) {
+    .homepage {
+        padding: 16px 14px 40px;
+    }
+
+    .hero-h1-first {
+        white-space: normal;
+    }
+
+    .hero-copy h1 {
+        font-size: 26px;
+    }
+
+    .hero-copy p {
+        font-size: 14px;
+        max-width: 100%;
+    }
+
+    .hero-card {
+        min-height: 260px;
+    }
+
+    .hero-card h2 {
+        font-size: 20px;
+    }
+
+    .hero-card-content {
+        left: 16px;
+        bottom: 16px;
+        max-width: calc(100% - 32px);
+    }
+
+    .category-tile {
+        padding: 18px;
+    }
+
+    .category-tile h3 {
+        font-size: 20px;
+    }
+
+    .manifesto-card {
+        padding: 22px;
+    }
+
+    .join-section {
+        padding: 20px;
+        min-height: auto;
+    }
+
+    .join-copy h2 {
+        font-size: 24px;
+    }
+
+    .join-copy p {
+        font-size: 13px;
+    }
+
+    .section-title h2 {
+        font-size: 22px;
+    }
+
+    .featured-main h3 {
+        font-size: 24px;
+    }
+
+    .small-article {
+        grid-template-columns: 76px 1fr;
+        gap: 12px;
+    }
+
+    .small-thumb,
+    .small-thumb img {
+        width: 76px;
+        height: 60px;
+    }
+
+    .small-article .article-img-wrapper {
+        width: 76px;
+        height: 60px;
+    }
+
+    .small-article h4 {
+        font-size: 15px;
+    }
+}
+
+@media (max-width: 375px) {
+    .homepage {
+        padding: 14px 12px 32px;
+    }
+
+    .hero-copy h1 {
+        font-size: 23px;
+    }
+
+    .hero-card h2 {
+        font-size: 18px;
+    }
+
+    .join-copy h2 {
+        font-size: 21px;
+    }
 }

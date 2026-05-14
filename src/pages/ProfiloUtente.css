@@ -95,7 +95,8 @@
     font-size: 36px;
     font-weight: 700;
     color: #0C0A14;
-    border: 3px solid #0C0A14;
+    /* border: 3px solid #0C0A14; */
+    border: none
 }
 
 /* ── TESTO PROFILO ───────────────────────────── */
@@ -428,5 +429,62 @@
 
     .profilo-stats {
         gap: 16px;
+    }
+}
+
+@media (max-width: 430px) {
+    .profilo-cover {
+        height: 120px;
+    }
+
+    .profilo-avatar-wrapper {
+        margin-top: -36px;
+        margin-left: 14px;
+    }
+
+    .profilo-avatar,
+    .profilo-avatar-placeholder {
+        width: 80px;
+        height: 80px;
+        font-size: 28px;
+    }
+
+    .profilo-info-wrapper,
+    .profilo-tabs-wrapper,
+    .profilo-feed {
+        padding: 0 14px;
+    }
+
+    .profilo-feed {
+        padding-bottom: 40px;
+    }
+
+    .profilo-name {
+        font-size: 20px;
+    }
+
+    .profilo-tab {
+        font-size: 12px;
+        padding: 10px 14px;
+    }
+
+    .profilo-stats {
+        gap: 12px;
+    }
+
+    .stat-num {
+        font-size: 17px;
+    }
+}
+
+@media (max-width: 375px) {
+    .profilo-name {
+        font-size: 18px;
+    }
+
+    .profilo-info-wrapper,
+    .profilo-tabs-wrapper,
+    .profilo-feed {
+        padding: 0 12px;
     }
 }

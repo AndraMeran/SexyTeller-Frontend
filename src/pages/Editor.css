@@ -864,6 +864,61 @@
     }
 }
 
+@media (max-width: 430px) {
+    .editor-layout {
+        padding: 16px 14px;
+        gap: 20px;
+    }
+
+    .editor-header {
+        padding: 10px 14px;
+    }
+
+    .cat-grid {
+        grid-template-columns: 1fr 1fr;
+        gap: 8px;
+    }
+
+    .cat-btn {
+        padding: 10px;
+    }
+
+    .cat-btn-nome {
+        font-size: 13px;
+    }
+
+    .editor-titolo {
+        font-size: 18px;
+    }
+
+    .editor-sottotitolo {
+        font-size: 16px;
+    }
+
+    .tiptap-toolbar {
+        padding: 5px 6px;
+        gap: 2px;
+    }
+
+    .toolbar-btn {
+        font-size: 11px;
+        padding: 3px 6px;
+    }
+
+    .anteprima-content {
+        padding: 20px 14px;
+    }
+
+    .anteprima-content h1 {
+        font-size: 22px;
+    }
+
+    .anteprima-body {
+        padding: 0 14px;
+        font-size: 15px;
+    }
+}
+
 /* ── BOX DESCRIZIONE CATEGORIA ───────────────── */
 /* appare sotto la griglia quando l'utente seleziona una categoria */
 .cat-descrizione-box {

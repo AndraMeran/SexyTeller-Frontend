@@ -71,7 +71,21 @@ function MyNavbar() {
                                     className="navbar-avatar"
                                     onClick={() => setAvatarMenuOpen(!avatarMenuOpen)}
                                 >
-                                    {getInitials(user.name)}
+                                    {user.avatar ? (
+                                        <img
+                                            src={user.avatar}
+                                            alt={user.name}
+                                            style={{
+                                                width: "100%",
+                                                height: "100%",
+                                                borderRadius: "50%",
+                                                objectFit: "cover"
+                                            }}
+                                        />
+                                    ) : (
+                                        getInitials(user.name)
+                                    )}
+                                    {/* {getInitials(user.name)} */}
                                 </div>
                                 {avatarMenuOpen && (
                                     <div className="avatar-dropdown">
