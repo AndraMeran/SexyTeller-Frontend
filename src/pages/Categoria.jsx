@@ -17,7 +17,7 @@ const categorieInfo = {
         numero: "02",
         nome: "Decode",
         verbo: "Spiegare",
-        descrizione: "Ci sono storie che si consumano in un istante. E altre che lasciano tracce. Qui trovi racconti, confessioni, biografie e narrazioni che seguono un filo preciso, dall’inizio alla fine."
+        descrizione: "Non tutto ciò che attrae è immediato da capire. Qui desideri, fantasie e comportamenti vengono osservati, analizzati e decodificati oltre la superficie, per capire cosa raccontano davvero."
     },
     crossover: {
         numero: "03",
