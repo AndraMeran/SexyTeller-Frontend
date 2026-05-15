@@ -436,7 +436,7 @@
         background: #14111F;
     }
 
-    .categoria-card-meta span {
+    .categoria-card-meta>span {
         color: #A1A1AA !important;
     }
 }
@@ -479,8 +479,4 @@
     .categoria-nome {
         font-size: 21px;
     }
-}
-
-.categoria-card-meta span:last-child {
-    color: #A1A1AA !important;
 }
