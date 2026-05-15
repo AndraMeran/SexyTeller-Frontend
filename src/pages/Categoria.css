@@ -433,10 +433,14 @@
 
     .categoria-card .article-img-wrapper img {
         object-fit: contain;
-        /* ← era cover */
         background: #14111F;
     }
+
+    .categoria-card-meta span {
+        color: #A1A1AA !important;
+    }
 }
+
 
 @media (max-width: 430px) {
     .categoria-header {
@@ -474,11 +478,5 @@
 @media (max-width: 375px) {
     .categoria-nome {
         font-size: 21px;
-    }
-}
-
-@media (max-width: 576px) {
-    .categoria-card-meta span {
-        color: #A1A1AA !important;
     }
 }
