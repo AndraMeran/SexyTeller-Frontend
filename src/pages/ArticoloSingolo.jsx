@@ -217,7 +217,15 @@ function ArticoloSingolo() {
                 <div className="articolo-meta">
                     <div className="meta-author">
                         <div className="meta-avatar">
-                            {article.author?.name?.charAt(0).toUpperCase()}
+                            {article.author?.avatar ? (
+                                <img
+                                    src={article.author.avatar}
+                                    alt={article.author.name}
+                                    style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover" }}
+                                />
+                            ) : (
+                                article.author?.name?.charAt(0).toUpperCase()
+                            )}
                         </div>
                         <div>
                             <Link
@@ -323,7 +331,15 @@ function ArticoloSingolo() {
                         <p className="sidebar-label">Autore</p>
                         <Link to={`/profilo/${article.author?.handle}`} className="author-box">
                             <div className="author-avatar">
-                                {article.author?.name?.charAt(0).toUpperCase()}
+                                {article.author?.avatar ? (
+                                    <img
+                                        src={article.author.avatar}
+                                        alt={article.author.name}
+                                        style={{ width: "100%", height: "100%", borderRadius: "50%", objectFit: "cover" }}
+                                    />
+                                ) : (
+                                    article.author?.name?.charAt(0).toUpperCase()
+                                )}
                             </div>
                             <div>
                                 <p className="author-name">{article.author?.name}</p>

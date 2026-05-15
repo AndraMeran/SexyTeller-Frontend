@@ -326,6 +326,7 @@ function Editor() {
                             editor={editor}
                             onImageUpload={handleBodyImageUpload}
                         />
+
                         <EditorContent
                             editor={editor}
                             className="tiptap-editor"
