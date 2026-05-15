@@ -1,15 +1,18 @@
 # SexyTeller — Frontend
 
->**Repository Backend:** https://github.com/AndraMeran/SexyTeller-Backend
-> 🌐 **Demo live:** [link Vercel da aggiungere]
+> **Repository Backend:** https://github.com/AndraMeran/SexyTeller-Backend
+> **Link Vercel:** https://sexy-teller-frontend.vercel.app/
 
 ---
 
 ## Descrizione
 
-**SexyTeller** è una piattaforma editoriale dedicata alla cultura della sessualità — un luogo dove giornalisti, scrittori e voci della community possono raccontare, analizzare e approfondire temi legati al sesso, al desiderio e all'identità, con rigore culturale e senza tabù.
+SexyTeller è una piattaforma social editoriale contemporanea che esplora sessualità, erotismo e pornografia trattati con un approccio serio, narrativo e moderno, attraverso narrazione, analisi e cultura pop. 
+Il progetto unisce la struttura di un magazine digitale all’interazione di un social, creando uno spazio dove gli utenti non pubblicano semplicemente contenuti, ma vengono guidati nel modo in cui raccontarli.  
 
-Il progetto nasce come capstone finale del corso di sviluppo web e rappresenta un'applicazione completa con autenticazione, pannello amministrativo, editor di contenuti e sistema di ricerca globale.
+SexyTeller non divide i contenuti per argomento, ma per approccio editoriale e stile narrativo: raccontare, analizzare, collegare, approfondire o dare voce a esperienze e punti di vista diversi.  
+
+L’obiettivo è costruire un ecosistema capace di trasformare temi spesso trattati superficialmente in contenuti con identità, profondità e valore narrativo e culturale.
 
 ---
 
@@ -178,8 +181,8 @@ npm run lint     # Controllo ESLint
 - **Database** → MongoDB Atlas
 - **Immagini** → Cloudinary
 
-🌐 Frontend: [da aggiungere]
-🔧 Backend: [da aggiungere]
+Frontend: https://sexy-teller-frontend.vercel.app/
+Backend: https://sexyteller-backend.onrender.com
 
 ---
 
