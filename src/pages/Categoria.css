@@ -480,3 +480,7 @@
         font-size: 21px;
     }
 }
+
+.categoria-card-meta span:last-child {
+    color: #A1A1AA !important;
+}
